@@ -1,5 +1,5 @@
-3Di-modeller-installer
-======================
+3Di-modeller-interface-installer
+================================
 
 Build script and binaries to make 3Di-modeller installer for Win64. The build script is a Linux bash script.
 
