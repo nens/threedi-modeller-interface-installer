@@ -1,0 +1,485 @@
+{
+    "langs": {
+        "ar": {
+            "grasslibs": {
+                "good": 945
+            },
+            "grassmods": {
+                "good": 4002
+            },
+            "name": "Arabic",
+            "total": {
+                "bad": 0,
+                "fuzzy": 0,
+                "good": 11243,
+                "total": 11243
+            }
+        },
+        "cs": {
+            "grasslibs": {
+                "good": 1434
+            },
+            "grassmods": {
+                "good": 6417
+            },
+            "grasswxpy": {
+                "good": 1872
+            },
+            "name": "",
+            "total": {
+                "bad": 0,
+                "fuzzy": 0,
+                "good": 15757,
+                "total": 15757
+            }
+        },
+        "de": {
+            "grasslibs": {
+                "good": 1312
+            },
+            "grassmods": {
+                "good": 5068
+            },
+            "grasswxpy": {
+                "good": 1520
+            },
+            "name": "German",
+            "total": {
+                "bad": 0,
+                "fuzzy": 0,
+                "good": 15777,
+                "total": 15777
+            }
+        },
+        "el": {
+            "grasslibs": {
+                "good": 1612
+            },
+            "grassmods": {
+                "good": 9119
+            },
+            "grasswxpy": {
+                "good": 3419
+            },
+            "name": "Greek",
+            "total": {
+                "bad": 0,
+                "fuzzy": 0,
+                "good": 15476,
+                "total": 15476
+            }
+        },
+        "es": {
+            "grasslibs": {
+                "good": 217
+            },
+            "grassmods": {
+                "good": 1645
+            },
+            "grasswxpy": {
+                "good": 54
+            },
+            "name": "Spanish",
+            "total": {
+                "bad": 0,
+                "fuzzy": 0,
+                "good": 15983,
+                "total": 15983
+            }
+        },
+        "fi": {
+            "grasslibs": {
+                "good": 1991
+            },
+            "grassmods": {
+                "good": 9209
+            },
+            "grasswxpy": {
+                "good": 3955
+            },
+            "name": "Finnish",
+            "total": {
+                "bad": 0,
+                "fuzzy": 0,
+                "good": 15337,
+                "total": 15337
+            }
+        },
+        "fr": {
+            "grasslibs": {
+                "good": 10
+            },
+            "grassmods": {
+                "good": 6474
+            },
+            "grasswxpy": {
+                "good": 14
+            },
+            "name": "French",
+            "total": {
+                "bad": 0,
+                "fuzzy": 0,
+                "good": 15829,
+                "total": 15829
+            }
+        },
+        "hu": {
+            "grasslibs": {
+                "good": 1956
+            },
+            "grassmods": {
+                "good": 9234
+            },
+            "grasswxpy": {
+                "good": 2447
+            },
+            "name": "Hungarian",
+            "total": {
+                "bad": 0,
+                "fuzzy": 0,
+                "good": 15333,
+                "total": 15333
+            }
+        },
+        "id_ID": {
+            "grasslibs": {
+                "good": 1917
+            },
+            "grassmods": {
+                "good": 9252
+            },
+            "grasswxpy": {
+                "good": 4090
+            },
+            "name": "Indonesian (Indonesia)",
+            "total": {
+                "bad": 0,
+                "fuzzy": 0,
+                "good": 15343,
+                "total": 15343
+            }
+        },
+        "it": {
+            "grasslibs": {
+                "good": 964
+            },
+            "grassmods": {
+                "good": 6225
+            },
+            "grasswxpy": {
+                "good": 303
+            },
+            "name": "Italian",
+            "total": {
+                "bad": 0,
+                "fuzzy": 0,
+                "good": 15633,
+                "total": 15633
+            }
+        },
+        "ja": {
+            "grasslibs": {
+                "good": 1297
+            },
+            "grassmods": {
+                "good": 6614
+            },
+            "grasswxpy": {
+                "good": 1884
+            },
+            "name": "Japanese",
+            "total": {
+                "bad": 0,
+                "fuzzy": 0,
+                "good": 15801,
+                "total": 15801
+            }
+        },
+        "ko": {
+            "grasslibs": {
+                "good": 1959
+            },
+            "grassmods": {
+                "good": 8763
+            },
+            "grasswxpy": {
+                "good": 4090
+            },
+            "name": "Korean",
+            "total": {
+                "bad": 0,
+                "fuzzy": 0,
+                "good": 15462,
+                "total": 15462
+            }
+        },
+        "lv": {
+            "grasslibs": {
+                "good": 1648
+            },
+            "grassmods": {
+                "good": 8479
+            },
+            "grasswxpy": {
+                "good": 2682
+            },
+            "name": "Latvian",
+            "total": {
+                "bad": 0,
+                "fuzzy": 0,
+                "good": 15333,
+                "total": 15333
+            }
+        },
+        "ml": {
+            "grasslibs": {
+                "good": 1920
+            },
+            "grassmods": {
+                "good": 9252
+            },
+            "grasswxpy": {
+                "good": 3927
+            },
+            "name": "",
+            "total": {
+                "bad": 0,
+                "fuzzy": 0,
+                "good": 15394,
+                "total": 15394
+            }
+        },
+        "pl": {
+            "grasslibs": {
+                "good": 1312
+            },
+            "grassmods": {
+                "good": 7261
+            },
+            "grasswxpy": {
+                "good": 1332
+            },
+            "name": "GRASS Translation",
+            "total": {
+                "bad": 0,
+                "fuzzy": 0,
+                "good": 15619,
+                "total": 15619
+            }
+        },
+        "pt": {
+            "grasslibs": {
+                "good": 1463
+            },
+            "grassmods": {
+                "good": 8580
+            },
+            "grasswxpy": {
+                "good": 3414
+            },
+            "name": "",
+            "total": {
+                "bad": 0,
+                "fuzzy": 0,
+                "good": 15696,
+                "total": 15696
+            }
+        },
+        "pt_BR": {
+            "grasslibs": {
+                "good": 1860
+            },
+            "grassmods": {
+                "good": 8365
+            },
+            "grasswxpy": {
+                "good": 3512
+            },
+            "name": "Portuguese (Brazil)",
+            "total": {
+                "bad": 0,
+                "fuzzy": 0,
+                "good": 15712,
+                "total": 15712
+            }
+        },
+        "ro": {
+            "grasslibs": {
+                "good": 1871
+            },
+            "grassmods": {
+                "good": 8157
+            },
+            "grasswxpy": {
+                "good": 1743
+            },
+            "name": "",
+            "total": {
+                "bad": 0,
+                "fuzzy": 0,
+                "good": 15524,
+                "total": 15524
+            }
+        },
+        "ru": {
+            "grasslibs": {
+                "good": 1507
+            },
+            "grassmods": {
+                "good": 9250
+            },
+            "grasswxpy": {
+                "good": 3162
+            },
+            "name": "Russian",
+            "total": {
+                "bad": 0,
+                "fuzzy": 0,
+                "good": 15723,
+                "total": 15723
+            }
+        },
+        "si": {
+            "grasslibs": {
+                "good": 1986
+            },
+            "grassmods": {
+                "good": 9252
+            },
+            "grasswxpy": {
+                "good": 4090
+            },
+            "name": "Sinhala",
+            "total": {
+                "bad": 0,
+                "fuzzy": 0,
+                "good": 15333,
+                "total": 15333
+            }
+        },
+        "sl": {
+            "grasslibs": {
+                "good": 867
+            },
+            "grassmods": {
+                "good": 3948
+            },
+            "name": "Sloven\u0161\u010dina",
+            "total": {
+                "bad": 0,
+                "fuzzy": 0,
+                "good": 11243,
+                "total": 11243
+            }
+        },
+        "ta": {
+            "grasslibs": {
+                "good": 1943
+            },
+            "grassmods": {
+                "good": 9228
+            },
+            "grasswxpy": {
+                "good": 4011
+            },
+            "name": "Tamil",
+            "total": {
+                "bad": 0,
+                "fuzzy": 0,
+                "good": 15333,
+                "total": 15333
+            }
+        },
+        "th": {
+            "grasslibs": {
+                "good": 1732
+            },
+            "grassmods": {
+                "good": 9250
+            },
+            "grasswxpy": {
+                "good": 3704
+            },
+            "name": "Thai",
+            "total": {
+                "bad": 0,
+                "fuzzy": 0,
+                "good": 15664,
+                "total": 15664
+            }
+        },
+        "tr": {
+            "grasslibs": {
+                "good": 1745
+            },
+            "grassmods": {
+                "good": 7743
+            },
+            "grasswxpy": {
+                "good": 3151
+            },
+            "name": "T\u00fcrk\u00e7e",
+            "total": {
+                "bad": 0,
+                "fuzzy": 0,
+                "good": 15656,
+                "total": 15656
+            }
+        },
+        "uk": {
+            "grasslibs": {
+                "good": 1973
+            },
+            "grassmods": {
+                "good": 9252
+            },
+            "grasswxpy": {
+                "good": 4090
+            },
+            "name": "Ukrainian",
+            "total": {
+                "bad": 0,
+                "fuzzy": 0,
+                "good": 15333,
+                "total": 15333
+            }
+        },
+        "vi": {
+            "grasslibs": {
+                "good": 1757
+            },
+            "grassmods": {
+                "good": 9250
+            },
+            "grasswxpy": {
+                "good": 4090
+            },
+            "name": "American English",
+            "total": {
+                "bad": 0,
+                "fuzzy": 0,
+                "good": 15711,
+                "total": 15711
+            }
+        },
+        "zh": {
+            "grasslibs": {
+                "good": 1766
+            },
+            "grassmods": {
+                "good": 8752
+            },
+            "grasswxpy": {
+                "good": 2449
+            },
+            "name": "Simplified Chinese",
+            "total": {
+                "bad": 0,
+                "fuzzy": 0,
+                "good": 15718,
+                "total": 15718
+            }
+        }
+    },
+    "totals": {}
+}

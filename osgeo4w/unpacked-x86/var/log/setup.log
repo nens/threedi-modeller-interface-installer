@@ -1,0 +1,277 @@
+2018/08/28 00:37:07 Starting OSGeo4W install, version 2.579
+2018/08/28 00:37:07 using locales .1252
+2018/08/28 00:37:07 io_stream_cygfile: fopen(/etc/setup/setup.rc) failed 2 No such file or directory
+2018/08/28 00:37:07 Current Directory: C:\Users\IEUser\AppData\Local\Temp
+2018/08/28 00:37:07 Root Directory: C:\OSGeo4W
+2018/08/28 00:37:07 Could not open service McShield for query, start and stop. McAfee may not be installed, or we don't have access.
+2018/08/28 00:37:18 source: network install
+2018/08/28 00:37:27 root: C:\OSGeo4W
+2018/08/28 00:37:31 Selected local directory: C:\Users\IEUser\AppData\Local\Temp
+2018/08/28 00:37:31 Menu name: OSGeo4W
+2018/08/28 00:37:34 net: Direct
+2018/08/28 00:37:42 site: http://www.norbit.de/osgeo4w/
+2018/08/28 00:37:43 io_stream_cygfile: fopen(/etc/setup/installed.db) failed 2 No such file or directory
+2018/08/28 00:37:43 io_stream_cygfile: fopen(/etc/setup/timestamp) failed 2 No such file or directory
+2018/08/28 00:38:21 Adding required dependency boost: Selecting version 1.56.0-2 for installation.
+2018/08/28 00:38:21 Adding required dependency curl: Selecting version 7.60.0-1 for installation.
+2018/08/28 00:38:21 Adding required dependency expat: Selecting version 2.0.1-1 for installation.
+2018/08/28 00:38:21 Adding required dependency freexl: Selecting version 1.0.2-1 for installation.
+2018/08/28 00:38:21 Adding required dependency gdal: Selecting version 2.2.4-2 for installation.
+2018/08/28 00:38:21 Adding required dependency gdal-python: Selecting version 2.2.4-2 for installation.
+2018/08/28 00:38:21 Adding required dependency geos: Selecting version 3.6.1-1 for installation.
+2018/08/28 00:38:21 Adding required dependency gpsbabel: Selecting version 1.4.4-1 for installation.
+2018/08/28 00:38:21 Adding required dependency gsl-libs: Selecting version 1.12-1 for installation.
+2018/08/28 00:38:21 Adding required dependency hdf4: Selecting version 4.2.0r3-4 for installation.
+2018/08/28 00:38:21 Adding required dependency hdf5: Selecting version 1.8.11-1 for installation.
+2018/08/28 00:38:21 Adding required dependency iconv: Selecting version 1.9.1-1 for installation.
+2018/08/28 00:38:21 Adding required dependency iconv-vc14: Selecting version 1.15-1 for installation.
+2018/08/28 00:38:21 Adding required dependency libintl: Selecting version 0.14.4-2 for installation.
+2018/08/28 00:38:21 Adding required dependency libjpeg: Selecting version 6b-5 for installation.
+2018/08/28 00:38:21 Adding required dependency libjpeg12: Selecting version 6b-3 for installation.
+2018/08/28 00:38:21 Adding required dependency libkml: Selecting version 1.3.0-1 for installation.
+2018/08/28 00:38:21 Adding required dependency liblwgeom: Selecting version 2.3.0-1 for installation.
+2018/08/28 00:38:21 Adding required dependency libmysql: Selecting version 6.1.9-1 for installation.
+2018/08/28 00:38:21 Adding required dependency libpng-vc14: Selecting version 1.6.29-1 for installation.
+2018/08/28 00:38:21 Adding required dependency libpq: Selecting version 9.5.3-2 for installation.
+2018/08/28 00:38:21 Adding required dependency libspatialindex: Selecting version 1.7.0-1 for installation.
+2018/08/28 00:38:21 Adding required dependency libtiff: Selecting version 4.0.8-1 for installation.
+2018/08/28 00:38:21 Adding required dependency libxml2: Selecting version 2.9.1-1 for installation.
+2018/08/28 00:38:21 Adding required dependency msvcrt: Selecting version 1.0.1-14 for installation.
+2018/08/28 00:38:21 Adding required dependency msvcrt2008: Selecting version 1.0-1 for installation.
+2018/08/28 00:38:21 Adding required dependency msvcrt2010: Selecting version 1.0-1 for installation.
+2018/08/28 00:38:21 Adding required dependency msvcrt2013: Selecting version 1.0-1 for installation.
+2018/08/28 00:38:21 Adding required dependency msvcrt2015: Selecting version 1.0-1 for installation.
+2018/08/28 00:38:21 Adding required dependency netcdf: Selecting version 4.4.1.1-1 for installation.
+2018/08/28 00:38:21 Adding required dependency ogdi: Selecting version 3.2.1-1 for installation.
+2018/08/28 00:38:21 Adding required dependency openjpeg: Selecting version 2.3.0-1 for installation.
+2018/08/28 00:38:21 Adding required dependency openssl: Selecting version 1.0.2j-1 for installation.
+2018/08/28 00:38:21 Adding required dependency owslib: Selecting version 0.14.0-1 for installation.
+2018/08/28 00:38:21 Adding required dependency proj: Selecting version 4.9.3-1 for installation.
+2018/08/28 00:38:21 Adding required dependency proj-beta2007: Selecting version 1.0-1 for installation.
+2018/08/28 00:38:21 Adding required dependency proj-datumgrid: Selecting version 1.5-1 for installation.
+2018/08/28 00:38:21 Adding required dependency proj-hpgn: Selecting version 1.0-1 for installation.
+2018/08/28 00:38:21 Adding required dependency pygments: Selecting version 1.4-3 for installation.
+2018/08/28 00:38:21 Adding required dependency pyqt4: Selecting version 4.11.3-1 for installation.
+2018/08/28 00:38:21 Adding required dependency pyspatialite: Selecting version 3.0.1-1 for installation.
+2018/08/28 00:38:21 Adding required dependency python: Selecting version 2.7.4-2 for installation.
+2018/08/28 00:38:21 Adding required dependency python-certifi: Selecting version 2017.7.27.1-1 for installation.
+2018/08/28 00:38:21 Adding required dependency python-chardet: Selecting version 3.0.4-1 for installation.
+2018/08/28 00:38:21 Adding required dependency python-core: Selecting version 2.7.14-1 for installation.
+2018/08/28 00:38:21 Adding required dependency python-dateutil: Selecting version 2.6.0-1 for installation.
+2018/08/28 00:38:21 Adding required dependency python-future: Selecting version 0.15.2-1 for installation.
+2018/08/28 00:38:21 Adding required dependency python-help: Selecting version 2.7.14-1 for installation.
+2018/08/28 00:38:21 Adding required dependency python-idna: Selecting version 2.6-1 for installation.
+2018/08/28 00:38:21 Adding required dependency python-jinja2: Selecting version 2.7.2-1 for installation.
+2018/08/28 00:38:21 Adding required dependency python-markupsafe: Selecting version 0.23-1 for installation.
+2018/08/28 00:38:21 Adding required dependency python-numpy: Selecting version 1.12.1+mkl-1 for installation.
+2018/08/28 00:38:21 Adding required dependency python-psycopg2: Selecting version 2.7.3.2-1 for installation.
+2018/08/28 00:38:21 Adding required dependency python-pyproj: Selecting version 1.9.5.1-1 for installation.
+2018/08/28 00:38:21 Adding required dependency python-pyyaml: Selecting version 3.12-1 for installation.
+2018/08/28 00:38:21 Adding required dependency python-qscintilla: Selecting version 2.8.4-1 for installation.
+2018/08/28 00:38:21 Adding required dependency python-requests: Selecting version 2.18.4-1 for installation.
+2018/08/28 00:38:21 Adding required dependency python-six: Selecting version 1.10.0-1 for installation.
+2018/08/28 00:38:21 Adding required dependency python-tcltk: Selecting version 2.7.14-1 for installation.
+2018/08/28 00:38:21 Adding required dependency python-test: Selecting version 2.7.14-1 for installation.
+2018/08/28 00:38:21 Adding required dependency python-testsuite: Selecting version 2.7.14-1 for installation.
+2018/08/28 00:38:21 Adding required dependency python-tools: Selecting version 2.7.14-1 for installation.
+2018/08/28 00:38:21 Adding required dependency python-urllib3: Selecting version 1.22-1 for installation.
+2018/08/28 00:38:21 Adding required dependency pytz: Selecting version 2017.2-1 for installation.
+2018/08/28 00:38:21 Adding required dependency qca-libs: Selecting version 2.1.0-1 for installation.
+2018/08/28 00:38:21 Adding required dependency qgis-ltr-common: Selecting version 2.18.23-1 for installation.
+2018/08/28 00:38:21 Adding required dependency qjson-libs: Selecting version 0.8.1-2 for installation.
+2018/08/28 00:38:21 Adding required dependency qscintilla: Selecting version 2.8.4-1 for installation.
+2018/08/28 00:38:21 Adding required dependency qt4-devel: Selecting version 4.8.6-1 for installation.
+2018/08/28 00:38:21 Adding required dependency qt4-libs: Selecting version 4.8.6-2 for installation.
+2018/08/28 00:38:21 Adding required dependency qwt-libs-qt4: Selecting version 6.0.2-1 for installation.
+2018/08/28 00:38:21 Adding required dependency setup: Selecting version 1.0.7-16 for installation.
+2018/08/28 00:38:21 Adding required dependency shell: Selecting version 1.0.2-2 for installation.
+2018/08/28 00:38:21 Adding required dependency sip: Selecting version 4.16.5-1 for installation.
+2018/08/28 00:38:21 Adding required dependency spatialite: Selecting version 4.3.0-4 for installation.
+2018/08/28 00:38:21 Adding required dependency spatialite4dll: Selecting version 4.1.1-1 for installation.
+2018/08/28 00:38:21 Adding required dependency sqlite3: Selecting version 3.17.0-4 for installation.
+2018/08/28 00:38:21 Adding required dependency szip: Selecting version 2.1-1 for installation.
+2018/08/28 00:38:21 Adding required dependency xerces-c: Selecting version 3.2.0-1 for installation.
+2018/08/28 00:38:21 Adding required dependency xz: Selecting version 5.2.3-1 for installation.
+2018/08/28 00:38:21 Adding required dependency zlib: Selecting version 1.2.3-1 for installation.
+2018/08/28 00:38:21 License file://C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/szip/szip-2.1-1.txt successfully loaded.
+2018/08/28 00:38:23 Downloaded C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/boost/boost-1.56.0-2.tar.bz2
+2018/08/28 00:38:23 Downloaded C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/curl/curl-7.60.0-1.tar.bz2
+2018/08/28 00:38:24 Downloaded C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/expat/expat-2.0.1-1.tar.bz2
+2018/08/28 00:38:24 Downloaded C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/freexl/freexl-1.0.2-1.tar.bz2
+2018/08/28 00:38:24 Downloaded C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/gdal/gdal-2.2.4-2.tar.bz2
+2018/08/28 00:38:25 Downloaded C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/gdal/gdal-python/gdal-python-2.2.4-2.tar.bz2
+2018/08/28 00:38:25 Downloaded C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/geos/geos-3.6.1-1.tar.bz2
+2018/08/28 00:38:25 Downloaded C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/gpsbabel/gpsbabel-1.4.4-1.tar.bz2
+2018/08/28 00:38:25 Downloaded C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/gsl/gsl-libs/gsl-libs-1.12-1.tar.bz2
+2018/08/28 00:38:25 Downloaded C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/hdf4/hdf4-4.2.0r3-4.tar.bz2
+2018/08/28 00:38:26 Downloaded C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/hdf5/hdf5-1.8.11-1.tar.bz2
+2018/08/28 00:38:26 Downloaded C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/iconv/iconv-1.9.1-1.tar.bz2
+2018/08/28 00:38:26 Downloaded C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/iconv-vc14/iconv-vc14-1.15-1.tar.bz2
+2018/08/28 00:38:26 Downloaded C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/libintl/libintl-0.14.4-2.tar.bz2
+2018/08/28 00:38:27 Downloaded C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/jpeg/libjpeg/libjpeg-6b-5.tar.bz2
+2018/08/28 00:38:27 Downloaded C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/jpeg/libjpeg12/libjpeg12-6b-3.tar.bz2
+2018/08/28 00:38:27 Downloaded C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/libkml/libkml-1.3.0-1.tar.bz2
+2018/08/28 00:38:27 Downloaded C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/liblwgeom/liblwgeom-2.3.0-1.tar.bz2
+2018/08/28 00:38:27 Downloaded C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/libmysql/libmysql-6.1.9-1.tar.bz2
+2018/08/28 00:38:28 Downloaded C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/libpng-vc14/libpng-vc14-1.6.29-1.tar.bz2
+2018/08/28 00:38:28 Downloaded C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/libpq/libpq-9.5.3-2.tar.bz2
+2018/08/28 00:38:28 Downloaded C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/libspatialindex/libspatialindex-1.7.0-1.tar.bz2
+2018/08/28 00:38:28 Downloaded C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/libtiff/libtiff-4.0.8-1.tar.bz2
+2018/08/28 00:38:28 Downloaded C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/libxml2/libxml2-2.9.1-1.tar.bz2
+2018/08/28 00:38:29 Downloaded C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/msvcrt/msvcrt-1.0.1-14.tar.bz2
+2018/08/28 00:38:29 Downloaded C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/msvcrt/msvcrt2008/msvcrt2008-1.0-1.tar.bz2
+2018/08/28 00:38:29 Downloaded C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/msvcrt/msvcrt2010/msvcrt2010-1.0-1.tar.bz2
+2018/08/28 00:38:30 Downloaded C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/msvcrt/msvcrt2013/msvcrt2013-1.0-1.tar.bz2
+2018/08/28 00:38:30 Downloaded C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/msvcrt/msvcrt2015/msvcrt2015-1.0-1.tar.bz2
+2018/08/28 00:38:31 Downloaded C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/netcdf/netcdf-4.4.1.1-1.tar.bz2
+2018/08/28 00:38:31 Downloaded C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/ogdi/ogdi-3.2.1-1.tar.bz2
+2018/08/28 00:38:31 Downloaded C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/openjpeg/openjpeg-2.3.0-1.tar.bz2
+2018/08/28 00:38:31 Downloaded C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/openssl/openssl-1.0.2j-1.tar.bz2
+2018/08/28 00:38:31 Downloaded C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/python/owslib/owslib-0.14.0-1.tar.bz2
+2018/08/28 00:38:31 Downloaded C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/proj/proj-4.9.3-1.tar.bz2
+2018/08/28 00:38:32 Downloaded C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/proj/proj-beta2007/proj-beta2007-1.0-1.tar.bz2
+2018/08/28 00:38:32 Downloaded C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/proj/proj-datumgrid/proj-datumgrid-1.5-1.tar.bz2
+2018/08/28 00:38:32 Downloaded C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/proj/proj-hpgn/proj-hpgn-1.0-1.tar.bz2
+2018/08/28 00:38:32 Downloaded C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/python/pygments/pygments-1.4-3.tar.bz2
+2018/08/28 00:38:33 Downloaded C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/python/pyqt4/pyqt4-4.11.3-1.tar.bz2
+2018/08/28 00:38:33 Downloaded C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/python/pyspatialite/pyspatialite-3.0.1-1.tar.bz2
+2018/08/28 00:38:33 Downloaded C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/python/python-2.7.4-2.tar.bz2
+2018/08/28 00:38:33 Downloaded C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/python/python-certifi/python-certifi-2017.7.27.1-1.tar.bz2
+2018/08/28 00:38:33 Downloaded C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/python/python-chardet/python-chardet-3.0.4-1.tar.bz2
+2018/08/28 00:38:34 Downloaded C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/python/python-core/python-core-2.7.14-1.tar.bz2
+2018/08/28 00:38:34 Downloaded C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/python/python-dateutil/python-dateutil-2.6.0-1.tar.bz2
+2018/08/28 00:38:34 Downloaded C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/python/python-future/python-future-0.15.2-1.tar.bz2
+2018/08/28 00:38:35 Downloaded C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/python/python-help/python-help-2.7.14-1.tar.bz2
+2018/08/28 00:38:35 Downloaded C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/python/python-idna/python-idna-2.6-1.tar.bz2
+2018/08/28 00:38:35 Downloaded C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/python/python-jinja2/python-jinja2-2.7.2-1.tar.bz2
+2018/08/28 00:38:35 Downloaded C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/python/python-markupsafe/python-markupsafe-0.23-1.tar.bz2
+2018/08/28 00:38:36 Downloaded C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/python/python-numpy/python-numpy-1.12.1+mkl-1.tar.bz2
+2018/08/28 00:38:36 Downloaded C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/python/python-psycopg2/python-psycopg2-2.7.3.2-1.tar.bz2
+2018/08/28 00:38:37 Downloaded C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/python/python-pyproj/python-pyproj-1.9.5.1-1.tar.bz2
+2018/08/28 00:38:37 Downloaded C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/python/python-pyyaml/python-pyyaml-3.12-1.tar.bz2
+2018/08/28 00:38:37 Downloaded C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/python/python-qscintilla/python-qscintilla-2.8.4-1.tar.bz2
+2018/08/28 00:38:37 Downloaded C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/python/python-requests/python-requests-2.18.4-1.tar.bz2
+2018/08/28 00:38:37 Downloaded C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/python/python-six/python-six-1.10.0-1.tar.bz2
+2018/08/28 00:38:38 Downloaded C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/python/python-tcltk/python-tcltk-2.7.14-1.tar.bz2
+2018/08/28 00:38:38 Downloaded C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/python/python-test/python-test-2.7.14-1.tar.bz2
+2018/08/28 00:38:38 Downloaded C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/python/python-testsuite/python-testsuite-2.7.14-1.tar.bz2
+2018/08/28 00:38:38 Downloaded C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/python/python-tools/python-tools-2.7.14-1.tar.bz2
+2018/08/28 00:38:38 Downloaded C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/python/python-urllib3/python-urllib3-1.22-1.tar.bz2
+2018/08/28 00:38:39 Downloaded C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/python/pytz/pytz-2017.2-1.tar.bz2
+2018/08/28 00:38:39 Downloaded C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/qt4/qca/qca-libs/qca-libs-2.1.0-1.tar.bz2
+2018/08/28 00:38:41 Downloaded C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/qgis/qgis-ltr/qgis-ltr-2.18.23-1.tar.bz2
+2018/08/28 00:38:41 Downloaded C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/qgis/qgis-ltr-common/qgis-ltr-common-2.18.23-1.tar.bz2
+2018/08/28 00:38:41 Downloaded C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/qt4/qjson/qjson-libs/qjson-libs-0.8.1-2.tar.bz2
+2018/08/28 00:38:41 Downloaded C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/qt/qt4/qscintilla/qscintilla-2.8.4-1.tar.bz2
+2018/08/28 00:38:42 Downloaded C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/qt/qt4-devel/qt4-devel-4.8.6-1.tar.bz2
+2018/08/28 00:38:43 Downloaded C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/qt/qt4-libs/qt4-libs-4.8.6-2.tar.bz2
+2018/08/28 00:38:43 Downloaded C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/qt/qt4/qwt-libs-qt4/qwt-libs-qt4-6.0.2-1.tar.bz2
+2018/08/28 00:38:43 Downloaded C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/setup/setup-1.0.7-16.tar.bz2
+2018/08/28 00:38:43 Downloaded C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/shell/shell-1.0.2-2.tar.bz2
+2018/08/28 00:38:44 Downloaded C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/python/sip/sip-4.16.5-1.tar.bz2
+2018/08/28 00:38:44 Downloaded C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/spatialite/spatialite-4.3.0-4.tar.bz2
+2018/08/28 00:38:44 Downloaded C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/spatialite/spatialite4dll/spatialite4dll-4.1.1-1.tar.bz2
+2018/08/28 00:38:44 Downloaded C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/sqlite3/sqlite3-3.17.0-4.tar.bz2
+2018/08/28 00:38:45 Downloaded C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/szip/szip-2.1-1.tar.bz2
+2018/08/28 00:38:45 Downloaded C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/xerces-c/xerces-c-3.2.0-1.tar.bz2
+2018/08/28 00:38:45 Downloaded C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/xz/xz-5.2.3-1.tar.bz2
+2018/08/28 00:38:46 Downloaded C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/zlib/zlib-1.2.3-1.tar.bz2
+2018/08/28 00:38:47 Extracting from file://C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/boost/boost-1.56.0-2.tar.bz2
+2018/08/28 00:38:48 Extracting from file://C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/curl/curl-7.60.0-1.tar.bz2
+2018/08/28 00:38:48 Extracting from file://C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/expat/expat-2.0.1-1.tar.bz2
+2018/08/28 00:38:48 Extracting from file://C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/freexl/freexl-1.0.2-1.tar.bz2
+2018/08/28 00:38:48 Extracting from file://C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/gdal/gdal-2.2.4-2.tar.bz2
+2018/08/28 00:38:49 Extracting from file://C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/gdal/gdal-python/gdal-python-2.2.4-2.tar.bz2
+2018/08/28 00:38:50 Extracting from file://C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/geos/geos-3.6.1-1.tar.bz2
+2018/08/28 00:38:50 Extracting from file://C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/gpsbabel/gpsbabel-1.4.4-1.tar.bz2
+2018/08/28 00:38:50 Extracting from file://C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/gsl/gsl-libs/gsl-libs-1.12-1.tar.bz2
+2018/08/28 00:38:50 Extracting from file://C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/hdf4/hdf4-4.2.0r3-4.tar.bz2
+2018/08/28 00:38:50 Extracting from file://C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/hdf5/hdf5-1.8.11-1.tar.bz2
+2018/08/28 00:38:51 Extracting from file://C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/iconv/iconv-1.9.1-1.tar.bz2
+2018/08/28 00:38:51 Extracting from file://C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/iconv-vc14/iconv-vc14-1.15-1.tar.bz2
+2018/08/28 00:38:51 Extracting from file://C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/libintl/libintl-0.14.4-2.tar.bz2
+2018/08/28 00:38:51 Extracting from file://C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/jpeg/libjpeg/libjpeg-6b-5.tar.bz2
+2018/08/28 00:38:51 Extracting from file://C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/jpeg/libjpeg12/libjpeg12-6b-3.tar.bz2
+2018/08/28 00:38:51 Extracting from file://C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/libkml/libkml-1.3.0-1.tar.bz2
+2018/08/28 00:38:52 Extracting from file://C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/liblwgeom/liblwgeom-2.3.0-1.tar.bz2
+2018/08/28 00:38:52 Extracting from file://C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/libmysql/libmysql-6.1.9-1.tar.bz2
+2018/08/28 00:38:52 Extracting from file://C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/libpng-vc14/libpng-vc14-1.6.29-1.tar.bz2
+2018/08/28 00:38:52 Extracting from file://C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/libpq/libpq-9.5.3-2.tar.bz2
+2018/08/28 00:38:52 Extracting from file://C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/libspatialindex/libspatialindex-1.7.0-1.tar.bz2
+2018/08/28 00:38:52 Extracting from file://C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/libtiff/libtiff-4.0.8-1.tar.bz2
+2018/08/28 00:38:52 Extracting from file://C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/libxml2/libxml2-2.9.1-1.tar.bz2
+2018/08/28 00:38:52 Extracting from file://C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/msvcrt/msvcrt-1.0.1-14.tar.bz2
+2018/08/28 00:38:52 Extracting from file://C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/msvcrt/msvcrt2008/msvcrt2008-1.0-1.tar.bz2
+2018/08/28 00:38:53 Extracting from file://C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/msvcrt/msvcrt2010/msvcrt2010-1.0-1.tar.bz2
+2018/08/28 00:38:53 Extracting from file://C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/msvcrt/msvcrt2013/msvcrt2013-1.0-1.tar.bz2
+2018/08/28 00:38:54 Extracting from file://C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/msvcrt/msvcrt2015/msvcrt2015-1.0-1.tar.bz2
+2018/08/28 00:38:55 Extracting from file://C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/netcdf/netcdf-4.4.1.1-1.tar.bz2
+2018/08/28 00:38:55 Extracting from file://C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/ogdi/ogdi-3.2.1-1.tar.bz2
+2018/08/28 00:38:55 Extracting from file://C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/openjpeg/openjpeg-2.3.0-1.tar.bz2
+2018/08/28 00:38:55 Extracting from file://C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/openssl/openssl-1.0.2j-1.tar.bz2
+2018/08/28 00:38:55 Extracting from file://C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/python/owslib/owslib-0.14.0-1.tar.bz2
+2018/08/28 00:38:55 Extracting from file://C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/proj/proj-4.9.3-1.tar.bz2
+2018/08/28 00:38:55 Extracting from file://C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/proj/proj-beta2007/proj-beta2007-1.0-1.tar.bz2
+2018/08/28 00:38:55 Extracting from file://C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/proj/proj-datumgrid/proj-datumgrid-1.5-1.tar.bz2
+2018/08/28 00:38:55 Extracting from file://C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/proj/proj-hpgn/proj-hpgn-1.0-1.tar.bz2
+2018/08/28 00:38:56 Extracting from file://C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/python/pygments/pygments-1.4-3.tar.bz2
+2018/08/28 00:38:56 Extracting from file://C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/python/pyqt4/pyqt4-4.11.3-1.tar.bz2
+2018/08/28 00:38:57 Extracting from file://C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/python/pyspatialite/pyspatialite-3.0.1-1.tar.bz2
+2018/08/28 00:38:57 Extracting from file://C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/python/python-2.7.4-2.tar.bz2
+2018/08/28 00:38:57 Extracting from file://C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/python/python-certifi/python-certifi-2017.7.27.1-1.tar.bz2
+2018/08/28 00:38:57 Extracting from file://C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/python/python-chardet/python-chardet-3.0.4-1.tar.bz2
+2018/08/28 00:38:57 Extracting from file://C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/python/python-core/python-core-2.7.14-1.tar.bz2
+2018/08/28 00:38:59 Extracting from file://C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/python/python-dateutil/python-dateutil-2.6.0-1.tar.bz2
+2018/08/28 00:38:59 Extracting from file://C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/python/python-future/python-future-0.15.2-1.tar.bz2
+2018/08/28 00:39:00 Extracting from file://C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/python/python-help/python-help-2.7.14-1.tar.bz2
+2018/08/28 00:39:00 Extracting from file://C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/python/python-idna/python-idna-2.6-1.tar.bz2
+2018/08/28 00:39:00 Extracting from file://C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/python/python-jinja2/python-jinja2-2.7.2-1.tar.bz2
+2018/08/28 00:39:00 Extracting from file://C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/python/python-markupsafe/python-markupsafe-0.23-1.tar.bz2
+2018/08/28 00:39:00 Extracting from file://C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/python/python-numpy/python-numpy-1.12.1+mkl-1.tar.bz2
+2018/08/28 00:39:04 Extracting from file://C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/python/python-psycopg2/python-psycopg2-2.7.3.2-1.tar.bz2
+2018/08/28 00:39:05 Extracting from file://C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/python/python-pyproj/python-pyproj-1.9.5.1-1.tar.bz2
+2018/08/28 00:39:05 Extracting from file://C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/python/python-pyyaml/python-pyyaml-3.12-1.tar.bz2
+2018/08/28 00:39:05 Extracting from file://C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/python/python-qscintilla/python-qscintilla-2.8.4-1.tar.bz2
+2018/08/28 00:39:05 Extracting from file://C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/python/python-requests/python-requests-2.18.4-1.tar.bz2
+2018/08/28 00:39:05 Extracting from file://C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/python/python-six/python-six-1.10.0-1.tar.bz2
+2018/08/28 00:39:05 Extracting from file://C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/python/python-tcltk/python-tcltk-2.7.14-1.tar.bz2
+2018/08/28 00:39:08 Extracting from file://C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/python/python-test/python-test-2.7.14-1.tar.bz2
+2018/08/28 00:39:10 Extracting from file://C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/python/python-testsuite/python-testsuite-2.7.14-1.tar.bz2
+2018/08/28 00:39:10 Extracting from file://C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/python/python-tools/python-tools-2.7.14-1.tar.bz2
+2018/08/28 00:39:11 Extracting from file://C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/python/python-urllib3/python-urllib3-1.22-1.tar.bz2
+2018/08/28 00:39:11 Extracting from file://C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/python/pytz/pytz-2017.2-1.tar.bz2
+2018/08/28 00:39:12 Extracting from file://C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/qt4/qca/qca-libs/qca-libs-2.1.0-1.tar.bz2
+2018/08/28 00:39:12 Extracting from file://C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/qgis/qgis-ltr/qgis-ltr-2.18.23-1.tar.bz2
+2018/08/28 00:39:25 Extracting from file://C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/qgis/qgis-ltr-common/qgis-ltr-common-2.18.23-1.tar.bz2
+2018/08/28 00:39:28 Extracting from file://C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/qt4/qjson/qjson-libs/qjson-libs-0.8.1-2.tar.bz2
+2018/08/28 00:39:28 Extracting from file://C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/qt/qt4/qscintilla/qscintilla-2.8.4-1.tar.bz2
+2018/08/28 00:39:29 Extracting from file://C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/qt/qt4-devel/qt4-devel-4.8.6-1.tar.bz2
+2018/08/28 00:39:36 Extracting from file://C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/qt/qt4-libs/qt4-libs-4.8.6-2.tar.bz2
+2018/08/28 00:39:38 Extracting from file://C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/qt/qt4/qwt-libs-qt4/qwt-libs-qt4-6.0.2-1.tar.bz2
+2018/08/28 00:39:38 Extracting from file://C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/setup/setup-1.0.7-16.tar.bz2
+2018/08/28 00:39:38 Extracting from file://C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/shell/shell-1.0.2-2.tar.bz2
+2018/08/28 00:39:39 Extracting from file://C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/python/sip/sip-4.16.5-1.tar.bz2
+2018/08/28 00:39:39 Extracting from file://C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/spatialite/spatialite-4.3.0-4.tar.bz2
+2018/08/28 00:39:40 Extracting from file://C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/spatialite/spatialite4dll/spatialite4dll-4.1.1-1.tar.bz2
+2018/08/28 00:39:40 Extracting from file://C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/sqlite3/sqlite3-3.17.0-4.tar.bz2
+2018/08/28 00:39:40 Extracting from file://C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/szip/szip-2.1-1.tar.bz2
+2018/08/28 00:39:40 Extracting from file://C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/xerces-c/xerces-c-3.2.0-1.tar.bz2
+2018/08/28 00:39:40 Extracting from file://C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/xz/xz-5.2.3-1.tar.bz2
+2018/08/28 00:39:40 Extracting from file://C:\Users\IEUser\AppData\Local\Temp/http%3a%2f%2fwww.norbit.de%2fosgeo4w%2f/x86/release/zlib/zlib-1.2.3-1.tar.bz2
+2018/08/28 00:39:40 running: cmd.exe /c "C:\OSGeo4W\\etc\postinstall\msvcrt2008.bat"
+2018/08/28 00:39:44 running: cmd.exe /c "C:\OSGeo4W\\etc\postinstall\msvcrt2010.bat"
+2018/08/28 00:39:47 running: cmd.exe /c "C:\OSGeo4W\\etc\postinstall\setup.bat"
+2018/08/28 00:39:48 running: cmd.exe /c "C:\OSGeo4W\\etc\postinstall\shell.bat"
+2018/08/28 00:39:48 running: cmd.exe /c "C:\OSGeo4W\\etc\postinstall\openssl.bat"
+2018/08/28 00:39:48 running: cmd.exe /c "C:\OSGeo4W\\etc\postinstall\msvcrt2015.bat"
+2018/08/28 00:39:49 running: cmd.exe /c "C:\OSGeo4W\\etc\postinstall\msvcrt2013.bat"
+2018/08/28 00:39:53 running: cmd.exe /c "C:\OSGeo4W\\etc\postinstall\python-core.bat"
+2018/08/28 00:39:53 running: cmd.exe /c "C:\OSGeo4W\\etc\postinstall\gdal-python.bat"
+2018/08/28 00:39:53 running: cmd.exe /c "C:\OSGeo4W\\etc\postinstall\qt4-libs.bat"
+2018/08/28 00:39:54 running: cmd.exe /c "C:\OSGeo4W\\etc\postinstall\pyqt4.bat"
+2018/08/28 00:39:54 running: cmd.exe /c "C:\OSGeo4W\\etc\postinstall\sip.bat"
+2018/08/28 00:39:54 running: cmd.exe /c "C:\OSGeo4W\\etc\postinstall\qgis-ltr-common.bat"
+2018/08/28 00:39:58 running: cmd.exe /c "C:\OSGeo4W\\etc\postinstall\qt4-devel.bat"
+2018/08/28 00:39:58 running: cmd.exe /c "C:\OSGeo4W\\etc\postinstall\qgis-ltr.bat"
+2018/08/28 00:40:00 note: Installation Complete
+2018/08/28 00:40:00 Ending OSGeo4W install

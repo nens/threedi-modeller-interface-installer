@@ -1,0 +1,40 @@
+<Composer title="3Di map" visible="1">
+ <Composition resizeToContentsMarginLeft="0" snapping="0" showPages="1" guidesVisible="1" resizeToContentsMarginTop="0" worldFileMap="{8d646772-5ba5-49bf-a3d4-06d66ec055c3}" alignmentSnap="1" printResolution="300" paperWidth="420" gridVisible="0" snapGridOffsetX="0" smartGuides="1" snapGridOffsetY="0" resizeToContentsMarginRight="0" snapTolerancePixels="5" printAsRaster="0" generateWorldFile="0" paperHeight="297" numPages="1" snapGridResolution="10" resizeToContentsMarginBottom="0">
+  <symbol alpha="1" clip_to_extent="1" type="fill" name="">
+   <layer pass="0" class="SimpleFill" locked="0">
+    <prop k="border_width_map_unit_scale" v="0,0,0,0,0,0"/>
+    <prop k="color" v="255,255,255,255"/>
+    <prop k="joinstyle" v="miter"/>
+    <prop k="offset" v="0,0"/>
+    <prop k="offset_map_unit_scale" v="0,0,0,0,0,0"/>
+    <prop k="offset_unit" v="MM"/>
+    <prop k="outline_color" v="0,0,0,255"/>
+    <prop k="outline_style" v="no"/>
+    <prop k="outline_width" v="0.26"/>
+    <prop k="outline_width_unit" v="MM"/>
+    <prop k="style" v="solid"/>
+   </layer>
+  </symbol>
+  <ComposerMap followPreset="false" mapRotation="0" keepLayerSet="false" followPresetName="" id="1" previewMode="Cache" drawCanvasItems="true">
+   <Extent ymin="0" xmin="0" ymax="0" xmax="0"/>
+   <LayerSet/>
+   <Grid/>
+   <AtlasMap scalingMode="2" atlasDriven="0" margin="0.10000000000000001"/>
+   <ComposerItem pagey="23.4747" page="1" id="" lastValidViewScaleFactor="2.00484" positionMode="0" positionLock="false" x="-2.70891e-16" y="23.4747" visibility="1" zValue="3" background="true" transparency="0" frameJoinStyle="miter" blendMode="0" width="420" outlineWidth="0.3" excludeFromExports="0" uuid="{8d646772-5ba5-49bf-a3d4-06d66ec055c3}" height="273.525" itemRotation="0" frame="false" pagex="-2.70891e-16">
+    <FrameColor alpha="255" red="0" blue="0" green="0"/>
+    <BackgroundColor alpha="255" red="255" blue="255" green="255"/>
+    <customproperties/>
+   </ComposerItem>
+  </ComposerMap>
+  <ComposerLabel valign="32" marginX="1" marginY="1" labelText="3Di" htmlState="0" halign="4">
+   <LabelFont description="Oswald Regular,36,-1,5,50,0,0,0,0,0" style=""/>
+   <FontColor red="255" blue="255" green="255"/>
+   <ComposerItem pagey="0" page="1" id="" lastValidViewScaleFactor="-1" positionMode="0" positionLock="false" x="-0.498793" y="0" visibility="1" zValue="2" background="true" transparency="0" frameJoinStyle="miter" blendMode="0" width="420.499" outlineWidth="0.3" excludeFromExports="0" uuid="{d1a7d57a-6845-4598-b1ff-20af15b4c812}" height="23.4747" itemRotation="0" frame="false" pagex="-0.498793">
+    <FrameColor alpha="255" red="0" blue="0" green="0"/>
+    <BackgroundColor alpha="255" red="237" blue="72" green="24"/>
+    <customproperties/>
+   </ComposerItem>
+  </ComposerLabel>
+  <customproperties/>
+ </Composition>
+</Composer>

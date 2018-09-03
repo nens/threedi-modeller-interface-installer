@@ -1,0 +1,35 @@
+# NetCDF C Configuration Summary
+==============================
+
+# General
+-------
+NetCDF Version:		4.4.1.1
+Configured On:		So, 21. Mai 2017 21:19:38
+Host System:		i686-CYGWIN_NT-10.0-WOW-2.8.0(0.309/5/3)
+Build Directory: 	D:/src/osgeo4w64/src/netcdf-c-4.4.1.1/osgeo4w/build64
+Install Prefix:         D:/src/osgeo4w64/src/netcdf-c-4.4.1.1/osgeo4w/install64
+
+# Compiling Options
+-----------------
+C Compiler:		C:/Program Files (x86)/Microsoft Visual Studio 14.0/VC/bin/x86_amd64/cl.exe
+CFLAGS:			/DWIN32 /D_WINDOWS /W3 /MDd /Zi /Ob0 /Od /RTC1
+CPPFLAGS:		 
+LDFLAGS:		/machine:x64 /LARGEADDRESSAWARE /STACK:40000000 /debug /INCREMENTAL
+AM_CFLAGS:		
+AM_CPPFLAGS:		
+AM_LDFLAGS:		
+Shared Library:		yes
+Static Library:		no
+Extra libraries:	-lhdf5 -lhdf5_hl -lzdll -lcurl
+
+# Features
+--------
+NetCDF-2 API:		yes
+HDF4 Support:		no
+NetCDF-4 API:		yes
+NC-4 Parallel Support:	no
+PNetCDF Support:	no
+DAP Support:		yes
+Diskless Support:	yes
+MMap Support:		no
+JNA Support:		no
