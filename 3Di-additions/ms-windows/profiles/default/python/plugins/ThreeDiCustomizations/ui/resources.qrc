@@ -1,0 +1,7 @@
+<RCC>
+  <qresource prefix="3Di_images">
+    <file>../3Di_images/images/splash.png</file>
+	<file>../3Di_images/images/icon.png</file>
+	<file>../3Di_images/images/logo.png</file>
+  </qresource>
+</RCC>
