@@ -29,8 +29,8 @@ use File::Copy::Recursive qw(fcopy rcopy dircopy fmove rmove dirmove);
 use Cwd qw(cwd getcwd);
 use File::Rsync;
 
-my $keep = 1;
-my $verbose = 1;
+my $keep = 0;
+my $verbose = 0;
 
 my $packagename = "3DiModellerInterface";
 my $releasename;
