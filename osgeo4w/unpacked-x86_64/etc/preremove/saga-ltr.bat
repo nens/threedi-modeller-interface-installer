@@ -1,2 +1,0 @@
-del "%OSGEO4W_STARTMENU%\SAGA GIS (2.3.2).lnk"
-del "%OSGEO4W_DESKTOP%\SAGA GIS (2.3.2).lnk"

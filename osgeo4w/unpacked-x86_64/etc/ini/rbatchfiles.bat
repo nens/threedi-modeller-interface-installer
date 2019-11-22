@@ -1,1 +1,0 @@
-IF EXIST "%ProgramFiles%\R\" %OSGEO4W_ROOT%\apps\rbatchfiles\R path

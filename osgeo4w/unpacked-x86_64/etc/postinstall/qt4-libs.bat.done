@@ -1,1 +1,0 @@
-copy "%OSGEO4W_ROOT%"\bin\qt4.conf "%OSGEO4W_ROOT%"\bin\qt.conf
