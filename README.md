@@ -6,7 +6,7 @@ Basic workings
 This Repository contains the 3Di Modeler interface installer build files. To create a working installer this repository needs to be checked out in combination with a working QGIS version. De file tree needs to be:
 
     - <Build dir>/3Di-additions
-    - <Build dir>/QGIS
+    - <Build dir>/QGIS (Checkout of QGIS repository)
 
 When this directories are placed correctly the script ``./create_qgis_3di_nsis.pl`` can be called from the ``<Build dir>/3Di-additions`` directory.
 
