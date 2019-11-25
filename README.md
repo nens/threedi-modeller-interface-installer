@@ -29,3 +29,5 @@ Important steps to create look and feel of the modeller interface application af
 
 Installer creation
 ------------------
+
+Installer creation is deferred to the ThreeDiToolbox repository, where above steps are executed in the makefile.
