@@ -1,0 +1,48 @@
+Windows Registry Editor Version 5.00
+
+[HKEY_CLASSES_ROOT\3Di Project]
+@="3Di Project"
+
+[HKEY_CLASSES_ROOT\QGIS Project\DefaultIcon]
+@="@osgeo4w@\\apps\\qgis\\icons\\qgis-qgs.ico"
+
+[HKEY_CLASSES_ROOT\3Di Project\Shell]
+
+[HKEY_CLASSES_ROOT\3Di Project\Shell\open]
+@=""
+
+[HKEY_CLASSES_ROOT\3Di Project\Shell\open\command]
+@="\"@osgeo4w@\\bin\\3di.bat\" \"%1\""
+
+[HKEY_CLASSES_ROOT\.qgs]
+@="3Di Project"
+
+[HKEY_CLASSES_ROOT\.qgz]
+@="3Di Project"
+
+[HKEY_CLASSES_ROOT\3Di Composer Template]
+@="3Di Composer Template"
+
+[HKEY_CLASSES_ROOT\3Di Composer Template\DefaultIcon]
+@="@osgeo4w@\\apps\\qgis\\icons\\qgis-qpt.ico"
+
+[HKEY_CLASSES_ROOT\.qpt]
+@="3Di Composer Template"
+
+[HKEY_CLASSES_ROOT\3Di Layer Settings]
+@="3Di Layer Settings"
+
+[HKEY_CLASSES_ROOT\3Di Layer Settings\DefaultIcon]
+@="@osgeo4w@\\apps\\qgis\\icons\\qgis-qml.ico"
+
+[HKEY_CLASSES_ROOT\.qml]
+@="3Di Layer Settings"
+
+[HKEY_CLASSES_ROOT\3Di Layer Definition]
+@="3Di Layer Definition"
+
+[HKEY_CLASSES_ROOT\3Di Layer Definition\DefaultIcon]
+@="@osgeo4w@\\apps\\qgis\\icons\\qgis-qlr.ico"
+
+[HKEY_CLASSES_ROOT\.qlr]
+@="3Di Layer Definition"

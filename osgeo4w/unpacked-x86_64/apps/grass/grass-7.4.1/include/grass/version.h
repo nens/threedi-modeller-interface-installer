@@ -1,4 +1,0 @@
-#define GRASS_VERSION_STRING   "@(#) 7.4.1 (2018)"
-#define GRASS_VERSION_MAJOR    7
-#define GRASS_VERSION_MINOR    4
-#define GRASS_VERSION_RELEASE  1
