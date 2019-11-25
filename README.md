@@ -8,7 +8,7 @@ This Repository contains the 3Di Modeler interface installer build files. To cre
     - <Build dir>/3Di-additions
     - <Build dir>/QGIS (Checkout of QGIS repository)
 
-When the docker image is build provided in this repository and the directories are placed correctly an installer can be created by executing the script ``./create_qgis_3di_nsis.pl`` in the docker::
+When the docker image is build provided in this repository and the directories are placed correctly an installer can be created by executing the script ``./create_qgis_3di_nsis.pl`` in the docker:
 
     docker run -v $(pwd)/QGIS:/installer/QGIS -v $(pwd)/3Di-additions:/installer/3Di-additions -it -e PYTHONUNBUFFERED=0 3dimi-installer ./create_qgis_3di_nsis.pl
 
