@@ -1,7 +1,5 @@
-# The following docker lines are taken from the original 
-# makensis docker file (from Marco Duiker). 
-
 FROM ubuntu:cosmic
+MAINTAINER Marco Duiker
 
 ## for apt to be noninteractive
 ENV DEBIAN_FRONTEND noninteractive
@@ -24,17 +22,9 @@ ENV LANG en_US.UTF-8
 
 # build with: docker built -t makensis:latest
 # then create /usr/bin/makensis3 with contents:
+
 ##!/bin/bash
 #CWD="$(pwd)"
 #docker run -u "$UID" -w "$CWD" --net host -v /var/www:/var/www -v /home/marco:/home/marco -e PYTHONUNBUFFERED=0 makensis bash -c "/usr/bin/makensis $@"
+
 # then use: makensis3 --help
-
-# Continue the original image
-
-RUN dpkg --add-architecture i386 \ 
-    && apt-get update \
-    && apt-get install -y \
-    perl libfile-copy-recursive-perl libfile-rsync-perl wget unzip git wine wine32 \
-    && apt-get clean -y
-
-WORKDIR /installer/3Di-additions
