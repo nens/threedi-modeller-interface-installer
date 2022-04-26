@@ -37,7 +37,7 @@ my $releasename;
 my $shortname = "qgis-3di";
 my $version;
 my $binary;
-my $root = "http://download.osgeo.org/osgeo4w";
+my $root = "http://download.osgeo.org/osgeo4w/v1";
 my $ininame = "setup.ini";
 my $arch = "x86_64";
 my $signwith;
