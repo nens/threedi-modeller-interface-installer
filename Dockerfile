@@ -1,7 +1,7 @@
 # The following docker lines are taken from the original 
 # makensis docker file (from Marco Duiker). 
 
-FROM ubuntu:cosmic
+FROM ubuntu:bionic
 
 ## for apt to be noninteractive
 ENV DEBIAN_FRONTEND noninteractive
@@ -34,7 +34,7 @@ ENV LANG en_US.UTF-8
 RUN dpkg --add-architecture i386 \ 
     && apt-get update \
     && apt-get install -y \
-    perl libfile-copy-recursive-perl libfile-rsync-perl wget unzip git wine wine32 \
+    perl libfile-copy-recursive-perl libfile-rsync-perl wget unzip git wine-stable wine32 \
     && apt-get clean -y
 
 WORKDIR /installer/3Di-additions
