@@ -1,7 +1,7 @@
 # The following docker lines are taken from the original 
 # makensis docker file (from Marco Duiker). 
 
-FROM ubuntu:bionic
+FROM ubuntu:focal
 
 ## for apt to be noninteractive
 ENV DEBIAN_FRONTEND noninteractive
