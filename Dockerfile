@@ -25,7 +25,7 @@ ENV LANG en_US.UTF-8
 RUN dpkg --add-architecture i386 \ 
     && apt-get update \
     && apt-get install -y \
-    perl libfile-copy-recursive-perl libfile-rsync-perl wget unzip git wine-stable wine32 \
+    wget make unzip git  \
     && apt-get clean -y
 
-WORKDIR /installer/3Di-additions
+# WORKDIR /installer/3Di-additions
