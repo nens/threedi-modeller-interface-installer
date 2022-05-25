@@ -1,5 +1,44 @@
 # 3Di-modeller-interface-installer
 
+This repository contains a Makefile (which should be run in the accompanying docker container) that does the following:
+
+- Download a specific complete QGIS installer (via WGET)
+- Uses NSIS to wrap this in a global installer that:
+    - Silently installs QGIS (via its original installer) in a configurable directory (no QGIS shortcuts and links)
+    - Copies preconfigured profile data (ini files) to the user's AppData for customization (including splash screen)
+    - Sets registry keys for default (Python) plugin loading
+
+TODO:
+    - Add toolboxes
+    - Add packages if required (from osgeo4w folder)
+    - Generate license file, if required
+    - Generate relevant start/desktop shortcuts
+
+TESTING
+    - Are all dependencies present? Right version (Spatialite etc)
+    - Is the directotry structure in ProgramFiles ok?
+    - QGIS has quite advanced messaging regarding upgrading/downgrading, we won't have that
+        - We just run the standard QGIS uninstaller and clear the programfiles folder of the ModelerInterface
+    - We disabled generation of start/desktop shortcuts by the QGIS installer
+    - Does AppData need to be cleaned at an uninstall?
+    - Do multiple versions next to each other work?
+
+Usage
+------
+
+Check out this repository 
+
+Build a local docker (if required):  
+    docker build . -t 3dimi-installer
+Run that docker 
+    docker run -w /app/ -v "$(pwd):/app" -it 3dimi-installer make installer
+
+The executable will be in the root folder folder
+
+
+OLD:
+
+
 Basic workings
 --------------
 
@@ -27,7 +66,3 @@ Important steps to create look and feel of the modeller interface application af
 - profiletool
 - quickmap services
 
-Installer creation
-------------------
-
-Installer creation is deferred to the ThreeDiToolbox repository, where above steps are executed in the makefile.
