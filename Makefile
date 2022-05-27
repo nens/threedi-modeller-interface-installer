@@ -42,6 +42,7 @@ installer:
 	wget -N -P ./$(INSTALLER_BUILDDIR) $(PLUGIN_URL)$(MODELSIM_FILENAME).zip
 	unzip -o ./$(INSTALLER_BUILDDIR)/$(MODELSIM_FILENAME).zip -d ./$(PLUGIN_DIR) 
 
+	#not a public repo!
 	#git clone  --branch master --depth 1 git@github.com:nens/ThreeDiCustomizations.git ./$(PLUGIN_DIR)ThreeDiCustomizations
 
 	makensis 	-DINSTALLER_NAME='$(PACKAGE_NAME)-OSGeo4W-$(QGIS_VERSION)-Setup-x86_64.exe' \

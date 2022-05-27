@@ -1,8 +1,8 @@
-;SetCompressor /SOLID lzma
+# SetCompressor /SOLID lzma
 SetCompress off
 
 Unicode True
-;Allow privilege elevation in vista
+# Allow privilege elevation in vista
 RequestExecutionLevel admin 
 
 !include "x64.nsh"
@@ -13,18 +13,18 @@ RequestExecutionLevel admin
 !define WEB_SITE "https://nelen-schuurmans.nl/"
 !define WIKI_PAGE "https://docs.3di.live/"
 
-;General Definitions (passed as parameter)
+# General Definitions (passed as parameter)
 
-;Name of the application shown during install
+# Name of the application shown during install
 Name "${DISPLAYED_NAME}"
-;Name of the output file (installer executable)
+# Name of the output file (installer executable)
 OutFile "${INSTALLER_NAME}"
 
-;Tell the installer to show Install and Uninstall details as default
+# Tell the installer to show Install and Uninstall details as default
 ShowInstDetails hide
 ShowUnInstDetails hide
 
-; .onInit Function (called when the installer is nearly finished initializing)
+# .onInit Function (called when the installer is nearly finished initializing)
 Function .onInit
 	${If} ${ARCH} == "x86_64"
 		${If} ${RunningX64}
@@ -51,44 +51,49 @@ FunctionEnd
 !define MUI_WELCOMEFINISHPAGE_BITMAP ".\resources\WelcomeFinishPage3Di.bmp"
 !define MUI_UNWELCOMEFINISHPAGE_BITMAP ".\resources\WelcomeFinishPage3Di.bmp"
 
-;Installer Pages
+# Installer Pages
 !define MUI_WELCOMEPAGE_TITLE_3LINES
 !insertmacro MUI_PAGE_WELCOME
 ;!insertmacro MUI_PAGE_LICENSE ${LICENSE_FILE}
-
 ;!define MUI_PAGE_CUSTOMFUNCTION_PRE CheckUpdate
 !insertmacro MUI_PAGE_DIRECTORY
-
 !insertmacro MUI_PAGE_COMPONENTS
 !insertmacro MUI_PAGE_INSTFILES
 !define MUI_FINISHPAGE_TITLE_3LINES
 !insertmacro MUI_PAGE_FINISH
-
 !insertmacro MUI_UNPAGE_WELCOME
 !insertmacro MUI_UNPAGE_CONFIRM
 !insertmacro MUI_UNPAGE_INSTFILES
 !insertmacro MUI_UNPAGE_FINISH
-
 !insertmacro MUI_LANGUAGE "English"
 
 Section "3Di Modeller Interface" SecQGIS
 	SectionIn RO
 	SetOutPath $INSTDIR
-    File .\installer-build/QGIS-OSGeo4W-3.22.7-1.msi
+    File .\installer-build/QGIS-OSGeo4W-${VERSION_NUMBER}.msi
     File ./resources/splash.png
 
     # It is possible to set certain properties in the underlying Wix MSI
-    ExecWait '"msiexec" /i "$INSTDIR\QGIS-OSGeo4W-3.22.7-1.msi" INSTALLDIR="$INSTDIR" INSTALLDESKTOPSHORTCUTS="0" INSTALLMENUSHORTCUTS="0" /quiet'
+    ExecWait '"msiexec" /i "$INSTDIR\QGIS-OSGeo4W-${VERSION_NUMBER}.msi" INSTALLDIR="$INSTDIR" INSTALLDESKTOPSHORTCUTS="0" INSTALLMENUSHORTCUTS="0" /quiet'
 
-    ; Sets registry keys so we get default (python) plugin loading
+    # Sets registry keys so we get default (python) plugin loading
     !include plugins-3di.nsh
     !include python_plugins-3di.nsh
 
-	; Copy some resources for uninstaller
+	# Start and Desktop links
+	CreateDirectory "$DESKTOP\${QGIS_BASE}"
+	CreateShortCut "$DESKTOP\${QGIS_BASE}\${QGIS_BASE}.lnk" "$INSTDIR\bin\qgis-ltr.bat" "" "$INSTDIR\icons\3Di.ico"
+	CreateShortCut "$DESKTOP\${QGIS_BASE}\OSGeo4W Shell.lnk" "$INSTDIR\OSGeo4W.bat" "" "$INSTDIR\OSGeo4W.ico"
+	
+	CreateDirectory "$SMPROGRAMS\${QGIS_BASE}"
+	CreateShortCut "$SMPROGRAMS\${QGIS_BASE}\${QGIS_BASE}.lnk" "$INSTDIR\bin\qgis-ltr.bat" "" "$INSTDIR\icons\3Di.ico"
+	CreateShortCut "$SMPROGRAMS\${QGIS_BASE}\OSGeo4W Shell.lnk" "$INSTDIR\OSGeo4W.bat" "" "$INSTDIR\OSGeo4W.ico"
+
+	# Copy some resources for uninstaller
 	SetOutPath $INSTDIR\icons
 	File ./resources/3Di.ico
 
-	; Create some reg keys to add entries to the Add/Remove Programs section in the Control Pannel (Taken from MI installer 3.16)
+	# Create some reg keys to add entries to the Add/Remove Programs section in the Control Pannel
 	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${QGIS_BASE}" "DisplayName" "${DISPLAYED_NAME}"
 	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${QGIS_BASE}" "DisplayVersion" "${VERSION_NUMBER}"
 	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${QGIS_BASE}" "UninstallString" "$INSTDIR\uninstall.exe"
@@ -123,12 +128,16 @@ Section "Uninstall"
 		${EndIf}
 	${EndIf}
     # Use the original msi to deinstall qgis
-    ExecWait '"msiexec" /x "$INSTDIR\QGIS-OSGeo4W-3.22.7-1.msi" INSTALLDIR="$INSTDIR" /quiet'
+    ExecWait '"msiexec" /x "$INSTDIR\QGIS-OSGeo4W-${VERSION_NUMBER}.msi" INSTALLDIR="$INSTDIR" /quiet'
 
-	; Remove the program from the Add/Remove Programs section in the Control Pannel
+	# Remove the program from the Add/Remove Programs section in the Control Pannel
 	DeleteRegKey HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${QGIS_BASE}"
  
-    Delete $INSTDIR\uninstall.exe
+	# Remove start and desktop links
+	Delete "$DESKTOP\${QGIS_BASE}.lnk"
+	RMDir /r "$SMPROGRAMS\${QGIS_BASE}"
+	
+	Delete $INSTDIR\uninstall.exe
     RMDir /r $INSTDIR
 
     # TODO: do we need to remove profile data?
