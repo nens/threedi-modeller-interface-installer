@@ -37,10 +37,10 @@ installer:
 
 	@echo "Downloading and extracting plugins"
 	wget -N -P ./$(INSTALLER_BUILDDIR) $(PLUGIN_URL)$(TOOLBOX_FILENAME).zip
-	unzip ./$(INSTALLER_BUILDDIR)/$(TOOLBOX_FILENAME).zip -d ./$(PLUGIN_DIR)
+	unzip -o ./$(INSTALLER_BUILDDIR)/$(TOOLBOX_FILENAME).zip -d ./$(PLUGIN_DIR) 
 
 	wget -N -P ./$(INSTALLER_BUILDDIR) $(PLUGIN_URL)$(MODELSIM_FILENAME).zip
-	unzip ./$(INSTALLER_BUILDDIR)/$(MODELSIM_FILENAME).zip -d ./$(PLUGIN_DIR)
+	unzip -o ./$(INSTALLER_BUILDDIR)/$(MODELSIM_FILENAME).zip -d ./$(PLUGIN_DIR) 
 
 	#git clone  --branch master --depth 1 git@github.com:nens/ThreeDiCustomizations.git ./$(PLUGIN_DIR)ThreeDiCustomizations
 
@@ -49,4 +49,5 @@ installer:
 				-DARCH='x86_64' \
 				-DQGIS_BASE='$(PACKAGE_NAME) $(QGIS_VERSION_MAJOR).$(QGIS_VERSION_MINOR)' \
 				-DPROFILE_FOLDER='3Di-additions/ms-windows/profiles' \
+				-DVERSION_NUMBER='$(QGIS_VERSION)' \
 				./installer.nsi

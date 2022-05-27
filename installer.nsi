@@ -10,7 +10,7 @@ RequestExecutionLevel admin
 !include "LogicLib.nsh"
 
 !define PUBLISHER "Nelen en Schuurmans"
-!define WEB_SITE "https://docs.3di.live/"
+!define WEB_SITE "https://nelen-schuurmans.nl/"
 !define WIKI_PAGE "https://docs.3di.live/"
 
 ;General Definitions (passed as parameter)
@@ -75,7 +75,7 @@ Section "3Di Modeller Interface" SecQGIS
 	SectionIn RO
 	SetOutPath $INSTDIR
     File .\installer-build/QGIS-OSGeo4W-3.22.7-1.msi
-    File splash.png
+    File ./resources/splash.png
 
     # It is possible to set certain properties in the underlying Wix MSI
     ExecWait '"msiexec" /i "$INSTDIR\QGIS-OSGeo4W-3.22.7-1.msi" INSTALLDIR="$INSTDIR" INSTALLDESKTOPSHORTCUTS="0" INSTALLMENUSHORTCUTS="0" /quiet'
@@ -83,6 +83,20 @@ Section "3Di Modeller Interface" SecQGIS
     ; Sets registry keys so we get default (python) plugin loading
     !include plugins-3di.nsh
     !include python_plugins-3di.nsh
+
+	; Copy some resources for uninstaller
+	SetOutPath $INSTDIR\icons
+	File ./resources/3Di.ico
+
+	; Create some reg keys to add entries to the Add/Remove Programs section in the Control Pannel (Taken from MI installer 3.16)
+	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${QGIS_BASE}" "DisplayName" "${DISPLAYED_NAME}"
+	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${QGIS_BASE}" "DisplayVersion" "${VERSION_NUMBER}"
+	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${QGIS_BASE}" "UninstallString" "$INSTDIR\uninstall.exe"
+	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${QGIS_BASE}" "DisplayIcon" "$INSTDIR\icons\3Di.ico"
+	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${QGIS_BASE}" "EstimatedSize" 1
+	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${QGIS_BASE}" "HelpLink" "${WIKI_PAGE}"
+	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${QGIS_BASE}" "URLInfoAbout" "${WEB_SITE}"
+	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${QGIS_BASE}" "Publisher" "${PUBLISHER}"
 
     WriteUninstaller $INSTDIR\uninstall.exe
 SectionEnd
@@ -100,7 +114,6 @@ Section "3Di Profile" SecProfile
 	SetOutPath "$INSTDIR_PROFILE_DATA"
 	File /r ${PROFILE_FOLDER}\*.*
 
-    ; TODO: Do we need an uninstaller?
 SectionEnd
 
 Section "Uninstall"
@@ -110,6 +123,9 @@ Section "Uninstall"
  
     Delete $INSTDIR\uninstall.exe
     RMDir /r $INSTDIR
+
+	; Remove the program from the Add/Remove Programs section in the Control Pannel
+	DeleteRegKey HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${QGIS_BASE}"
 
     # TODO: do we need to remove profile data?
 SectionEnd
