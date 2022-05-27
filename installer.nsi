@@ -72,6 +72,7 @@ FunctionEnd
 !insertmacro MUI_LANGUAGE "English"
 
 Section "3Di Modeller Interface" SecQGIS
+	SectionIn RO
 	SetOutPath $INSTDIR
     File .\installer-build/QGIS-OSGeo4W-3.22.7-1.msi
     File splash.png
@@ -87,7 +88,7 @@ Section "3Di Modeller Interface" SecQGIS
 SectionEnd
 
 Section "3Di Profile" SecProfile
-
+	SectionIn RO
 	SetOverwrite try
 
     SetShellVarContext current

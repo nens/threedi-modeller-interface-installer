@@ -10,6 +10,11 @@ QGIS_VERSION = $(QGIS_VERSION_MAJOR).$(QGIS_VERSION_MINOR).$(QGIS_VERSION_PATCH)
 QGIS_URL = https://download.qgis.org/downloads/
 PACKAGE_NAME = 3DiModellerInterface
 
+PLUGIN_URL = https://plugins.lizard.net/
+TOOLBOX_FILENAME = ThreeDiToolbox.2.0
+MODELSIM_FILENAME = threedi_models_and_simulations.3.0.3
+PLUGIN_DIR = 3Di-additions/ms-windows/profiles/default/python/plugins/
+
 clean:
 	@echo
 	@echo "-------------------------------------------"
@@ -23,10 +28,20 @@ installer:
 	@echo "---------------------------"
 	@echo "Creating Windows Installer."
 	@echo "---------------------------"
+	
 	@echo "Creating installation folder"
 	mkdir -p ./$(INSTALLER_BUILDDIR)
+	
 	@echo "Downloading QGIS"
 	wget -N -P ./$(INSTALLER_BUILDDIR) $(QGIS_URL)$(QGIS_INSTALLER_NAME)-$(QGIS_VERSION).msi
+
+	@echo "Downloading and extracting plugins"
+	wget -N -P ./$(INSTALLER_BUILDDIR) $(PLUGIN_URL)$(TOOLBOX_FILENAME).zip
+	unzip ./$(INSTALLER_BUILDDIR)/$(TOOLBOX_FILENAME).zip -d ./$(PLUGIN_DIR)
+
+	wget -N -P ./$(INSTALLER_BUILDDIR) $(PLUGIN_URL)$(MODELSIM_FILENAME).zip
+	unzip ./$(INSTALLER_BUILDDIR)/$(MODELSIM_FILENAME).zip -d ./$(PLUGIN_DIR)
+
 	makensis 	-DINSTALLER_NAME='$(PACKAGE_NAME)-OSGeo4W-$(QGIS_VERSION)-Setup-x86_64.exe' \
 	 			-DDISPLAYED_NAME='$(PACKAGE_NAME) $(QGIS_VERSION)' \
 				-DARCH='x86_64' \
