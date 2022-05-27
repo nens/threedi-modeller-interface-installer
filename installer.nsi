@@ -55,7 +55,6 @@ FunctionEnd
 !define MUI_WELCOMEPAGE_TITLE_3LINES
 !insertmacro MUI_PAGE_WELCOME
 ;!insertmacro MUI_PAGE_LICENSE ${LICENSE_FILE}
-;!define MUI_PAGE_CUSTOMFUNCTION_PRE CheckUpdate
 !insertmacro MUI_PAGE_DIRECTORY
 !insertmacro MUI_PAGE_COMPONENTS
 !insertmacro MUI_PAGE_INSTFILES
@@ -134,7 +133,7 @@ Section "Uninstall"
 	DeleteRegKey HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${QGIS_BASE}"
  
 	# Remove start and desktop links
-	Delete "$DESKTOP\${QGIS_BASE}.lnk"
+	RMDir /r "$DESKTOP\${QGIS_BASE}"
 	RMDir /r "$SMPROGRAMS\${QGIS_BASE}"
 	
 	Delete $INSTDIR\uninstall.exe
