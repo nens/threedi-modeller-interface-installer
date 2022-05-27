@@ -93,7 +93,6 @@ Section "3Di Modeller Interface" SecQGIS
 	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${QGIS_BASE}" "DisplayVersion" "${VERSION_NUMBER}"
 	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${QGIS_BASE}" "UninstallString" "$INSTDIR\uninstall.exe"
 	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${QGIS_BASE}" "DisplayIcon" "$INSTDIR\icons\3Di.ico"
-	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${QGIS_BASE}" "EstimatedSize" 1
 	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${QGIS_BASE}" "HelpLink" "${WIKI_PAGE}"
 	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${QGIS_BASE}" "URLInfoAbout" "${WEB_SITE}"
 	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${QGIS_BASE}" "Publisher" "${PUBLISHER}"
@@ -117,15 +116,20 @@ Section "3Di Profile" SecProfile
 SectionEnd
 
 Section "Uninstall"
- 
+ 	${If} ${ARCH} == "x86_64"
+		${If} ${RunningX64}
+			DetailPrint "Installer running on 64-bit host"
+			SetRegView 64
+		${EndIf}
+	${EndIf}
     # Use the original msi to deinstall qgis
     ExecWait '"msiexec" /x "$INSTDIR\QGIS-OSGeo4W-3.22.7-1.msi" INSTALLDIR="$INSTDIR" /quiet'
- 
-    Delete $INSTDIR\uninstall.exe
-    RMDir /r $INSTDIR
 
 	; Remove the program from the Add/Remove Programs section in the Control Pannel
 	DeleteRegKey HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${QGIS_BASE}"
+ 
+    Delete $INSTDIR\uninstall.exe
+    RMDir /r $INSTDIR
 
     # TODO: do we need to remove profile data?
 SectionEnd
