@@ -72,8 +72,14 @@ Section "3Di Modeller Interface" SecQGIS
     File .\installer-build/QGIS-OSGeo4W-${VERSION_NUMBER}.msi
     File ./resources/splash.png
 
-    # It is possible to set certain properties in the underlying Wix MSI
-    ExecWait '"msiexec" /i "$INSTDIR\QGIS-OSGeo4W-${VERSION_NUMBER}.msi" INSTALLDIR="$INSTDIR" INSTALLDESKTOPSHORTCUTS="0" INSTALLMENUSHORTCUTS="0" /quiet'
+    # Run the original QGIS installer
+	ClearErrors
+	# It is possible to set certain properties in the underlying Wix MSI
+    ExecWait '"msiexec" /i "$INSTDIR\QGIS-OSGeo4W-${VERSION_NUMBER}.msi" INSTALLDIR="$INSTDIR" INSTALLDESKTOPSHORTCUTS="0" INSTALLMENUSHORTCUTS="0" /quiet /L*V "$INSTDIR\install.log"' $0
+	${IfNot} $0 == "0"
+		MessageBox MB_ICONSTOP "Installer failed, please check install.log in installation folder"
+		Abort
+	${EndIf}
 
     # Sets registry keys so we get default (python) plugin loading
     !include plugins-3di.nsh
