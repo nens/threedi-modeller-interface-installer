@@ -13,6 +13,8 @@ PACKAGE_NAME = 3DiModellerInterface
 PLUGIN_URL = https://plugins.lizard.net/
 TOOLBOX_FILENAME = ThreeDiToolbox.2.0
 MODELSIM_FILENAME = threedi_models_and_simulations.3.0.3
+CUSTOMIZATION_FILENAME = ThreeDiCustomizations.1.2.6
+
 PLUGIN_DIR = 3Di-additions/ms-windows/profiles/default/python/plugins/
 
 clean:
@@ -39,11 +41,11 @@ installer:
 	wget -N -P ./$(INSTALLER_BUILDDIR) $(PLUGIN_URL)$(TOOLBOX_FILENAME).zip
 	unzip -o ./$(INSTALLER_BUILDDIR)/$(TOOLBOX_FILENAME).zip -d ./$(PLUGIN_DIR) 
 
+	wget -N -P ./$(INSTALLER_BUILDDIR) $(PLUGIN_URL)$(CUSTOMIZATION_FILENAME).zip
+	unzip -o ./$(INSTALLER_BUILDDIR)/$(CUSTOMIZATION_FILENAME).zip -d ./$(PLUGIN_DIR) 
+
 	wget -N -P ./$(INSTALLER_BUILDDIR) $(PLUGIN_URL)$(MODELSIM_FILENAME).zip
 	unzip -o ./$(INSTALLER_BUILDDIR)/$(MODELSIM_FILENAME).zip -d ./$(PLUGIN_DIR) 
-
-	#not a public repo!
-	#git clone  --branch master --depth 1 git@github.com:nens/ThreeDiCustomizations.git ./$(PLUGIN_DIR)ThreeDiCustomizations
 
 	makensis 	-DINSTALLER_NAME='$(PACKAGE_NAME)-OSGeo4W-$(QGIS_VERSION)-Setup-x86_64.exe' \
 	 			-DDISPLAYED_NAME='$(PACKAGE_NAME) $(QGIS_VERSION)' \
