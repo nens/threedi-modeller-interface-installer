@@ -13,6 +13,8 @@ This repository contains a Makefile (which should be run in the accompanying doc
 Usage
 ------
 
+TODO: How to set versions of plugins
+
 Check out the repo in a clean folder::
 
     $ mkdir /tmp/reallyclean

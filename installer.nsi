@@ -85,14 +85,14 @@ Section "3Di Modeller Interface" SecQGIS
     !include plugins-3di.nsh
     !include python_plugins-3di.nsh
 
-	# Start and Desktop links
+	# Start and Desktop links (also pass the profile folder)
 	CreateDirectory "$DESKTOP\${QGIS_BASE}"
-	CreateShortCut "$DESKTOP\${QGIS_BASE}\${QGIS_BASE}.lnk" "$INSTDIR\bin\qgis-ltr.bat" "" "$INSTDIR\icons\3Di.ico"
-	CreateShortCut "$DESKTOP\${QGIS_BASE}\OSGeo4W Shell.lnk" "$INSTDIR\OSGeo4W.bat" "" "$INSTDIR\OSGeo4W.ico"
+	CreateShortCut "$DESKTOP\${QGIS_BASE}\${QGIS_BASE}.lnk" "$INSTDIR\bin\qgis-ltr.bat" "--profiles-path $APPDATA\3Di\QGIS3" "$INSTDIR\icons\3Di.ico"
+	CreateShortCut "$DESKTOP\${QGIS_BASE}\OSGeo4W Shell.lnk" "$INSTDIR\OSGeo4W.bat" "--profiles-path $APPDATA\3Di\QGIS3" "$INSTDIR\OSGeo4W.ico"
 	
 	CreateDirectory "$SMPROGRAMS\${QGIS_BASE}"
-	CreateShortCut "$SMPROGRAMS\${QGIS_BASE}\${QGIS_BASE}.lnk" "$INSTDIR\bin\qgis-ltr.bat" "" "$INSTDIR\icons\3Di.ico"
-	CreateShortCut "$SMPROGRAMS\${QGIS_BASE}\OSGeo4W Shell.lnk" "$INSTDIR\OSGeo4W.bat" "" "$INSTDIR\OSGeo4W.ico"
+	CreateShortCut "$SMPROGRAMS\${QGIS_BASE}\${QGIS_BASE}.lnk" "$INSTDIR\bin\qgis-ltr.bat" "--profiles-path $APPDATA\3Di\QGIS3" "$INSTDIR\icons\3Di.ico"
+	CreateShortCut "$SMPROGRAMS\${QGIS_BASE}\OSGeo4W Shell.lnk" "$INSTDIR\OSGeo4W.bat" "--profiles-path $APPDATA\3Di\QGIS3" "$INSTDIR\OSGeo4W.ico"
 
 	# Copy some resources for uninstaller
 	SetOutPath $INSTDIR\icons
@@ -116,7 +116,7 @@ Section "3Di Profile" SecProfile
 
     SetShellVarContext current
     Var /GLOBAL INSTDIR_PROFILE_DATA
-    StrCpy $INSTDIR_PROFILE_DATA "$APPDATA\QGIS\QGIS3\profiles\"
+    StrCpy $INSTDIR_PROFILE_DATA "$APPDATA\3Di\QGIS3\profiles\"
     CreateDirectory "$INSTDIR_PROFILE_DATA"
     
 	; add Profile files
