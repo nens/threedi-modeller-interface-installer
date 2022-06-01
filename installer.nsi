@@ -88,11 +88,11 @@ Section "3Di Modeller Interface" SecQGIS
 	# Start and Desktop links (also pass the profile folder)
 	CreateDirectory "$DESKTOP\${QGIS_BASE}"
 	CreateShortCut "$DESKTOP\${QGIS_BASE}\${QGIS_BASE}.lnk" "$INSTDIR\bin\qgis-ltr.bat" "--profiles-path $APPDATA\3Di\QGIS3" "$INSTDIR\icons\3Di.ico"
-	CreateShortCut "$DESKTOP\${QGIS_BASE}\OSGeo4W Shell.lnk" "$INSTDIR\OSGeo4W.bat" "--profiles-path $APPDATA\3Di\QGIS3" "$INSTDIR\OSGeo4W.ico"
+	CreateShortCut "$DESKTOP\${QGIS_BASE}\OSGeo4W Shell.lnk" "$INSTDIR\OSGeo4W.bat" "" "$INSTDIR\OSGeo4W.ico"
 	
 	CreateDirectory "$SMPROGRAMS\${QGIS_BASE}"
 	CreateShortCut "$SMPROGRAMS\${QGIS_BASE}\${QGIS_BASE}.lnk" "$INSTDIR\bin\qgis-ltr.bat" "--profiles-path $APPDATA\3Di\QGIS3" "$INSTDIR\icons\3Di.ico"
-	CreateShortCut "$SMPROGRAMS\${QGIS_BASE}\OSGeo4W Shell.lnk" "$INSTDIR\OSGeo4W.bat" "--profiles-path $APPDATA\3Di\QGIS3" "$INSTDIR\OSGeo4W.ico"
+	CreateShortCut "$SMPROGRAMS\${QGIS_BASE}\OSGeo4W Shell.lnk" "$INSTDIR\OSGeo4W.bat" "" "$INSTDIR\OSGeo4W.ico"
 
 	# Copy some resources for uninstaller
 	SetOutPath $INSTDIR\icons
