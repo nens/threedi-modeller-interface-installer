@@ -1,2 +1,3 @@
 *.exe
 installer-build/
+profiles/default/python/plugins/

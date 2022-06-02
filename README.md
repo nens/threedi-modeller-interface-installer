@@ -2,18 +2,19 @@
 
 This repository contains a Makefile (which should be run in the accompanying docker container) that does the following:
 
-- Download a specific complete QGIS installer 
+- Downloads a specific complete QGIS installer 
 - Uses NSIS to wrap this in a global installer that:
     - Silently installs QGIS (via its original installer) in a configurable directory (no QGIS shortcuts and links)
     - Copies preconfigured profile data (ini files) to the user's AppData for customization (including splash screen)
     - Sets registry keys for default (Python) plugin loading
-    - Adds N&S toolboxes (downloaded from plugins.lizard.net)
+    - Adds N&S toolboxes (downloaded from plugins.lizard.net) and external toolbbxes (downloaded from plugins.qgis.org)
     - Generate relevant start/desktop shortcuts
 
 Usage
 ------
 
-TODO: How to set versions of plugins
+The versions of the internal and external plugins are hardcoded in the Makefile. When creating a new installer, update 
+these version to the required version.
 
 Check out the repo in a clean folder::
 
@@ -26,14 +27,3 @@ Check out the repo in a clean folder::
     $ docker run -w /app/ -v "$(pwd):/app" -it 3dimi-installer make installer
 
 The executable will be in the root folder.
-
-Some specifics
---------------
-
-This repository contains 4 fixed plugins that will be installed as well.
-
-- crayfish
-- valuetool
-- profiletool
-- quickmap services
-
