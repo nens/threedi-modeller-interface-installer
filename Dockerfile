@@ -27,5 +27,3 @@ RUN dpkg --add-architecture i386 \
     && apt-get install -y \
     wget make unzip git curl \
     && apt-get clean -y
-
-# WORKDIR /installer/3Di-additions
