@@ -17,7 +17,6 @@ MODELSIM_FILENAME = threedi_models_and_simulations.3.0.3
 CUSTOMIZATION_FILENAME = ThreeDiCustomizations.1.2.6
 
 # External plugins we want to add to the installer 
-# https://plugins.qgis.org/plugins/crayfish/version/3.6.0/download/
 QGIS_PLUGIN_URL = https://plugins.qgis.org/plugins/
 CRAYFISH_NAME = crayfish
 CRAYFISH_VERSION = 3.6.0
