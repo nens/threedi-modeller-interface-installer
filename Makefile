@@ -15,7 +15,7 @@ TOOLBOX_FILENAME = ThreeDiToolbox.2.0
 MODELSIM_FILENAME = threedi_models_and_simulations.3.0.3
 CUSTOMIZATION_FILENAME = ThreeDiCustomizations.1.2.6
 
-PLUGIN_DIR = 3Di-additions/ms-windows/profiles/default/python/plugins/
+PLUGIN_DIR = profiles/default/python/plugins/
 
 clean:
 	@echo
@@ -51,6 +51,6 @@ installer:
 	 			-DDISPLAYED_NAME='$(PACKAGE_NAME) $(QGIS_VERSION)' \
 				-DARCH='x86_64' \
 				-DQGIS_BASE='$(PACKAGE_NAME) $(QGIS_VERSION_MAJOR).$(QGIS_VERSION_MINOR)' \
-				-DPROFILE_FOLDER='3Di-additions/ms-windows/profiles' \
+				-DPROFILE_FOLDER='profiles' \
 				-DVERSION_NUMBER='$(QGIS_VERSION)' \
 				./installer.nsi
