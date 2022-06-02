@@ -83,4 +83,5 @@ installer:
 				-DQGIS_BASE='$(PACKAGE_NAME) $(QGIS_VERSION_MAJOR).$(QGIS_VERSION_MINOR)' \
 				-DPROFILE_FOLDER='profiles' \
 				-DVERSION_NUMBER='$(QGIS_VERSION)' \
+				-DLICENSE_FILE='LICENSE.txt' \
 				./installer.nsi
