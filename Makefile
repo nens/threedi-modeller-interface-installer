@@ -48,6 +48,9 @@ installer:
 	
 	@echo "Creating installation folder"
 	mkdir -p ./$(INSTALLER_BUILDDIR)
+
+	@echo "Creating plugin folder"
+	mkdir -p ./$(PLUGIN_DIR)
 	
 	@echo "Downloading QGIS"
 	wget -N -P ./$(INSTALLER_BUILDDIR) $(QGIS_URL)$(QGIS_INSTALLER_NAME)-$(QGIS_VERSION).msi
