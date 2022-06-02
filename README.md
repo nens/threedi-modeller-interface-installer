@@ -13,8 +13,8 @@ This repository contains a Makefile (which should be run in the accompanying doc
 Usage
 ------
 
-The versions of the internal and external plugins are hardcoded in the Makefile. When creating a new installer, update 
-these version to the required version.
+The versions of QGIS and the (internal and external) plugins are hardcoded in the Makefile. When creating a new installer, update 
+these versions to the desired version.
 
 Check out the repo in a clean folder::
 
