@@ -25,7 +25,7 @@ ENV LANG en_US.UTF-8
 RUN dpkg --add-architecture i386 \ 
     && apt-get update \
     && apt-get install -y \
-    wget make unzip git  \
+    wget make unzip git curl \
     && apt-get clean -y
 
 # WORKDIR /installer/3Di-additions

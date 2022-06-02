@@ -10,10 +10,19 @@ QGIS_VERSION = $(QGIS_VERSION_MAJOR).$(QGIS_VERSION_MINOR).$(QGIS_VERSION_PATCH)
 QGIS_URL = https://download.qgis.org/downloads/
 PACKAGE_NAME = 3DiModellerInterface
 
-PLUGIN_URL = https://plugins.lizard.net/
+# Our plugins
+NENS_PLUGIN_URL = https://plugins.lizard.net/
 TOOLBOX_FILENAME = ThreeDiToolbox.2.0
 MODELSIM_FILENAME = threedi_models_and_simulations.3.0.3
 CUSTOMIZATION_FILENAME = ThreeDiCustomizations.1.2.6
+
+# External plugins we want to add to the installer 
+# https://plugins.qgis.org/plugins/crayfish/version/3.6.0/download/
+QGIS_PLUGIN_URL = https://plugins.qgis.org/plugins/
+CRAYFISH_NAME = crayfish
+CRAYFISH_VERSION = 3.6.0
+
+
 
 PLUGIN_DIR = profiles/default/python/plugins/
 
@@ -38,14 +47,17 @@ installer:
 	wget -N -P ./$(INSTALLER_BUILDDIR) $(QGIS_URL)$(QGIS_INSTALLER_NAME)-$(QGIS_VERSION).msi
 
 	@echo "Downloading and extracting plugins"
-	wget -N -P ./$(INSTALLER_BUILDDIR) $(PLUGIN_URL)$(TOOLBOX_FILENAME).zip
+	wget -N -P ./$(INSTALLER_BUILDDIR) $(NENS_PLUGIN_URL)$(TOOLBOX_FILENAME).zip
 	unzip -o ./$(INSTALLER_BUILDDIR)/$(TOOLBOX_FILENAME).zip -d ./$(PLUGIN_DIR) 
 
-	wget -N -P ./$(INSTALLER_BUILDDIR) $(PLUGIN_URL)$(CUSTOMIZATION_FILENAME).zip
+	wget -N -P ./$(INSTALLER_BUILDDIR) $(NENS_PLUGIN_URL)$(CUSTOMIZATION_FILENAME).zip
 	unzip -o ./$(INSTALLER_BUILDDIR)/$(CUSTOMIZATION_FILENAME).zip -d ./$(PLUGIN_DIR) 
 
-	wget -N -P ./$(INSTALLER_BUILDDIR) $(PLUGIN_URL)$(MODELSIM_FILENAME).zip
+	wget -N -P ./$(INSTALLER_BUILDDIR) $(NENS_PLUGIN_URL)$(MODELSIM_FILENAME).zip
 	unzip -o ./$(INSTALLER_BUILDDIR)/$(MODELSIM_FILENAME).zip -d ./$(PLUGIN_DIR) 
+
+	curl $(QGIS_PLUGIN_URL)$(CRAYFISH_NAME)/version/$(CRAYFISH_VERSION)/download/ --output ./$(INSTALLER_BUILDDIR)/$(CRAYFISH_NAME).zip
+	unzip -o ./$(INSTALLER_BUILDDIR)/$(CRAYFISH_NAME).zip -d ./$(PLUGIN_DIR) 
 
 	makensis 	-DINSTALLER_NAME='$(PACKAGE_NAME)-OSGeo4W-$(QGIS_VERSION)-Setup-x86_64.exe' \
 	 			-DDISPLAYED_NAME='$(PACKAGE_NAME) $(QGIS_VERSION)' \
