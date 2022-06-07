@@ -14,7 +14,10 @@ Usage
 ------
 
 The versions of QGIS and the (internal and external) plugins are hardcoded in the Makefile. When creating a new installer, update 
-these versions to the desired version.
+these versions to the desired version. 
+
+The current license text (LICENSE.txt) is directly copied from the QGIS-OSGeo4W-3.22.7-1 installer UI. In case QGIS or the dependencies 
+are updated, update this text as well.
 
 Check out the repo in a clean folder::
 
