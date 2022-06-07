@@ -133,7 +133,7 @@ Section "Uninstall"
 		${EndIf}
 	${EndIf}
     # Use the original msi to deinstall qgis
-    ExecWait '"msiexec" /x "$INSTDIR\QGIS-OSGeo4W-${VERSION_NUMBER}.msi" INSTALLDIR="$INSTDIR" /quiet'
+    ExecWait '"msiexec" /x "$INSTDIR\QGIS-OSGeo4W-${VERSION_NUMBER}.msi" INSTALLDIR="$INSTDIR" /quiet /L*V "$APPDATA\3Di\QGIS3\uninstall.log"'
 
 	# Remove the program from the Add/Remove Programs section in the Control Pannel
 	DeleteRegKey HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${QGIS_BASE}"
