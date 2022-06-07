@@ -8,7 +8,7 @@ This repository contains a Makefile (which should be run in the accompanying doc
     - Copies preconfigured profile data (ini files) to the user's AppData for customization (including splash screen)
     - Sets registry keys for default (Python) plugin loading
     - Adds N&S toolboxes (downloaded from plugins.lizard.net) and external toolbbxes (downloaded from plugins.qgis.org)
-    - Generate relevant start/desktop shortcuts
+    - Generates relevant start/desktop shortcuts
 
 Usage
 ------

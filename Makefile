@@ -35,12 +35,13 @@ PLUGIN_DIR = profiles/default/python/plugins/
 clean:
 	@echo
 	@echo "-------------------------------------------"
-	@echo "Removing Installer build files and folders."
+	@echo "Removing Installer build files and plugins."
 	@echo "-------------------------------------------"
 	rm -fr ./$(INSTALLER_BUILDDIR)
+	rm -fr ./$(PLUGIN_DIR)
 	rm -f *.exe
 
-installer: 
+installer: clean
 	@echo
 	@echo "---------------------------"
 	@echo "Creating Windows Installer."
