@@ -12,9 +12,11 @@ PACKAGE_NAME = 3DiModellerInterface
 
 # Our plugins
 NENS_PLUGIN_URL = https://plugins.lizard.net/
-TOOLBOX_FILENAME = ThreeDiToolbox.2.0
-MODELSIM_FILENAME = threedi_models_and_simulations.3.0.3
+
+TOOLBOX_FILENAME = ThreeDiToolbox.2.1
+MODELSIM_FILENAME = threedi_models_and_simulations.3.1
 CUSTOMIZATION_FILENAME = ThreeDiCustomizations.1.2.6
+SCHEMATISATION_FILENAME = threedi_schematisation_editor.1.1
 
 # External plugins we want to add to the installer 
 QGIS_PLUGIN_URL = https://plugins.qgis.org/plugins/
@@ -59,6 +61,9 @@ installer: clean
 	@echo "Downloading and extracting plugins"
 	wget -N -P ./$(INSTALLER_BUILDDIR) $(NENS_PLUGIN_URL)$(TOOLBOX_FILENAME).zip
 	unzip -o ./$(INSTALLER_BUILDDIR)/$(TOOLBOX_FILENAME).zip -d ./$(PLUGIN_DIR) 
+
+	wget -N -P ./$(INSTALLER_BUILDDIR) $(NENS_PLUGIN_URL)$(SCHEMATISATION_FILENAME).zip
+	unzip -o ./$(INSTALLER_BUILDDIR)/$(SCHEMATISATION_FILENAME).zip -d ./$(PLUGIN_DIR) 
 
 	wget -N -P ./$(INSTALLER_BUILDDIR) $(NENS_PLUGIN_URL)$(CUSTOMIZATION_FILENAME).zip
 	unzip -o ./$(INSTALLER_BUILDDIR)/$(CUSTOMIZATION_FILENAME).zip -d ./$(PLUGIN_DIR) 
