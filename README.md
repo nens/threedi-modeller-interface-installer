@@ -1,33 +1,33 @@
 # 3Di-modeller-interface-installer
 
-Basic workings
---------------
+This repository contains a Makefile (which should be run in the accompanying docker container) that does the following:
 
-This Repository contains the 3Di Modeler interface installer build files. To create a working installer this repository needs to be checked out in combination with a working QGIS version. De file tree needs to be:
+- Downloads a specific complete QGIS installer 
+- Uses NSIS to wrap this in a global installer that:
+    - Silently installs QGIS (via its original installer) in a configurable directory (no QGIS shortcuts and links)
+    - Copies preconfigured profile data (ini files) to the user's AppData for customization (including splash screen)
+    - Sets registry keys for default (Python) plugin loading
+    - Adds N&S toolboxes (downloaded from plugins.3di.live) and external toolboxes (downloaded from plugins.qgis.org)
+    - Generates relevant start/desktop shortcuts
 
-    - <Build dir>/3Di-additions
-    - <Build dir>/QGIS (Checkout of QGIS repository)
+Usage
+------
 
-When the docker image is build provided in this repository and the directories are placed correctly an installer can be created by executing the script ``./create_qgis_3di_nsis.pl`` in the docker:
+The versions of QGIS and the (internal and external) plugins are hardcoded in the Makefile. When creating a new installer, update 
+these versions to the desired version. 
 
-    docker run -v $(pwd)/QGIS:/installer/QGIS -v $(pwd)/3Di-additions:/installer/3Di-additions -it -e PYTHONUNBUFFERED=0 3dimi-installer ./create_qgis_3di_nsis.pl
+The current license text (LICENSE.txt) is directly copied from the QGIS-OSGeo4W-3.22.7-1 installer UI. In case QGIS or the dependencies 
+are updated, update this text as well.
 
+Check out the repo in a clean folder::
 
-Some specifics
---------------
+    $ mkdir /tmp/reallyclean
+    $ cd /tmp/reallyclean
+    $ git clone git@github.com:nens/3Di-modeller-interface-installer.git
+    $ cd 3Di-modeller-interface-installer
 
-The ``3Di-additions/ms-windows`` directory contains all files and scripts to make the 3Di modeller interface from a standard QGIS application during the installation. 
+    Build (if required) and run the container:  
+    $ docker build . -t 3dimi-installer
+    $ docker run -w /app/ -v "$(pwd):/app" -it 3dimi-installer make installer
 
-Important steps to create look and feel of the modeller interface application after installation are adding the correct plugins in the plugin folder ``./3Di-additions/ms-windows/profiles/default/python/plugins``  before creating the installer. Plugins needed for the current modeler interface are:
-
-- ThreeDiToolbox (Toolbox for editing and analyzing 3Di models.)
-- ThreeDiCustomizations (Plugin to creat look and feel of the 3Di Modeler interface.)
-- crayfish
-- valuetool
-- profiletool
-- quickmap services
-
-Installer creation
-------------------
-
-Installer creation is deferred to the ThreeDiToolbox repository, where above steps are executed in the makefile.
+The executable will be in the root folder.
