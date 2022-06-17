@@ -7,7 +7,7 @@ This repository contains a Makefile (which should be run in the accompanying doc
     - Silently installs QGIS (via its original installer) in a configurable directory (no QGIS shortcuts and links)
     - Copies preconfigured profile data (ini files) to the user's AppData for customization (including splash screen)
     - Sets registry keys for default (Python) plugin loading
-    - Adds N&S toolboxes (downloaded from plugins.lizard.net) and external toolbbxes (downloaded from plugins.qgis.org)
+    - Adds N&S toolboxes (downloaded from plugins.3di.live) and external toolboxes (downloaded from plugins.qgis.org)
     - Generates relevant start/desktop shortcuts
 
 Usage

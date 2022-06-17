@@ -10,8 +10,8 @@ QGIS_VERSION = $(QGIS_VERSION_MAJOR).$(QGIS_VERSION_MINOR).$(QGIS_VERSION_PATCH)
 QGIS_URL = https://download.qgis.org/downloads/
 PACKAGE_NAME = 3DiModellerInterface
 
-# Our plugins
-NENS_PLUGIN_URL = https://plugins.lizard.net/
+# Our plugins (note trailing slash)
+NENS_PLUGIN_URL = https://plugins.3di.live/
 
 TOOLBOX_FILENAME = ThreeDiToolbox.2.1
 MODELSIM_FILENAME = threedi_models_and_simulations.3.1
