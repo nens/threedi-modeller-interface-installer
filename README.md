@@ -31,3 +31,11 @@ Check out the repo in a clean folder::
     $ docker run -w /app/ -v "$(pwd):/app" -it 3dimi-installer make installer
 
 The executable will be in the root folder.
+
+Deploy
+------
+
+The installer can be uploaded to https://artifacts.lizard.net/. The Makefile contains a build recipe for this that
+uses ``upload-modeller-interface.sh``. You'll need to set the $MODELLER_INTERFACE_ARTIFACTS_KEY environment variable
+
+    $ make upload

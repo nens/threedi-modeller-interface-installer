@@ -91,3 +91,6 @@ installer: clean
 				-DVERSION_NUMBER='$(QGIS_VERSION)' \
 				-DLICENSE_FILE='LICENSE.txt' \
 				./installer.nsi
+
+upload:
+	./upload-modeller-interface.sh $(PACKAGE_NAME)-OSGeo4W-$(QGIS_VERSION)-Setup-x86_64.exe
