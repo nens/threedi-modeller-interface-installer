@@ -9,6 +9,8 @@ QGIS_INSTALLER_NAME = QGIS-OSGeo4W
 QGIS_VERSION = $(QGIS_VERSION_MAJOR).$(QGIS_VERSION_MINOR).$(QGIS_VERSION_PATCH)-$(QGIS_VERSION_BINARY)
 QGIS_URL = https://download.qgis.org/downloads/
 PACKAGE_NAME = 3DiModellerInterface
+# 3Di ModellerInterface version (note that this is additional postfix than 
+# can be used when plugins are updated etc)
 PACKAGE_BINARY = 2
 
 # Our plugins (note trailing slash)
