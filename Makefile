@@ -15,7 +15,7 @@ PACKAGE_BINARY = 2
 NENS_PLUGIN_URL = https://plugins.3di.live/
 
 TOOLBOX_FILENAME = ThreeDiToolbox.2.2
-MODELSIM_FILENAME = threedi_models_and_simulations.3.1
+MODELSIM_FILENAME = threedi_models_and_simulations.3.2
 CUSTOMIZATION_FILENAME = ThreeDiCustomizations.1.2.6
 SCHEMATISATION_FILENAME = threedi_schematisation_editor.1.1.1
 
