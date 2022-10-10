@@ -11,7 +11,7 @@ QGIS_URL = https://download.qgis.org/downloads/
 PACKAGE_NAME = 3DiModellerInterface
 # 3Di ModellerInterface version (note that this is additional postfix than 
 # can be used when plugins are updated etc)
-PACKAGE_BINARY = 3
+PACKAGE_BINARY = 4
 
 # Our plugins (note trailing slash)
 NENS_PLUGIN_URL = https://plugins.3di.live/
@@ -34,6 +34,9 @@ QMS_VERSION = 0.19.29
 
 VALUE_TOOL_NAME = valuetool
 VALUE_TOOL_VERSION = 3.0.15
+
+SERVAL_NAME = Serval
+SERVAL_VERSION = 3.10.5
 
 PLUGIN_DIR = profiles/default/python/plugins/
 
@@ -85,6 +88,9 @@ installer: clean
 
 	curl $(QGIS_PLUGIN_URL)$(VALUE_TOOL_NAME)/version/$(VALUE_TOOL_VERSION)/download/ --output ./$(INSTALLER_BUILDDIR)/$(VALUE_TOOL_NAME).zip
 	unzip -o ./$(INSTALLER_BUILDDIR)/$(VALUE_TOOL_NAME).zip -d ./$(PLUGIN_DIR)
+
+	curl $(QGIS_PLUGIN_URL)$(SERVAL_NAME)/version/$(SERVAL_VERSION)/download/ --output ./$(INSTALLER_BUILDDIR)/$(SERVAL_NAME).zip
+	unzip -o ./$(INSTALLER_BUILDDIR)/$(SERVAL_NAME).zip -d ./$(PLUGIN_DIR)
 
 	makensis 	-DINSTALLER_NAME='$(PACKAGE_NAME)-OSGeo4W-$(QGIS_VERSION)-$(PACKAGE_BINARY)-Setup-x86_64.exe' \
 	 			-DDISPLAYED_NAME='$(PACKAGE_NAME) $(QGIS_VERSION)' \
