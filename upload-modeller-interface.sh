@@ -16,8 +16,10 @@ ARTIFACT=$1
 PROJECT=modeller-interface
 
 curl -X POST \
+     -v \
      --retry 3 \
+     --progress-bar \
      -H "Content-Type: multipart/form-data" \
      -F key=${MODELLER_INTERFACE_ARTIFACTS_KEY} \
      -F artifact=@${ARTIFACT} \
-     https://artifacts.lizard.net/upload/${PROJECT}/
+     https://artifacts.lizard.net/upload/${PROJECT}/ | cat
