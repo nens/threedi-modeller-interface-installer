@@ -1,7 +1,7 @@
 QGIS_VERSION_MAJOR = 3
 QGIS_VERSION_MINOR = 22
-QGIS_VERSION_PATCH = 13
-QGIS_VERSION_BINARY = 2
+QGIS_VERSION_PATCH = 16
+QGIS_VERSION_BINARY = 1
 
 INSTALLER_BUILDDIR = installer-build
 QGIS_INSTALLER_NAME = QGIS-OSGeo4W
@@ -11,15 +11,15 @@ QGIS_URL = https://download.qgis.org/downloads/
 PACKAGE_NAME = 3DiModellerInterface
 # 3Di ModellerInterface version (note that this is additional postfix than 
 # can be used when plugins are updated etc)
-PACKAGE_BINARY = 1
+PACKAGE_BINARY = 2
 
 # Our plugins (note trailing slash)
 NENS_PLUGIN_URL = https://plugins.3di.live/
 
-TOOLBOX_FILENAME = ThreeDiToolbox.2.4
-MODELSIM_FILENAME = threedi_models_and_simulations.3.3
+TOOLBOX_FILENAME = ThreeDiToolbox.2.5
+MODELSIM_FILENAME = threedi_models_and_simulations.3.4
 CUSTOMIZATION_FILENAME = ThreeDiCustomizations.1.2.6
-SCHEMATISATION_FILENAME = threedi_schematisation_editor.1.2
+SCHEMATISATION_FILENAME = threedi_schematisation_editor.1.3
 
 # External plugins we want to add to the installer 
 QGIS_PLUGIN_URL = https://plugins.qgis.org/plugins/
