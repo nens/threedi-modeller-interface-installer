@@ -11,13 +11,13 @@ QGIS_URL = https://download.qgis.org/downloads/
 PACKAGE_NAME = 3DiModellerInterface
 # 3Di ModellerInterface version (note that this is additional postfix than 
 # can be used when plugins are updated etc)
-PACKAGE_BINARY = 1
+PACKAGE_BINARY = 2
 
 # Our plugins (note trailing slash)
 NENS_PLUGIN_URL = https://plugins.3di.live/
 
 TOOLBOX_FILENAME = ThreeDiToolbox.2.5
-MODELSIM_FILENAME = threedi_models_and_simulations.3.4
+MODELSIM_FILENAME = threedi_models_and_simulations.3.4.2
 CUSTOMIZATION_FILENAME = ThreeDiCustomizations.1.2.6
 SCHEMATISATION_FILENAME = threedi_schematisation_editor.1.3
 
