@@ -9,6 +9,7 @@ QGIS_INSTALLER_NAME = QGIS-OSGeo4W
 QGIS_VERSION = $(QGIS_VERSION_MAJOR).$(QGIS_VERSION_MINOR).$(QGIS_VERSION_PATCH)-$(QGIS_VERSION_BINARY)
 QGIS_URL = https://download.qgis.org/downloads/
 PACKAGE_NAME = 3DiModellerInterface
+SHORTCUT_NAME = 3Di Modeller Interface
 # 3Di ModellerInterface version (note that this is additional postfix than 
 # can be used when plugins are updated etc)
 PACKAGE_BINARY = 0
@@ -99,6 +100,7 @@ installer: clean
 				-DPROFILE_FOLDER='profiles' \
 				-DVERSION_NUMBER='$(QGIS_VERSION)' \
 				-DLICENSE_FILE='LICENSE.txt' \
+				-DQGIS_SHORTCUT_NAME='$(SHORTCUT_NAME) $(QGIS_VERSION_MAJOR).$(QGIS_VERSION_MINOR)' \
 				./installer.nsi
 
 upload:
