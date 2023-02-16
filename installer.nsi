@@ -24,25 +24,6 @@ OutFile "${INSTALLER_NAME}"
 ShowInstDetails hide
 ShowUnInstDetails hide
 
-# .onInit Function (called when the installer is nearly finished initializing)
-Function .onInit
-	${If} ${ARCH} == "x86_64"
-		${If} ${RunningX64}
-			DetailPrint "Installer running on 64-bit host"
-			; disable registry redirection (enable access to 64-bit portion of registry)
-			SetRegView 64
-			; change install dir
-			${If} $INSTDIR == ""
-			  StrCpy $INSTDIR "$PROGRAMFILES64\${QGIS_BASE}"
-			${EndIf}
-		${EndIf}
-	${EndIf}
-
-	${If} $INSTDIR == ""
-		StrCpy $INSTDIR "$PROGRAMFILES\${QGIS_BASE}"
-	${EndIf}
-FunctionEnd
-
 !define MUI_ABORTWARNING
 !define MUI_ICON ".\resources\Install_3Di.ico"
 !define MUI_UNICON ".\resources\Uninstall_3Di.ico"
@@ -119,7 +100,7 @@ Section "3Di User Profile" SecProfile
     StrCpy $INSTDIR_PROFILE_DATA "$APPDATA\3Di\QGIS3\profiles\"
     CreateDirectory "$INSTDIR_PROFILE_DATA"
     
-	; add Profile files
+	; Add Profile files
 	SetOutPath "$INSTDIR_PROFILE_DATA"
 	File /r ${PROFILE_FOLDER}\*.*
 
@@ -145,10 +126,37 @@ Section "Uninstall"
 	Delete $INSTDIR\uninstall.exe
     RMDir /r $INSTDIR
 
-    # TODO: do we need to remove profile data?
+    # No need to remove profile data
 SectionEnd
 
-;Assign language strings to sections
+# .onInit Function (called when the installer is nearly finished initializing)
+Function .onInit
+	${If} ${ARCH} == "x86_64"
+		${If} ${RunningX64}
+			DetailPrint "Installer running on 64-bit host"
+			; disable registry redirection (enable access to 64-bit portion of registry)
+			SetRegView 64
+			; change install dir
+			${If} $INSTDIR == ""
+			  StrCpy $INSTDIR "$PROGRAMFILES64\${QGIS_BASE}"
+			${EndIf}
+		${EndIf}
+	${EndIf}
+
+	${If} $INSTDIR == ""
+		StrCpy $INSTDIR "$PROGRAMFILES\${QGIS_BASE}"
+	${EndIf}
+
+	# Uncheck profile install when default profile is present, otherwise skip 4 lines
+	IfFileExists "$APPDATA\3Di\QGIS3\profiles\default\*.*" present missing
+	present:
+		!insertmacro UnselectSection  ${SecProfile}
+	missing:
+
+
+FunctionEnd
+
+; Set section descriptions
 !insertmacro MUI_FUNCTION_DESCRIPTION_BEGIN
 !insertmacro MUI_DESCRIPTION_TEXT ${SecQGIS} "Installs the QGIS application."
 !insertmacro MUI_DESCRIPTION_TEXT ${SecProfile} "Installs a default user profile. WARNING: an existing default profile will be overwritten!"
