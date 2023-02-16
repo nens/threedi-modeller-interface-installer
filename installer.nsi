@@ -67,7 +67,7 @@ FunctionEnd
 !insertmacro MUI_LANGUAGE "English"
 
 Section "3Di Modeller Interface" SecQGIS
-	SectionIn RO
+
 	SetOutPath $INSTDIR
     File .\installer-build/QGIS-OSGeo4W-${VERSION_NUMBER}.msi
     File ./resources/splash.png
@@ -110,8 +110,8 @@ Section "3Di Modeller Interface" SecQGIS
     WriteUninstaller $INSTDIR\uninstall.exe
 SectionEnd
 
-Section "3Di Profile" SecProfile
-	SectionIn RO
+Section "3Di User Profile" SecProfile
+
 	SetOverwrite try
 
     SetShellVarContext current
@@ -147,3 +147,9 @@ Section "Uninstall"
 
     # TODO: do we need to remove profile data?
 SectionEnd
+
+;Assign language strings to sections
+!insertmacro MUI_FUNCTION_DESCRIPTION_BEGIN
+!insertmacro MUI_DESCRIPTION_TEXT ${SecQGIS} "Installs the QGIS application."
+!insertmacro MUI_DESCRIPTION_TEXT ${SecProfile} "Installs a default user profile. WARNING: an existing default profile will be overwritten!"
+!insertmacro MUI_FUNCTION_DESCRIPTION_END
