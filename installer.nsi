@@ -68,16 +68,20 @@ Section "3Di Modeller Interface" SecQGIS
 
 	# Start and Desktop links (also pass the profile folder)
 	CreateDirectory "$DESKTOP\${QGIS_BASE}"
-	CreateShortCut "$DESKTOP\${QGIS_BASE}\${QGIS_SHORTCUT_NAME}.lnk" "$INSTDIR\bin\qgis.bat" "--profiles-path $APPDATA\3Di\QGIS3" "$INSTDIR\icons\3Di.ico"
+	CreateShortCut "$DESKTOP\${QGIS_BASE}\${QGIS_SHORTCUT_NAME}.lnk" "$INSTDIR\bin\qgis.bat" '--globalsettingsfile "$INSTDIR\apps\qgis\resources\qgis_global_settings.ini" --profiles-path $APPDATA\3Di\QGIS3' "$INSTDIR\icons\3Di.ico"
 	CreateShortCut "$DESKTOP\${QGIS_BASE}\OSGeo4W Shell.lnk" "$INSTDIR\OSGeo4W.bat" "" "$INSTDIR\OSGeo4W.ico"
 	
 	CreateDirectory "$SMPROGRAMS\${QGIS_BASE}"
-	CreateShortCut "$SMPROGRAMS\${QGIS_BASE}\${QGIS_SHORTCUT_NAME}.lnk" "$INSTDIR\bin\qgis.bat" "--profiles-path $APPDATA\3Di\QGIS3" "$INSTDIR\icons\3Di.ico"
+	CreateShortCut "$SMPROGRAMS\${QGIS_BASE}\${QGIS_SHORTCUT_NAME}.lnk" "$INSTDIR\bin\qgis.bat" '--globalsettingsfile "$INSTDIR\apps\qgis\resources\qgis_global_settings.ini" --profiles-path $APPDATA\3Di\QGIS3' "$INSTDIR\icons\3Di.ico"
 	CreateShortCut "$SMPROGRAMS\${QGIS_BASE}\OSGeo4W Shell.lnk" "$INSTDIR\OSGeo4W.bat" "" "$INSTDIR\OSGeo4W.ico"
 
 	# Copy some resources for uninstaller
 	SetOutPath $INSTDIR\icons
 	File ./resources/3Di.ico
+
+	# Copy global settings file, these settings replace the original inline default ones, but the user profiles’ settings will be set on top of those.
+	SetOutPath $INSTDIR\apps\qgis\resources
+	File /oname=qgis_global_settings.ini ${PROFILE_FOLDER}\default\QGIS\QGIS3.ini
 
 	# Create some reg keys to add entries to the Add/Remove Programs section in the Control Pannel
 	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${QGIS_BASE}" "DisplayName" "${DISPLAYED_NAME}"
