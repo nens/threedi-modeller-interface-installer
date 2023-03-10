@@ -47,7 +47,7 @@ clean:
 	rm -fr ./$(PLUGIN_DIR)
 	rm -f *.exe
 
-installer: 
+installer: clean 
 	@echo
 	@echo "---------------------------"
 	@echo "Creating Windows Installer."
