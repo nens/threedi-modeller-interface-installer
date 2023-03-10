@@ -24,25 +24,6 @@ OutFile "${INSTALLER_NAME}"
 ShowInstDetails hide
 ShowUnInstDetails hide
 
-# .onInit Function (called when the installer is nearly finished initializing)
-Function .onInit
-	${If} ${ARCH} == "x86_64"
-		${If} ${RunningX64}
-			DetailPrint "Installer running on 64-bit host"
-			; disable registry redirection (enable access to 64-bit portion of registry)
-			SetRegView 64
-			; change install dir
-			${If} $INSTDIR == ""
-			  StrCpy $INSTDIR "$PROGRAMFILES64\${QGIS_BASE}"
-			${EndIf}
-		${EndIf}
-	${EndIf}
-
-	${If} $INSTDIR == ""
-		StrCpy $INSTDIR "$PROGRAMFILES\${QGIS_BASE}"
-	${EndIf}
-FunctionEnd
-
 !define MUI_ABORTWARNING
 !define MUI_ICON ".\resources\Install_3Di.ico"
 !define MUI_UNICON ".\resources\Uninstall_3Di.ico"
@@ -67,7 +48,7 @@ FunctionEnd
 !insertmacro MUI_LANGUAGE "English"
 
 Section "3Di Modeller Interface" SecQGIS
-	SectionIn RO
+
 	SetOutPath $INSTDIR
     File .\installer-build/QGIS-OSGeo4W-${VERSION_NUMBER}.msi
     File ./resources/splash.png
@@ -85,18 +66,22 @@ Section "3Di Modeller Interface" SecQGIS
     !include plugins-3di.nsh
     !include python_plugins-3di.nsh
 
-	# Start and Desktop links (also pass the profile folder)
+	# Start and Desktop links (also pass the profile folder and global (default) setting file)
 	CreateDirectory "$DESKTOP\${QGIS_BASE}"
-	CreateShortCut "$DESKTOP\${QGIS_BASE}\${QGIS_BASE}.lnk" "$INSTDIR\bin\qgis-ltr.bat" "--profiles-path $APPDATA\3Di\QGIS3" "$INSTDIR\icons\3Di.ico"
+	CreateShortCut "$DESKTOP\${QGIS_BASE}\${QGIS_SHORTCUT_NAME}.lnk" "$INSTDIR\bin\qgis-ltr.bat" '--globalsettingsfile "$INSTDIR\apps\qgis-ltr\resources\qgis_global_settings.ini" --profiles-path "$APPDATA\3Di\QGIS3"' "$INSTDIR\icons\3Di.ico"
 	CreateShortCut "$DESKTOP\${QGIS_BASE}\OSGeo4W Shell.lnk" "$INSTDIR\OSGeo4W.bat" "" "$INSTDIR\OSGeo4W.ico"
 	
 	CreateDirectory "$SMPROGRAMS\${QGIS_BASE}"
-	CreateShortCut "$SMPROGRAMS\${QGIS_BASE}\${QGIS_BASE}.lnk" "$INSTDIR\bin\qgis-ltr.bat" "--profiles-path $APPDATA\3Di\QGIS3" "$INSTDIR\icons\3Di.ico"
+	CreateShortCut "$SMPROGRAMS\${QGIS_BASE}\${QGIS_SHORTCUT_NAME}.lnk" "$INSTDIR\bin\qgis-ltr.bat" '--globalsettingsfile "$INSTDIR\apps\qgis-ltr\resources\qgis_global_settings.ini" --profiles-path "$APPDATA\3Di\QGIS3"' "$INSTDIR\icons\3Di.ico"
 	CreateShortCut "$SMPROGRAMS\${QGIS_BASE}\OSGeo4W Shell.lnk" "$INSTDIR\OSGeo4W.bat" "" "$INSTDIR\OSGeo4W.ico"
 
 	# Copy some resources for uninstaller
 	SetOutPath $INSTDIR\icons
 	File ./resources/3Di.ico
+
+	# Copy global settings file, these settings replace the original inline default ones, but the user profiles’ settings will be set on top of those.
+	SetOutPath $INSTDIR\apps\qgis-ltr\resources
+	File /oname=qgis_global_settings.ini ${PROFILE_FOLDER}\default\QGIS\QGIS3.ini
 
 	# Create some reg keys to add entries to the Add/Remove Programs section in the Control Pannel
 	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${QGIS_BASE}" "DisplayName" "${DISPLAYED_NAME}"
@@ -110,8 +95,8 @@ Section "3Di Modeller Interface" SecQGIS
     WriteUninstaller $INSTDIR\uninstall.exe
 SectionEnd
 
-Section "3Di Profile" SecProfile
-	SectionIn RO
+Section "3Di User Profile" SecProfile
+
 	SetOverwrite try
 
     SetShellVarContext current
@@ -119,7 +104,7 @@ Section "3Di Profile" SecProfile
     StrCpy $INSTDIR_PROFILE_DATA "$APPDATA\3Di\QGIS3\profiles\"
     CreateDirectory "$INSTDIR_PROFILE_DATA"
     
-	; add Profile files
+	; Add Profile files
 	SetOutPath "$INSTDIR_PROFILE_DATA"
 	File /r ${PROFILE_FOLDER}\*.*
 
@@ -145,5 +130,38 @@ Section "Uninstall"
 	Delete $INSTDIR\uninstall.exe
     RMDir /r $INSTDIR
 
-    # TODO: do we need to remove profile data?
+    # No need to remove profile data
 SectionEnd
+
+# .onInit Function (called when the installer is nearly finished initializing)
+Function .onInit
+	${If} ${ARCH} == "x86_64"
+		${If} ${RunningX64}
+			DetailPrint "Installer running on 64-bit host"
+			; disable registry redirection (enable access to 64-bit portion of registry)
+			SetRegView 64
+			; change install dir
+			${If} $INSTDIR == ""
+			  StrCpy $INSTDIR "$PROGRAMFILES64\${QGIS_BASE}"
+			${EndIf}
+		${EndIf}
+	${EndIf}
+
+	${If} $INSTDIR == ""
+		StrCpy $INSTDIR "$PROGRAMFILES\${QGIS_BASE}"
+	${EndIf}
+
+	# Uncheck profile install when default profile is present, otherwise skip 4 lines
+	IfFileExists "$APPDATA\3Di\QGIS3\profiles\default\*.*" present missing
+	present:
+		!insertmacro UnselectSection  ${SecProfile}
+	missing:
+
+
+FunctionEnd
+
+; Set section descriptions
+!insertmacro MUI_FUNCTION_DESCRIPTION_BEGIN
+!insertmacro MUI_DESCRIPTION_TEXT ${SecQGIS} "Installs the QGIS application."
+!insertmacro MUI_DESCRIPTION_TEXT ${SecProfile} "Installs a default user profile. WARNING: an existing default profile will be overwritten!"
+!insertmacro MUI_FUNCTION_DESCRIPTION_END

@@ -14,10 +14,11 @@ Usage
 ------
 
 The versions of QGIS and the (internal and external) plugins are hardcoded in the Makefile. When creating a new installer, update 
-these versions to the desired version. 
+these versions to the desired version.
 
-The current license text (LICENSE.txt) is directly copied from the QGIS-OSGeo4W-3.22.7-1 installer UI. In case QGIS or the dependencies 
-are updated, update this text as well.
+Note that non-LTR releases might have a different internal folder or file naming (e.g "apps/qgis-ltr" vs "apps/qgis", "qgis-ltr.bat" vs "qgis.bat"). This is not automatically detected and the installer script might need to be adjusted to deal with this.
+
+The current license text (LICENSE.txt) is directly copied from the LTR QGIS-OSGeo4W-3.28.4-2 installer UI. In case QGIS or the dependencies are updated, update this text as well.
 
 Check out the repo in a clean folder::
 

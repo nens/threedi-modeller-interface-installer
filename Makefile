@@ -1,7 +1,7 @@
 QGIS_VERSION_MAJOR = 3
-QGIS_VERSION_MINOR = 22
-QGIS_VERSION_PATCH = 16
-QGIS_VERSION_BINARY = 1
+QGIS_VERSION_MINOR = 28
+QGIS_VERSION_PATCH = 4
+QGIS_VERSION_BINARY = 2
 
 INSTALLER_BUILDDIR = installer-build
 QGIS_INSTALLER_NAME = QGIS-OSGeo4W
@@ -9,15 +9,16 @@ QGIS_INSTALLER_NAME = QGIS-OSGeo4W
 QGIS_VERSION = $(QGIS_VERSION_MAJOR).$(QGIS_VERSION_MINOR).$(QGIS_VERSION_PATCH)-$(QGIS_VERSION_BINARY)
 QGIS_URL = https://download.qgis.org/downloads/
 PACKAGE_NAME = 3DiModellerInterface
+SHORTCUT_NAME = 3Di Modeller Interface
 # 3Di ModellerInterface version (note that this is additional postfix than 
 # can be used when plugins are updated etc)
-PACKAGE_BINARY = 2
+PACKAGE_BINARY = 1
 
 # Our plugins (note trailing slash)
 NENS_PLUGIN_URL = https://plugins.3di.live/
 
 TOOLBOX_FILENAME = ThreeDiToolbox.2.5
-MODELSIM_FILENAME = threedi_models_and_simulations.3.4.2
+MODELSIM_FILENAME = threedi_models_and_simulations.3.4.3
 CUSTOMIZATION_FILENAME = ThreeDiCustomizations.1.2.6
 SCHEMATISATION_FILENAME = threedi_schematisation_editor.1.3
 
@@ -26,11 +27,8 @@ QGIS_PLUGIN_URL = https://plugins.qgis.org/plugins/
 CRAYFISH_NAME = crayfish
 CRAYFISH_VERSION = 3.6.0
 
-PROFILE_TOOL_NAME = profiletool
-PROFILE_TOOL_VERSION = 4.2.2
-
 QMS_NAME = quick_map_services
-QMS_VERSION = 0.19.29
+QMS_VERSION = 0.19.33
 
 VALUE_TOOL_NAME = valuetool
 VALUE_TOOL_VERSION = 3.0.15
@@ -49,7 +47,7 @@ clean:
 	rm -fr ./$(PLUGIN_DIR)
 	rm -f *.exe
 
-installer: clean
+installer: clean 
 	@echo
 	@echo "---------------------------"
 	@echo "Creating Windows Installer."
@@ -80,9 +78,6 @@ installer: clean
 	curl $(QGIS_PLUGIN_URL)$(CRAYFISH_NAME)/version/$(CRAYFISH_VERSION)/download/ --output ./$(INSTALLER_BUILDDIR)/$(CRAYFISH_NAME).zip
 	unzip -o ./$(INSTALLER_BUILDDIR)/$(CRAYFISH_NAME).zip -d ./$(PLUGIN_DIR)
 
-	curl $(QGIS_PLUGIN_URL)$(PROFILE_TOOL_NAME)/version/$(PROFILE_TOOL_VERSION)/download/ --output ./$(INSTALLER_BUILDDIR)/$(PROFILE_TOOL_NAME).zip
-	unzip -o ./$(INSTALLER_BUILDDIR)/$(PROFILE_TOOL_NAME).zip -d ./$(PLUGIN_DIR)
-
 	curl $(QGIS_PLUGIN_URL)$(QMS_NAME)/version/$(QMS_VERSION)/download/ --output ./$(INSTALLER_BUILDDIR)/$(QMS_NAME).zip
 	unzip -o ./$(INSTALLER_BUILDDIR)/$(QMS_NAME).zip -d ./$(PLUGIN_DIR)
 
@@ -99,6 +94,7 @@ installer: clean
 				-DPROFILE_FOLDER='profiles' \
 				-DVERSION_NUMBER='$(QGIS_VERSION)' \
 				-DLICENSE_FILE='LICENSE.txt' \
+				-DQGIS_SHORTCUT_NAME='$(SHORTCUT_NAME) $(QGIS_VERSION_MAJOR).$(QGIS_VERSION_MINOR)' \
 				./installer.nsi
 
 upload:
