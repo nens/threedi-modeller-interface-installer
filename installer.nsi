@@ -166,6 +166,15 @@ Function .onInit
 		StrCpy $INSTDIR "$PROGRAMFILES\${QGIS_BASE}"
 	${EndIf}
 
+	# Notify user that QGIS installtion
+	UserInfo::GetAccountType
+	Pop $0
+	StrCmp $0 "User" 0 +2 ; Note: Win9x always returns "Admin"
+		MessageBox MB_OK 'No admin priviliges detected, installing QGIS application might not be possible'
+	
+	DetailPrint "Checking existing profile"
+	System::Call 'kernel32::Beep(i 800,i 2000) l'
+
 	# Uncheck profile install when default profile is present, otherwise skip 4 lines
 	IfFileExists "$APPDATA\3Di\QGIS3\profiles\default\*.*" present missing
 	present:
