@@ -3,11 +3,12 @@ SetCompress off
 
 Unicode True
 # Allow privilege elevation in vista
-RequestExecutionLevel admin 
+# RequestExecutionLevel admin 
 
 !include "x64.nsh"
 !include "MUI.nsh"
 !include "LogicLib.nsh"
+!include "FileFunc.nsh"
 
 !define PUBLISHER "Nelen en Schuurmans"
 !define WEB_SITE "https://nelen-schuurmans.nl/"
@@ -66,15 +67,6 @@ Section "3Di Modeller Interface" SecQGIS
     !include plugins-3di.nsh
     !include python_plugins-3di.nsh
 
-	# Start and Desktop links (also pass the profile folder and global (default) setting file)
-	CreateDirectory "$DESKTOP\${QGIS_BASE}"
-	CreateShortCut "$DESKTOP\${QGIS_BASE}\${QGIS_SHORTCUT_NAME}.lnk" "$INSTDIR\bin\qgis-ltr.bat" '--globalsettingsfile "$INSTDIR\apps\qgis-ltr\resources\qgis_global_settings.ini" --profiles-path "$APPDATA\3Di\QGIS3"' "$INSTDIR\icons\3Di.ico"
-	CreateShortCut "$DESKTOP\${QGIS_BASE}\OSGeo4W Shell.lnk" "$INSTDIR\OSGeo4W.bat" "" "$INSTDIR\OSGeo4W.ico"
-	
-	CreateDirectory "$SMPROGRAMS\${QGIS_BASE}"
-	CreateShortCut "$SMPROGRAMS\${QGIS_BASE}\${QGIS_SHORTCUT_NAME}.lnk" "$INSTDIR\bin\qgis-ltr.bat" '--globalsettingsfile "$INSTDIR\apps\qgis-ltr\resources\qgis_global_settings.ini" --profiles-path "$APPDATA\3Di\QGIS3"' "$INSTDIR\icons\3Di.ico"
-	CreateShortCut "$SMPROGRAMS\${QGIS_BASE}\OSGeo4W Shell.lnk" "$INSTDIR\OSGeo4W.bat" "" "$INSTDIR\OSGeo4W.ico"
-
 	# Copy some resources for uninstaller
 	SetOutPath $INSTDIR\icons
 	File ./resources/3Di.ico
@@ -91,6 +83,26 @@ Section "3Di Modeller Interface" SecQGIS
 	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${QGIS_BASE}" "HelpLink" "${WIKI_PAGE}"
 	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${QGIS_BASE}" "URLInfoAbout" "${WEB_SITE}"
 	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${QGIS_BASE}" "Publisher" "${PUBLISHER}"
+
+	# Start and Desktop links (also pass the profile folder and global (default) setting file) for ALL users
+	SetShellVarContext all
+
+	# Only global vars are currently supported
+	Var /GLOBAL UserFolder
+	${GetParent} $PROFILE $UserFolder # Typically C:\Users
+	# This is QGIS profile folder using Windows' %username% variable
+	Var /GLOBAL GenericProfileFolder
+	StrCpy $GenericProfileFolder "$UserFolder\%username%\AppData\Roaming\3Di\QGIS3"
+
+	# C:\Users\Public\Desktop
+	CreateDirectory "$DESKTOP\${QGIS_BASE}"
+	CreateShortCut "$DESKTOP\${QGIS_BASE}\${QGIS_SHORTCUT_NAME}.lnk" "$INSTDIR\bin\qgis-ltr.bat" '--globalsettingsfile "$INSTDIR\apps\qgis-ltr\resources\qgis_global_settings.ini" --profiles-path "$GenericProfileFolder"' "$INSTDIR\icons\3Di.ico"
+	CreateShortCut "$DESKTOP\${QGIS_BASE}\OSGeo4W Shell.lnk" "$INSTDIR\OSGeo4W.bat" "" "$INSTDIR\OSGeo4W.ico"
+	
+	# C:\ProgramData\Microsoft\Windows\Start Menu\Programs
+	CreateDirectory "$SMPROGRAMS\${QGIS_BASE}"
+	CreateShortCut "$SMPROGRAMS\${QGIS_BASE}\${QGIS_SHORTCUT_NAME}.lnk" "$INSTDIR\bin\qgis-ltr.bat" '--globalsettingsfile "$INSTDIR\apps\qgis-ltr\resources\qgis_global_settings.ini" --profiles-path "$GenericProfileFolder"' "$INSTDIR\icons\3Di.ico"
+	CreateShortCut "$SMPROGRAMS\${QGIS_BASE}\OSGeo4W Shell.lnk" "$INSTDIR\OSGeo4W.bat" "" "$INSTDIR\OSGeo4W.ico"
 
     WriteUninstaller $INSTDIR\uninstall.exe
 SectionEnd
@@ -123,6 +135,9 @@ Section "Uninstall"
 	# Remove the program from the Add/Remove Programs section in the Control Pannel
 	DeleteRegKey HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${QGIS_BASE}"
  
+	# TODO: choice
+	SetShellVarContext all
+	
 	# Remove start and desktop links
 	RMDir /r "$DESKTOP\${QGIS_BASE}"
 	RMDir /r "$SMPROGRAMS\${QGIS_BASE}"
