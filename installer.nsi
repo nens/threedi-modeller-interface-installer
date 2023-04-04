@@ -76,6 +76,7 @@ Section "3Di Modeller Interface" SecQGIS
 	File /oname=qgis_global_settings.ini ${PROFILE_FOLDER}\default\QGIS\QGIS3.ini
 
 	# Create some reg keys to add entries to the Add/Remove Programs section in the Control Pannel
+	# Note that all registry entries are stored in LOCAL MACHINE namespace
 	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${QGIS_BASE}" "DisplayName" "${DISPLAYED_NAME}"
 	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${QGIS_BASE}" "DisplayVersion" "${VERSION_NUMBER}"
 	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${QGIS_BASE}" "UninstallString" "$INSTDIR\uninstall.exe"
@@ -135,7 +136,6 @@ Section "Uninstall"
 	# Remove the program from the Add/Remove Programs section in the Control Pannel
 	DeleteRegKey HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${QGIS_BASE}"
  
-	# TODO: choice
 	SetShellVarContext all
 	
 	# Remove start and desktop links
@@ -166,14 +166,13 @@ Function .onInit
 		StrCpy $INSTDIR "$PROGRAMFILES\${QGIS_BASE}"
 	${EndIf}
 
-	# Notify user that QGIS installtion
+	# Notify user that QGIS installation might nog be possible
 	UserInfo::GetAccountType
 	Pop $0
 	StrCmp $0 "User" 0 +2 ; Note: Win9x always returns "Admin"
-		MessageBox MB_OK 'No admin priviliges detected, installing QGIS application might not be possible'
+		MessageBox MB_OK 'No admin privileges detected, installing QGIS application might not work correctly.'
 	
 	DetailPrint "Checking existing profile"
-	System::Call 'kernel32::Beep(i 800,i 2000) l'
 
 	# Uncheck profile install when default profile is present, otherwise skip 4 lines
 	IfFileExists "$APPDATA\3Di\QGIS3\profiles\default\*.*" present missing
@@ -186,6 +185,6 @@ FunctionEnd
 
 ; Set section descriptions
 !insertmacro MUI_FUNCTION_DESCRIPTION_BEGIN
-!insertmacro MUI_DESCRIPTION_TEXT ${SecQGIS} "Installs the QGIS application."
+!insertmacro MUI_DESCRIPTION_TEXT ${SecQGIS} "Installs the QGIS application (for all users)."
 !insertmacro MUI_DESCRIPTION_TEXT ${SecProfile} "Installs a default user profile. WARNING: an existing default profile will be overwritten!"
 !insertmacro MUI_FUNCTION_DESCRIPTION_END
