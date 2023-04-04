@@ -3,7 +3,7 @@ SetCompress off
 
 Unicode True
 # Allow privilege elevation in vista
-# RequestExecutionLevel admin 
+RequestExecutionLevel highest
 
 !include "x64.nsh"
 !include "MUI.nsh"
@@ -60,7 +60,7 @@ Section "3Di Modeller Interface" SecQGIS
     ExecWait '"msiexec" /i "$INSTDIR\QGIS-OSGeo4W-${VERSION_NUMBER}.msi" INSTALLDIR="$INSTDIR" INSTALLDESKTOPSHORTCUTS="0" INSTALLMENUSHORTCUTS="0" /passive /L*V "$INSTDIR\install.log"' $0
 	${IfNot} $0 == "0"
 		MessageBox MB_ICONSTOP "Installer failed, please check install.log in installation folder"
-		Abort
+		Abort # Install stops. Only button enabled is Cancel.
 	${EndIf}
 
     # Sets registry keys so we get default (python) plugin loading
