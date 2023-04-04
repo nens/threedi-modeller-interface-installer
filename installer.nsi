@@ -32,6 +32,7 @@ ShowUnInstDetails hide
 !define MUI_HEADERIMAGE_UNBITMAP_NOSTRETCH ".\resources\UnInstallHeaderImage3Di.bmp"
 !define MUI_WELCOMEFINISHPAGE_BITMAP ".\resources\WelcomeFinishPage3Di.bmp"
 !define MUI_UNWELCOMEFINISHPAGE_BITMAP ".\resources\WelcomeFinishPage3Di.bmp"
+!define MUI_COMPONENTSPAGE_TEXT_TOP "Check the components you want to install.$\r$\n $\r$\nNOTE: 3D Modeller Interface will be installed for ALL users."
 
 # Installer Pages
 !define MUI_WELCOMEPAGE_TITLE_3LINES
