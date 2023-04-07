@@ -21,7 +21,7 @@ Name "${DISPLAYED_NAME}"
 # Name of the output file (installer executable)
 OutFile "${INSTALLER_NAME}"
 
-# Tell the installer to show Install and Uninstall details as default
+# Tell the installer to hide Install and Uninstall details
 ShowInstDetails hide
 ShowUnInstDetails hide
 
@@ -32,14 +32,15 @@ ShowUnInstDetails hide
 !define MUI_HEADERIMAGE_UNBITMAP_NOSTRETCH ".\resources\UnInstallHeaderImage3Di.bmp"
 !define MUI_WELCOMEFINISHPAGE_BITMAP ".\resources\WelcomeFinishPage3Di.bmp"
 !define MUI_UNWELCOMEFINISHPAGE_BITMAP ".\resources\WelcomeFinishPage3Di.bmp"
-!define MUI_COMPONENTSPAGE_TEXT_TOP "Check the components you want to install.$\r$\n $\r$\nNOTE: 3D Modeller Interface will be installed for ALL users."
+!define MUI_COMPONENTSPAGE_TEXT_TOP "Check the components you want to install.$\r$\n $\r$\nNOTE: 3Di Modeller Interface will be installed for ALL users."
 
 # Installer Pages
 !define MUI_WELCOMEPAGE_TITLE_3LINES
 !insertmacro MUI_PAGE_WELCOME
 !insertmacro MUI_PAGE_LICENSE ${LICENSE_FILE}
-!insertmacro MUI_PAGE_DIRECTORY
 !insertmacro MUI_PAGE_COMPONENTS
+!define MUI_PAGE_CUSTOMFUNCTION_PRE dir_pre_callback
+!insertmacro MUI_PAGE_DIRECTORY
 !insertmacro MUI_PAGE_INSTFILES
 !define MUI_FINISHPAGE_TITLE_3LINES
 !insertmacro MUI_PAGE_FINISH
@@ -48,6 +49,15 @@ ShowUnInstDetails hide
 !insertmacro MUI_UNPAGE_INSTFILES
 !insertmacro MUI_UNPAGE_FINISH
 !insertmacro MUI_LANGUAGE "English"
+
+Function dir_pre_callback
+	# Don't show install directory page when account type is user
+	UserInfo::GetAccountType
+	Pop $0
+	StrCmp $0 "User" 0 +2 ; Note: Win9x always returns "Admin"
+		abort # Aborting the pre_callback skips the page
+	DetailPrint "Finished directoy pre_callback"
+Functionend
 
 Section "3Di Modeller Interface" SecQGIS
 
@@ -167,15 +177,17 @@ Function .onInit
 		StrCpy $INSTDIR "$PROGRAMFILES\${QGIS_BASE}"
 	${EndIf}
 
-	# Notify user that QGIS installation might nog be possible
 	UserInfo::GetAccountType
 	Pop $0
-	StrCmp $0 "User" 0 +2 ; Note: Win9x always returns "Admin"
-		MessageBox MB_OK 'No admin privileges detected, installing QGIS application might not work correctly.'
-	
-	DetailPrint "Checking existing profile"
+	StrCmp $0 "User" user_is_user user_is_admin
+	user_is_user:
+		!insertmacro UnselectSection  ${SecQGIS}
+		!insertmacro SetSectionFlag ${SecQGIS} ${SF_RO}
+		MessageBox MB_OK 'You do not have administrator privileges. You can use this installer to install a 3Di User Profile, but cannot use it for installing the 3Di Modeller Interface application.'
+	user_is_admin:
+		DetailPrint "Checking existing profile"
 
-	# Uncheck profile install when default profile is present, otherwise skip 4 lines
+	# Uncheck profile install when default profile is present
 	IfFileExists "$APPDATA\3Di\QGIS3\profiles\default\*.*" present missing
 	present:
 		!insertmacro UnselectSection  ${SecProfile}
