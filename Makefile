@@ -1,7 +1,7 @@
 QGIS_VERSION_MAJOR = 3
 QGIS_VERSION_MINOR = 28
-QGIS_VERSION_PATCH = 4
-QGIS_VERSION_BINARY = 2
+QGIS_VERSION_PATCH = 5
+QGIS_VERSION_BINARY = 1
 
 INSTALLER_BUILDDIR = installer-build
 QGIS_INSTALLER_NAME = QGIS-OSGeo4W
@@ -47,7 +47,7 @@ clean:
 	rm -fr ./$(PLUGIN_DIR)
 	rm -f *.exe
 
-installer: 
+installer: clean
 	@echo
 	@echo "---------------------------"
 	@echo "Creating Windows Installer."
