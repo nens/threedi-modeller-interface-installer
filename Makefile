@@ -1,7 +1,7 @@
 QGIS_VERSION_MAJOR = 3
 QGIS_VERSION_MINOR = 28
-QGIS_VERSION_PATCH = 4
-QGIS_VERSION_BINARY = 2
+QGIS_VERSION_PATCH = 5
+QGIS_VERSION_BINARY = 1
 
 INSTALLER_BUILDDIR = installer-build
 QGIS_INSTALLER_NAME = QGIS-OSGeo4W
@@ -12,7 +12,7 @@ PACKAGE_NAME = 3DiModellerInterface
 SHORTCUT_NAME = 3Di Modeller Interface
 # 3Di ModellerInterface version (note that this is additional postfix than 
 # can be used when plugins are updated etc)
-PACKAGE_BINARY = 1
+PACKAGE_BINARY = 2
 
 # Our plugins (note trailing slash)
 NENS_PLUGIN_URL = https://plugins.3di.live/
@@ -47,7 +47,7 @@ clean:
 	rm -fr ./$(PLUGIN_DIR)
 	rm -f *.exe
 
-installer: clean 
+installer: clean
 	@echo
 	@echo "---------------------------"
 	@echo "Creating Windows Installer."
