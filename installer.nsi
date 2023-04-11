@@ -74,10 +74,6 @@ Section "3Di Modeller Interface" SecQGIS
 		Abort # Install stops. Only button enabled is Cancel.
 	${EndIf}
 
-    # Sets registry keys so we get default (python) plugin loading
-    !include plugins-3di.nsh
-    !include python_plugins-3di.nsh
-
 	# Copy some resources for uninstaller
 	SetOutPath $INSTDIR\icons
 	File ./resources/3Di.ico
