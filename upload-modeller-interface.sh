@@ -16,7 +16,6 @@ ARTIFACT=$1
 PROJECT=modeller-interface
 
 curl -X POST \
-     -v \
      --retry 3 \
      --progress-bar \
      -H "Content-Type: multipart/form-data" \
