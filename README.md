@@ -4,10 +4,10 @@ This repository contains a Makefile (which should be run in the accompanying doc
 
 - Downloads a specific complete QGIS installer 
 - Uses NSIS to wrap this in a global installer that:
-    - Silently installs QGIS (via its original installer) in a configurable directory (no QGIS shortcuts and links)
-    - Copies preconfigured profile data (ini files) to the user's AppData for customization (including splash screen)
-    - Adds N&S toolboxes (downloaded from plugins.3di.live) and external toolboxes (downloaded from plugins.qgis.org)
-    - Generates relevant start/desktop shortcuts
+    - Silently installs QGIS (via its original installer) in a configurable directory (no QGIS shortcuts and links, and only possible with admin rights) and generates relevant start/desktop shortcuts
+    - Optionally:
+        - Copies preconfigured profile data (ini files) to the user's AppData for customization (including splash screen)
+        - Adds N&S toolboxes (downloaded from plugins.3di.live) and external toolboxes (downloaded from plugins.qgis.org)
 
 Usage
 ------
@@ -36,6 +36,6 @@ Deploy
 ------
 
 The installer can be uploaded to https://artifacts.lizard.net/. The Makefile contains a build recipe for this that
-uses ``upload-modeller-interface.sh``. You'll need to set the $MODELLER_INTERFACE_ARTIFACTS_KEY environment variable
+uses ``upload-modeller-interface.sh``. You'll need to set the ``$MODELLER_INTERFACE_ARTIFACTS_KEY`` environment variable
 
     $ make upload
