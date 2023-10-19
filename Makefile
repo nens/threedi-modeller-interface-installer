@@ -12,15 +12,15 @@ PACKAGE_NAME = 3DiModellerInterface
 SHORTCUT_NAME = 3Di Modeller Interface
 # 3Di ModellerInterface version (note that this is additional postfix than 
 # can be used when plugins are updated etc)
-PACKAGE_BINARY = 2
+PACKAGE_BINARY = 3
 
 # Our plugins (note trailing slash)
 NENS_PLUGIN_URL = https://plugins.3di.live/
 
-TOOLBOX_FILENAME = threedi_results_analysis.3.1.11
-MODELSIM_FILENAME = threedi_models_and_simulations.3.6.0
+TOOLBOX_FILENAME = threedi_results_analysis.3.1.12
+MODELSIM_FILENAME = threedi_models_and_simulations.3.6.1
 CUSTOMIZATION_FILENAME = ThreeDiCustomizations.1.2.6
-SCHEMATISATION_FILENAME = threedi_schematisation_editor.1.7.0
+SCHEMATISATION_FILENAME = threedi_schematisation_editor.1.7.1
 
 # External plugins we want to add to the installer 
 QGIS_PLUGIN_URL = https://plugins.qgis.org/plugins/
@@ -37,7 +37,7 @@ VALUE_TOOL_NAME = valuetool
 VALUE_TOOL_VERSION = 3.0.17
 
 SERVAL_NAME = Serval
-SERVAL_VERSION = 3.10.5
+SERVAL_VERSION = 3.32.0
 
 PLUGIN_DIR = profiles/default/python/plugins/
 
