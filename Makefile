@@ -1,6 +1,6 @@
 QGIS_VERSION_MAJOR = 3
 QGIS_VERSION_MINOR = 28
-QGIS_VERSION_PATCH = 12
+QGIS_VERSION_PATCH = 13
 QGIS_VERSION_BINARY = 1
 
 INSTALLER_BUILDDIR = installer-build
@@ -10,17 +10,18 @@ QGIS_VERSION = $(QGIS_VERSION_MAJOR).$(QGIS_VERSION_MINOR).$(QGIS_VERSION_PATCH)
 QGIS_URL = https://download.qgis.org/downloads/
 PACKAGE_NAME = 3DiModellerInterface
 SHORTCUT_NAME = 3Di Modeller Interface
-# 3Di ModellerInterface version (note that this is additional postfix than 
+# 3Di ModellerInterface version (note that this is additional internal postfix that
 # can be used when plugins are updated etc)
 PACKAGE_BINARY = 1
 
 # Our plugins (note trailing slash)
 NENS_PLUGIN_URL = https://plugins.3di.live/
 
-TOOLBOX_FILENAME = threedi_results_analysis.3.2
+TOOLBOX_FILENAME = threedi_results_analysis.3.3
 MODELSIM_FILENAME = threedi_models_and_simulations.3.6.2
 CUSTOMIZATION_FILENAME = ThreeDiCustomizations.1.2.6
-SCHEMATISATION_FILENAME = threedi_schematisation_editor.1.7.1
+SCHEMATISATION_FILENAME = threedi_schematisation_editor.1.7.2
+LIZARD_PLUGIN_FILENAME = lizard_qgis_plugin.0.2.0
 
 # External plugins we want to add to the installer 
 QGIS_PLUGIN_URL = https://plugins.qgis.org/plugins/
@@ -31,7 +32,7 @@ PROFILE_TOOL_NAME = profiletool
 PROFILE_TOOL_VERSION = 4.2.6
 
 QMS_NAME = quick_map_services
-QMS_VERSION = 0.19.33
+QMS_VERSION = 0.19.34
 
 VALUE_TOOL_NAME = valuetool
 VALUE_TOOL_VERSION = 3.0.17
@@ -70,7 +71,10 @@ installer: clean
 	unzip -o ./$(INSTALLER_BUILDDIR)/$(TOOLBOX_FILENAME).zip -d ./$(PLUGIN_DIR) 
 
 	wget -N -P ./$(INSTALLER_BUILDDIR) $(NENS_PLUGIN_URL)$(SCHEMATISATION_FILENAME).zip
-	unzip -o ./$(INSTALLER_BUILDDIR)/$(SCHEMATISATION_FILENAME).zip -d ./$(PLUGIN_DIR) 
+	unzip -o ./$(INSTALLER_BUILDDIR)/$(SCHEMATISATION_FILENAME).zip -d ./$(PLUGIN_DIR)
+
+	wget -N -P ./$(INSTALLER_BUILDDIR) $(NENS_PLUGIN_URL)$(LIZARD_PLUGIN_FILENAME).zip
+	unzip -o ./$(INSTALLER_BUILDDIR)/$(LIZARD_PLUGIN_FILENAME).zip -d ./$(PLUGIN_DIR) 
 
 	wget -N -P ./$(INSTALLER_BUILDDIR) $(NENS_PLUGIN_URL)$(CUSTOMIZATION_FILENAME).zip
 	unzip -o ./$(INSTALLER_BUILDDIR)/$(CUSTOMIZATION_FILENAME).zip -d ./$(PLUGIN_DIR) 
