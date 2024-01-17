@@ -1,5 +1,4 @@
 #!/bin/bash
-# Unlike upload-artifact.sh, which is run automatically by travis,
 # this script is intended for manual use.
 #
 # Pass it the filename of the modeller interface executable as the first (and
