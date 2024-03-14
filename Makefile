@@ -1,6 +1,6 @@
 QGIS_VERSION_MAJOR = 3
-QGIS_VERSION_MINOR = 28
-QGIS_VERSION_PATCH = 13
+QGIS_VERSION_MINOR = 34
+QGIS_VERSION_PATCH = 4
 QGIS_VERSION_BINARY = 1
 
 INSTALLER_BUILDDIR = installer-build
@@ -17,11 +17,11 @@ PACKAGE_BINARY = 1
 # Our plugins (note trailing slash)
 NENS_PLUGIN_URL = https://plugins.3di.live/
 
-TOOLBOX_FILENAME = threedi_results_analysis.3.4
-MODELSIM_FILENAME = threedi_models_and_simulations.3.9
+TOOLBOX_FILENAME = threedi_results_analysis.3.5
+MODELSIM_FILENAME = threedi_models_and_simulations.3.9.1
 CUSTOMIZATION_FILENAME = ThreeDiCustomizations.1.2.6
-SCHEMATISATION_FILENAME = threedi_schematisation_editor.1.8
-LIZARD_PLUGIN_FILENAME = lizard_qgis_plugin.0.2.2
+SCHEMATISATION_FILENAME = threedi_schematisation_editor.1.9
+LIZARD_PLUGIN_FILENAME = lizard_qgis_plugin.0.3.1
 
 # External plugins we want to add to the installer 
 QGIS_PLUGIN_URL = https://plugins.qgis.org/plugins/
@@ -35,7 +35,7 @@ QMS_NAME = quick_map_services
 QMS_VERSION = 0.19.34
 
 VALUE_TOOL_NAME = valuetool
-VALUE_TOOL_VERSION = 3.0.17
+VALUE_TOOL_VERSION = 3.0.19
 
 SERVAL_NAME = Serval
 SERVAL_VERSION = 3.32.0
