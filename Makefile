@@ -21,7 +21,7 @@ TOOLBOX_FILENAME = threedi_results_analysis.3.6
 MODELSIM_FILENAME = threedi_models_and_simulations.3.9.1
 CUSTOMIZATION_FILENAME = ThreeDiCustomizations.1.2.6
 SCHEMATISATION_FILENAME = threedi_schematisation_editor.1.9
-LIZARD_PLUGIN_FILENAME = lizard_qgis_plugin.0.3.1
+LIZARD_PLUGIN_FILENAME = lizard_qgis_plugin.0.3.2
 
 # External plugins we want to add to the installer 
 QGIS_PLUGIN_URL = https://plugins.qgis.org/plugins/
