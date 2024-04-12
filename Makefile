@@ -1,6 +1,6 @@
 QGIS_VERSION_MAJOR = 3
 QGIS_VERSION_MINOR = 34
-QGIS_VERSION_PATCH = 4
+QGIS_VERSION_PATCH = 5
 QGIS_VERSION_BINARY = 1
 
 INSTALLER_BUILDDIR = installer-build
@@ -12,15 +12,15 @@ PACKAGE_NAME = 3DiModellerInterface
 SHORTCUT_NAME = 3Di Modeller Interface
 # 3Di ModellerInterface version (note that this is additional internal postfix that
 # can be used when plugins are updated etc)
-PACKAGE_BINARY = 2
+PACKAGE_BINARY = 1
 
 # Our plugins (note trailing slash)
 NENS_PLUGIN_URL = https://plugins.3di.live/
 
-TOOLBOX_FILENAME = threedi_results_analysis.3.6
-MODELSIM_FILENAME = threedi_models_and_simulations.3.9.1
+TOOLBOX_FILENAME = threedi_results_analysis.3.8
+MODELSIM_FILENAME = threedi_models_and_simulations.3.10
 CUSTOMIZATION_FILENAME = ThreeDiCustomizations.1.2.6
-SCHEMATISATION_FILENAME = threedi_schematisation_editor.1.9
+SCHEMATISATION_FILENAME = threedi_schematisation_editor.1.10
 LIZARD_PLUGIN_FILENAME = lizard_qgis_plugin.0.3.2
 
 # External plugins we want to add to the installer 
