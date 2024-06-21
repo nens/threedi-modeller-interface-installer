@@ -17,11 +17,11 @@ PACKAGE_BINARY = 1
 # Our plugins (note trailing slash)
 NENS_PLUGIN_URL = https://plugins.3di.live/
 
-TOOLBOX_FILENAME = threedi_results_analysis.3.8
-MODELSIM_FILENAME = threedi_models_and_simulations.3.10
+TOOLBOX_FILENAME = threedi_results_analysis.3.9
+MODELSIM_FILENAME = threedi_models_and_simulations.3.11
 CUSTOMIZATION_FILENAME = ThreeDiCustomizations.1.2.6
-SCHEMATISATION_FILENAME = threedi_schematisation_editor.1.10
-LIZARD_PLUGIN_FILENAME = lizard_qgis_plugin.0.3.2
+SCHEMATISATION_FILENAME = threedi_schematisation_editor.1.11
+LIZARD_PLUGIN_FILENAME = lizard_qgis_plugin.0.3.3
 
 # External plugins we want to add to the installer 
 QGIS_PLUGIN_URL = https://plugins.qgis.org/plugins/
