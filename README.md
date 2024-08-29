@@ -23,8 +23,8 @@ Check out the repo in a clean folder::
 
     $ mkdir /tmp/reallyclean
     $ cd /tmp/reallyclean
-    $ git clone git@github.com:nens/3Di-modeller-interface-installer.git
-    $ cd 3Di-modeller-interface-installer
+    $ git clone git@github.com:nens/threedi-modeller-interface-installer.git
+    $ cd threedi-modeller-interface-installer
 
     Build (if required) and run the container:  
     $ docker build . -t 3dimi-installer
