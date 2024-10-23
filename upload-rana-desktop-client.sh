@@ -4,7 +4,7 @@
 # Pass it the filename of the modeller interface executable as the first (and
 # only) argument.
 #
-# MODELLER_INTERFACE_ARTIFACTS_KEY should be set as env variable in your shell.
+# RANA_ARTIFACTS_KEY should be set as env variable in your shell.
 # Reinout can give you the value to use.
 
 set -e
@@ -12,12 +12,12 @@ set -u
 
 ARTIFACT=$1
 
-PROJECT=modeller-interface
+PROJECT=rana-desktop-client
 
 curl -X POST \
      --retry 3 \
      --progress-bar \
      -H "Content-Type: multipart/form-data" \
-     -F key=${MODELLER_INTERFACE_ARTIFACTS_KEY} \
+     -F key=${RANA_ARTIFACTS_KEY} \
      -F artifact=@${ARTIFACT} \
      https://artifacts.lizard.net/upload/${PROJECT}/ | cat

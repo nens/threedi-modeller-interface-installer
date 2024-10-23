@@ -32,7 +32,7 @@ ShowUnInstDetails hide
 !define MUI_HEADERIMAGE_UNBITMAP_NOSTRETCH ".\resources\UnInstallHeaderImage3Di.bmp"
 !define MUI_WELCOMEFINISHPAGE_BITMAP ".\resources\WelcomeFinishPage3Di.bmp"
 !define MUI_UNWELCOMEFINISHPAGE_BITMAP ".\resources\WelcomeFinishPage3Di.bmp"
-!define MUI_COMPONENTSPAGE_TEXT_TOP "Check the components you want to install.$\r$\n $\r$\nNOTE: 3Di Modeller Interface will be installed for ALL users."
+!define MUI_COMPONENTSPAGE_TEXT_TOP "Check the components you want to install.$\r$\n $\r$\nNOTE: Rana Desktop Client will be installed for ALL users."
 
 # Installer Pages
 !define MUI_WELCOMEPAGE_TITLE_3LINES
@@ -59,7 +59,7 @@ Function dir_pre_callback
 	DetailPrint "Finished directoy pre_callback"
 Functionend
 
-Section "3Di Modeller Interface" SecQGIS
+Section "Rana Desktop Client" SecQGIS
 
 	SetOutPath $INSTDIR
     File .\installer-build/QGIS-OSGeo4W-${VERSION_NUMBER}.msi
@@ -179,7 +179,7 @@ Function .onInit
 	user_is_user:
 		!insertmacro UnselectSection  ${SecQGIS}
 		!insertmacro SetSectionFlag ${SecQGIS} ${SF_RO}
-		MessageBox MB_OK 'You do not have administrator privileges. You can use this installer to install a 3Di User Profile, but cannot use it for installing the 3Di Modeller Interface application.'
+		MessageBox MB_OK 'You do not have administrator privileges. You cannot use it for installing the Rana Desktop Client application.'
 	user_is_admin:
 		DetailPrint "Checking existing profile"
 
