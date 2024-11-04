@@ -79,7 +79,7 @@ Section "Rana Desktop Client" SecQGIS
 	File ./resources/rana.ico
 
 	# Copy global settings file, these settings replace the original inline default ones, but the user profiles’ settings will be set on top of those.
-	SetOutPath $INSTDIR\apps\qgis-ltr\resources
+	SetOutPath $INSTDIR\apps\qgis\resources
 	File /oname=qgis_global_settings.ini ${PROFILE_FOLDER}\default\QGIS\QGIS3.ini
 
 	# Create some reg keys to add entries to the Add/Remove Programs section in the Control Pannel
@@ -104,12 +104,12 @@ Section "Rana Desktop Client" SecQGIS
 
 	# C:\Users\Public\Desktop
 	CreateDirectory "$DESKTOP\${QGIS_BASE}"
-	CreateShortCut "$DESKTOP\${QGIS_BASE}\${QGIS_SHORTCUT_NAME}.lnk" "$INSTDIR\bin\qgis-ltr.bat" '--globalsettingsfile "$INSTDIR\apps\qgis-ltr\resources\qgis_global_settings.ini" --profiles-path "$GenericProfileFolder"' "$INSTDIR\icons\rana.ico"
+	CreateShortCut "$DESKTOP\${QGIS_BASE}\${QGIS_SHORTCUT_NAME}.lnk" "$INSTDIR\bin\qgis.bat" '--globalsettingsfile "$INSTDIR\apps\qgis\resources\qgis_global_settings.ini" --profiles-path "$GenericProfileFolder"' "$INSTDIR\icons\rana.ico"
 	CreateShortCut "$DESKTOP\${QGIS_BASE}\OSGeo4W Shell.lnk" "$INSTDIR\OSGeo4W.bat" "" "$INSTDIR\OSGeo4W.ico"
 	
 	# C:\ProgramData\Microsoft\Windows\Start Menu\Programs
 	CreateDirectory "$SMPROGRAMS\${QGIS_BASE}"
-	CreateShortCut "$SMPROGRAMS\${QGIS_BASE}\${QGIS_SHORTCUT_NAME}.lnk" "$INSTDIR\bin\qgis-ltr.bat" '--globalsettingsfile "$INSTDIR\apps\qgis-ltr\resources\qgis_global_settings.ini" --profiles-path "$GenericProfileFolder"' "$INSTDIR\icons\rana.ico"
+	CreateShortCut "$SMPROGRAMS\${QGIS_BASE}\${QGIS_SHORTCUT_NAME}.lnk" "$INSTDIR\bin\qgis.bat" '--globalsettingsfile "$INSTDIR\apps\qgis\resources\qgis_global_settings.ini" --profiles-path "$GenericProfileFolder"' "$INSTDIR\icons\rana.ico"
 	CreateShortCut "$SMPROGRAMS\${QGIS_BASE}\OSGeo4W Shell.lnk" "$INSTDIR\OSGeo4W.bat" "" "$INSTDIR\OSGeo4W.ico"
 
     WriteUninstaller $INSTDIR\uninstall.exe
