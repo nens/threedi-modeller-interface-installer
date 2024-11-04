@@ -1,6 +1,6 @@
 QGIS_VERSION_MAJOR = 3
-QGIS_VERSION_MINOR = 38
-QGIS_VERSION_PATCH = 3
+QGIS_VERSION_MINOR = 40
+QGIS_VERSION_PATCH = 0
 QGIS_VERSION_BINARY = 1
 
 INSTALLER_BUILDDIR = installer-build
@@ -17,7 +17,7 @@ PACKAGE_BINARY = 1
 # Our plugins (note trailing slash)
 NENS_PLUGIN_URL = https://plugins.lizard.net/
 
-RANA_PLUGIN_FILENAME = rana_qgis_plugin.1.0.0
+RANA_PLUGIN_FILENAME = rana_qgis_plugin.0.1.4
 TOOLBOX_FILENAME = threedi_results_analysis.3.10.0
 MODELSIM_FILENAME = threedi_models_and_simulations.3.13.0
 CUSTOMIZATION_FILENAME = ThreeDiCustomizations.1.2.6
