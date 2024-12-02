@@ -12,7 +12,7 @@ set -u
 
 ARTIFACT=$1
 
-PROJECT=rana-desktop-client
+PROJECT=modeller-interface
 
 curl -X POST \
      --retry 3 \
