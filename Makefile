@@ -1,6 +1,6 @@
 QGIS_VERSION_MAJOR = 3
 QGIS_VERSION_MINOR = 40
-QGIS_VERSION_PATCH = 0
+QGIS_VERSION_PATCH = 1
 QGIS_VERSION_BINARY = 1
 
 INSTALLER_BUILDDIR = installer-build
@@ -17,12 +17,13 @@ PACKAGE_BINARY = 1
 # Our plugins (note trailing slash)
 NENS_PLUGIN_URL = https://plugins.lizard.net/
 
-RANA_PLUGIN_FILENAME = rana_qgis_plugin.0.1.4
-TOOLBOX_FILENAME = threedi_results_analysis.3.10.0
-MODELSIM_FILENAME = threedi_models_and_simulations.3.13.0
+RANA_PLUGIN_FILENAME = rana_qgis_plugin.0.1.7
+RANA_CUSTOMIZATIONS_FILENAME = rana_qgis_customisations.0.0.3
+TOOLBOX_FILENAME = threedi_results_analysis.3.11.0
+MODELSIM_FILENAME = threedi_models_and_simulations.3.15.0
 CUSTOMIZATION_FILENAME = ThreeDiCustomizations.1.2.6
-SCHEMATISATION_FILENAME = threedi_schematisation_editor.1.12.0
-LIZARD_PLUGIN_FILENAME = lizard_qgis_plugin.0.3.5
+SCHEMATISATION_FILENAME = threedi_schematisation_editor.1.14.0
+LIZARD_PLUGIN_FILENAME = lizard_qgis_plugin.0.3.6
 
 # External plugins we want to add to the installer 
 QGIS_PLUGIN_URL = https://plugins.qgis.org/plugins/
@@ -73,6 +74,9 @@ installer: clean
 
 	wget -N -P ./$(INSTALLER_BUILDDIR) $(NENS_PLUGIN_URL)$(RANA_PLUGIN_FILENAME).zip
 	unzip -o ./$(INSTALLER_BUILDDIR)/$(RANA_PLUGIN_FILENAME).zip -d ./$(PLUGIN_DIR)
+
+	wget -N -P ./$(INSTALLER_BUILDDIR) $(NENS_PLUGIN_URL)$(RANA_CUSTOMIZATIONS_FILENAME).zip
+	unzip -o ./$(INSTALLER_BUILDDIR)/$(RANA_CUSTOMIZATIONS_FILENAME).zip -d ./$(PLUGIN_DIR)
 
 	wget -N -P ./$(INSTALLER_BUILDDIR) $(NENS_PLUGIN_URL)$(SCHEMATISATION_FILENAME).zip
 	unzip -o ./$(INSTALLER_BUILDDIR)/$(SCHEMATISATION_FILENAME).zip -d ./$(PLUGIN_DIR)
