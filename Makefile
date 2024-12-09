@@ -17,7 +17,7 @@ PACKAGE_BINARY = 2
 # Our plugins (note trailing slash)
 NENS_PLUGIN_URL = https://plugins.lizard.net/
 
-RANA_PLUGIN_FILENAME = rana_qgis_plugin.0.1.9
+RANA_PLUGIN_FILENAME = rana_qgis_plugin.0.1.10
 RANA_CUSTOMIZATIONS_FILENAME = rana_qgis_customisations.0.0.3
 # TOOLBOX_FILENAME = threedi_results_analysis.3.11
 MODELSIM_FILENAME = threedi_models_and_simulations.3.15
