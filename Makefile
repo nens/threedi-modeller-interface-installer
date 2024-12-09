@@ -19,7 +19,7 @@ NENS_PLUGIN_URL = https://plugins.lizard.net/
 
 RANA_PLUGIN_FILENAME = rana_qgis_plugin.0.1.7
 RANA_CUSTOMIZATIONS_FILENAME = rana_qgis_customisations.0.0.3
-TOOLBOX_FILENAME = threedi_results_analysis.3.11
+# TOOLBOX_FILENAME = threedi_results_analysis.3.11
 MODELSIM_FILENAME = threedi_models_and_simulations.3.15
 CUSTOMIZATION_FILENAME = ThreeDiCustomizations.1.2.6
 SCHEMATISATION_FILENAME = threedi_schematisation_editor.1.16
