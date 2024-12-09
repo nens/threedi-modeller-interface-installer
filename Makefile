@@ -17,11 +17,10 @@ PACKAGE_BINARY = 2
 # Our plugins (note trailing slash)
 NENS_PLUGIN_URL = https://plugins.lizard.net/
 
-RANA_PLUGIN_FILENAME = rana_qgis_plugin.0.1.7
+RANA_PLUGIN_FILENAME = rana_qgis_plugin.0.1.9
 RANA_CUSTOMIZATIONS_FILENAME = rana_qgis_customisations.0.0.3
 # TOOLBOX_FILENAME = threedi_results_analysis.3.11
 MODELSIM_FILENAME = threedi_models_and_simulations.3.15
-CUSTOMIZATION_FILENAME = ThreeDiCustomizations.1.2.6
 SCHEMATISATION_FILENAME = threedi_schematisation_editor.1.16
 LIZARD_PLUGIN_FILENAME = lizard_qgis_plugin.0.3.6
 
@@ -83,9 +82,6 @@ installer: clean
 
 	wget -N -P ./$(INSTALLER_BUILDDIR) $(NENS_PLUGIN_URL)$(LIZARD_PLUGIN_FILENAME).zip
 	unzip -o ./$(INSTALLER_BUILDDIR)/$(LIZARD_PLUGIN_FILENAME).zip -d ./$(PLUGIN_DIR) 
-
-	wget -N -P ./$(INSTALLER_BUILDDIR) $(NENS_PLUGIN_URL)$(CUSTOMIZATION_FILENAME).zip
-	unzip -o ./$(INSTALLER_BUILDDIR)/$(CUSTOMIZATION_FILENAME).zip -d ./$(PLUGIN_DIR) 
 
 	wget -N -P ./$(INSTALLER_BUILDDIR) $(NENS_PLUGIN_URL)$(MODELSIM_FILENAME).zip
 	unzip -o ./$(INSTALLER_BUILDDIR)/$(MODELSIM_FILENAME).zip -d ./$(PLUGIN_DIR) 
