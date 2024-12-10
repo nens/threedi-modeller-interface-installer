@@ -12,14 +12,14 @@ PACKAGE_NAME = RanaDesktopClient
 SHORTCUT_NAME = Rana Desktop Client
 # Rana Desktop Client version (note that this is additional internal postfix that
 # can be used when plugins are updated etc)
-PACKAGE_BINARY = 3
+PACKAGE_BINARY = 4
 
 # Our plugins (note trailing slash)
 NENS_PLUGIN_URL = https://plugins.lizard.net/
 
 RANA_PLUGIN_FILENAME = rana_qgis_plugin.0.1.10
 RANA_CUSTOMIZATIONS_FILENAME = rana_qgis_customisations.0.0.3
-# TOOLBOX_FILENAME = threedi_results_analysis.3.11
+TOOLBOX_FILENAME = threedi_results_analysis.3.12
 MODELSIM_FILENAME = threedi_models_and_simulations.3.15
 SCHEMATISATION_FILENAME = threedi_schematisation_editor.1.16
 LIZARD_PLUGIN_FILENAME = lizard_qgis_plugin.0.3.6
@@ -68,8 +68,8 @@ installer: clean
 	wget -N -P ./$(INSTALLER_BUILDDIR) $(QGIS_URL)$(QGIS_INSTALLER_NAME)-$(QGIS_VERSION).msi
 
 	@echo "Downloading and extracting plugins"
-	# wget -N -P ./$(INSTALLER_BUILDDIR) $(NENS_PLUGIN_URL)$(TOOLBOX_FILENAME).zip
-	# unzip -o ./$(INSTALLER_BUILDDIR)/$(TOOLBOX_FILENAME).zip -d ./$(PLUGIN_DIR)
+	wget -N -P ./$(INSTALLER_BUILDDIR) $(NENS_PLUGIN_URL)$(TOOLBOX_FILENAME).zip
+	unzip -o ./$(INSTALLER_BUILDDIR)/$(TOOLBOX_FILENAME).zip -d ./$(PLUGIN_DIR)
 
 	wget -N -P ./$(INSTALLER_BUILDDIR) $(NENS_PLUGIN_URL)$(RANA_PLUGIN_FILENAME).zip
 	unzip -o ./$(INSTALLER_BUILDDIR)/$(RANA_PLUGIN_FILENAME).zip -d ./$(PLUGIN_DIR)
