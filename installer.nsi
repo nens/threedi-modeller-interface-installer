@@ -30,8 +30,8 @@ ShowUnInstDetails hide
 !define MUI_UNICON ".\resources\uninstall_rana.ico"
 !define MUI_HEADERIMAGE_BITMAP_NOSTETCH ".\resources\InstallHeaderImage3Di.bmp"
 !define MUI_HEADERIMAGE_UNBITMAP_NOSTRETCH ".\resources\UnInstallHeaderImage3Di.bmp"
-!define MUI_WELCOMEFINISHPAGE_BITMAP ".\resources\WelcomeFinishPage3Di.bmp"
-!define MUI_UNWELCOMEFINISHPAGE_BITMAP ".\resources\WelcomeFinishPage3Di.bmp"
+!define MUI_WELCOMEFINISHPAGE_BITMAP ".\resources\WelcomeFinishPageRana.bmp"
+!define MUI_UNWELCOMEFINISHPAGE_BITMAP ".\resources\WelcomeFinishPageRana.bmp"
 !define MUI_COMPONENTSPAGE_TEXT_TOP "Check the components you want to install.$\r$\n $\r$\nNOTE: Rana Desktop Client will be installed for ALL users."
 
 # Installer Pages
