@@ -1,4 +1,4 @@
-# 3Di-modeller-interface-installer
+# Rana Desktop Client Installer
 
 This repository contains a Makefile (which should be run in the accompanying docker container) that does the following:
 
@@ -7,7 +7,7 @@ This repository contains a Makefile (which should be run in the accompanying doc
     - Silently installs QGIS (via its original installer) in a configurable directory (no QGIS shortcuts and links, and only possible with admin rights) and generates relevant start/desktop shortcuts
     - Optionally:
         - Copies preconfigured profile data (ini files) to the user's AppData for customization (including splash screen)
-        - Adds N&S toolboxes (downloaded from plugins.3di.live) and external toolboxes (downloaded from plugins.qgis.org)
+        - Adds N&S toolboxes (downloaded from plugins.lizard.net) and external toolboxes (downloaded from plugins.qgis.org)
 
 Usage
 ------
@@ -27,8 +27,8 @@ Check out the repo in a clean folder::
     $ cd threedi-modeller-interface-installer
 
     Build (if required) and run the container:  
-    $ docker build . -t 3dimi-installer
-    $ docker run -w /app/ -v "$(pwd):/app" -it 3dimi-installer make installer
+    $ docker build . -t rana-installer
+    $ docker run -w /app/ -v "$(pwd):/app" -it rana-installer make installer
 
 The executable will be in the root folder.
 
@@ -36,6 +36,6 @@ Deploy
 ------
 
 The installer can be uploaded to https://artifacts.lizard.net/. The Makefile contains a build recipe for this that
-uses ``upload-modeller-interface.sh``. You'll need to set the ``$MODELLER_INTERFACE_ARTIFACTS_KEY`` environment variable
+uses ``upload-rana-desktop-client.sh``. You'll need to set the ``$RANA_ARTIFACTS_KEY`` environment variable
 
     $ make upload
