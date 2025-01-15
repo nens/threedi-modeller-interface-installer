@@ -12,7 +12,7 @@ RequestExecutionLevel highest
 
 !define PUBLISHER "Nelen en Schuurmans"
 !define WEB_SITE "https://nelen-schuurmans.nl/"
-!define WIKI_PAGE "https://test.ranawaterintelligence.com/"
+!define WIKI_PAGE "https://www.ranawaterintelligence.com/"
 
 # General Definitions (passed as parameter)
 
