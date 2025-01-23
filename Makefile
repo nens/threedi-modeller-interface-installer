@@ -1,6 +1,6 @@
 QGIS_VERSION_MAJOR = 3
 QGIS_VERSION_MINOR = 40
-QGIS_VERSION_PATCH = 1
+QGIS_VERSION_PATCH = 2
 QGIS_VERSION_BINARY = 1
 
 INSTALLER_BUILDDIR = installer-build
@@ -12,14 +12,14 @@ PACKAGE_NAME = RanaDesktopClient
 SHORTCUT_NAME = Rana Desktop Client
 # Rana Desktop Client version (note that this is additional internal postfix that
 # can be used when plugins are updated etc)
-PACKAGE_BINARY = 6
+PACKAGE_BINARY = 1
 
 # Our plugins (note trailing slash)
 NENS_PLUGIN_URL = https://plugins.lizard.net/
 
 RANA_PLUGIN_FILENAME = rana_qgis_plugin.1.1.0
 RANA_CUSTOMIZATIONS_FILENAME = rana_qgis_customisations.0.1.0
-TOOLBOX_FILENAME = threedi_results_analysis.3.12
+TOOLBOX_FILENAME = threedi_results_analysis.3.13
 MODELSIM_FILENAME = threedi_models_and_simulations.3.15
 SCHEMATISATION_FILENAME = threedi_schematisation_editor.1.16
 LIZARD_PLUGIN_FILENAME = lizard_qgis_plugin.0.3.6
