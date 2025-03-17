@@ -10,14 +10,11 @@ QGIS_VERSION = $(QGIS_VERSION_MAJOR).$(QGIS_VERSION_MINOR).$(QGIS_VERSION_PATCH)
 QGIS_URL = https://download.qgis.org/downloads/
 PACKAGE_NAME = RanaDesktopClient
 SHORTCUT_NAME = Rana Desktop Client
-# Rana Desktop Client version (note that this is additional internal postfix that
-# can be used when plugins are updated etc)
-PACKAGE_BINARY = 2
 
 # Our plugins (note trailing slash)
 NENS_PLUGIN_URL = https://plugins.lizard.net/
 
-RANA_PLUGIN_FILENAME = rana_qgis_plugin.1.1.1
+RANA_PLUGIN_FILENAME = rana_qgis_plugin.1.1.4
 RANA_CUSTOMIZATIONS_FILENAME = rana_qgis_customisations.0.1.0
 TOOLBOX_FILENAME = threedi_results_analysis.3.14
 MODELSIM_FILENAME = threedi_models_and_simulations.3.15
@@ -101,7 +98,7 @@ installer: clean
 	curl $(QGIS_PLUGIN_URL)$(SERVAL_NAME)/version/$(SERVAL_VERSION)/download/ --output ./$(INSTALLER_BUILDDIR)/$(SERVAL_NAME).zip
 	unzip -o ./$(INSTALLER_BUILDDIR)/$(SERVAL_NAME).zip -d ./$(PLUGIN_DIR)
 
-	makensis 	-DINSTALLER_NAME='$(PACKAGE_NAME)-OSGeo4W-$(QGIS_VERSION)-$(PACKAGE_BINARY)-Setup-x86_64.exe' \
+	makensis 	-DINSTALLER_NAME='$(PACKAGE_NAME).exe' \
 	 			-DDISPLAYED_NAME='$(PACKAGE_NAME) $(QGIS_VERSION)' \
 				-DARCH='x86_64' \
 				-DQGIS_BASE='$(PACKAGE_NAME) $(QGIS_VERSION_MAJOR).$(QGIS_VERSION_MINOR)' \
@@ -112,4 +109,4 @@ installer: clean
 				./installer.nsi
 
 upload:
-	./upload-rana-desktop-client.sh $(PACKAGE_NAME)-OSGeo4W-$(QGIS_VERSION)-$(PACKAGE_BINARY)-Setup-x86_64.exe
+	./upload-rana-desktop-client.sh $(PACKAGE_NAME).exe
