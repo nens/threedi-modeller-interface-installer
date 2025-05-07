@@ -17,12 +17,12 @@ PACKAGE_BINARY = 1
 # Our plugins (note trailing slash)
 NENS_PLUGIN_URL = https://plugins.3di.live/
 
-DEPLOADER_FILENAME = nens_dependency_loader.1.0.9
-TOOLBOX_FILENAME = threedi_results_analysis.3.15
-MODELSIM_FILENAME = threedi_models_and_simulations.3.16
+DEPLOADER_FILENAME = nens_dependency_loader.1.0.10
+TOOLBOX_FILENAME = threedi_results_analysis.3.17
+MODELSIM_FILENAME = threedi_models_and_simulations.3.18
 CUSTOMIZATION_FILENAME = ThreeDiCustomizations.1.2.6
-SCHEMATISATION_FILENAME = threedi_schematisation_editor.2.0
-LIZARD_PLUGIN_FILENAME = lizard_qgis_plugin.0.4.0
+SCHEMATISATION_FILENAME = threedi_schematisation_editor.2.2.0
+LIZARD_PLUGIN_FILENAME = lizard_qgis_plugin.0.4.2
 
 # External plugins we want to add to the installer 
 QGIS_PLUGIN_URL = https://plugins.qgis.org/plugins/
@@ -30,10 +30,10 @@ CRAYFISH_NAME = crayfish
 CRAYFISH_VERSION = 3.6.0
 
 PROFILE_TOOL_NAME = profiletool
-PROFILE_TOOL_VERSION = 4.2.6
+PROFILE_TOOL_VERSION = 4.3.2
 
 QMS_NAME = quick_map_services
-QMS_VERSION = 0.19.34
+QMS_VERSION = 0.21.2
 
 VALUE_TOOL_NAME = valuetool
 VALUE_TOOL_VERSION = 3.0.19
