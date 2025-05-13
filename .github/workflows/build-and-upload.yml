@@ -16,17 +16,17 @@ jobs:
 
             - name: Install dependencies
               run: |
-                apt-get -y update &&
-                apt-get -y install --no-install-recommends nsis locales &&
-                apt-get clean &&
-                apt-get purge &&
-                rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+                sudo apt-get -y update &&
+                sudo apt-get -y install --no-install-recommends nsis locales &&
+                sudo apt-get clean &&
+                sudo apt-get purge &&
+                sudo rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
             - name: Configure locale
               run: |
-                sed -i -e 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen &&
-                dpkg-reconfigure --frontend=noninteractive locales &&
-                update-locale LANG=en_US.UTF-8
+                sudo sed -i -e 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen &&
+                sudo dpkg-reconfigure --frontend=noninteractive locales &&
+                sudo update-locale LANG=en_US.UTF-8
 
             - name: Build installer
               run: make installer
