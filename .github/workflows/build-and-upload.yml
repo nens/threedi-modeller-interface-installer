@@ -31,18 +31,16 @@ jobs:
             - name: Build installer
               run: make installer
             
-            - name: Put executable name in environment variable
-              run: EXECUTABLE_NAME=$(find . -type f -name "*.exe")
-            
             - name: Upload executable to artifacts.lizard.net on tag release
               if: github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags/')
               run: |
+                EXECUTABLE_NAME=$(find . -type f -name '*.exe')
                 curl -X POST \
                     --retry 3 \
                     --progress-bar \
                     -H "Content-Type: multipart/form-data" \
                     -F key=${ARTIFACTS_SERVER_KEY} \
                     -F artifact=@${EXECUTABLE_NAME} \
-                    https://artifacts.lizard.net/upload/${PROJECT}/ | cat
+                    https://artifacts.lizard.net/upload/${PROJECT}/
               env:
                 ARTIFACTS_SERVER_KEY: ${{ secrets.ARTIFACTS_KEY }}
