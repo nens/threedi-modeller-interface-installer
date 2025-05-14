@@ -41,6 +41,6 @@ jobs:
                     -H "Content-Type: multipart/form-data" \
                     -F key=${ARTIFACTS_SERVER_KEY} \
                     -F artifact=@${EXECUTABLE_NAME} \
-                    https://artifacts.lizard.net/upload/${PROJECT}/
+                    https://artifacts.lizard.net/upload/modeller-interface/
               env:
                 ARTIFACTS_SERVER_KEY: ${{ secrets.ARTIFACTS_KEY }}
