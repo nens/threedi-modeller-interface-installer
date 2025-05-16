@@ -12,7 +12,7 @@ RequestExecutionLevel highest
 
 !define PUBLISHER "Nelen en Schuurmans"
 !define WEB_SITE "https://nelen-schuurmans.nl/"
-!define WIKI_PAGE "https://docs.3di.live/"
+!define WIKI_PAGE "https://www.ranawaterintelligence.com/"
 
 # General Definitions (passed as parameter)
 
@@ -26,13 +26,13 @@ ShowInstDetails hide
 ShowUnInstDetails hide
 
 !define MUI_ABORTWARNING
-!define MUI_ICON ".\resources\Install_3Di.ico"
-!define MUI_UNICON ".\resources\Uninstall_3Di.ico"
+!define MUI_ICON ".\resources\install_rana.ico"
+!define MUI_UNICON ".\resources\uninstall_rana.ico"
 !define MUI_HEADERIMAGE_BITMAP_NOSTETCH ".\resources\InstallHeaderImage3Di.bmp"
 !define MUI_HEADERIMAGE_UNBITMAP_NOSTRETCH ".\resources\UnInstallHeaderImage3Di.bmp"
-!define MUI_WELCOMEFINISHPAGE_BITMAP ".\resources\WelcomeFinishPage3Di.bmp"
-!define MUI_UNWELCOMEFINISHPAGE_BITMAP ".\resources\WelcomeFinishPage3Di.bmp"
-!define MUI_COMPONENTSPAGE_TEXT_TOP "Check the components you want to install.$\r$\n $\r$\nNOTE: 3Di Modeller Interface will be installed for ALL users."
+!define MUI_WELCOMEFINISHPAGE_BITMAP ".\resources\WelcomeFinishPageRana.bmp"
+!define MUI_UNWELCOMEFINISHPAGE_BITMAP ".\resources\WelcomeFinishPageRana.bmp"
+!define MUI_COMPONENTSPAGE_TEXT_TOP "Check the components you want to install.$\r$\n $\r$\nNOTE: Rana Desktop Client will be installed for ALL users."
 
 # Installer Pages
 !define MUI_WELCOMEPAGE_TITLE_3LINES
@@ -59,7 +59,7 @@ Function dir_pre_callback
 	DetailPrint "Finished directoy pre_callback"
 Functionend
 
-Section "3Di Modeller Interface" SecQGIS
+Section "Rana Desktop Client" SecQGIS
 
 	SetOutPath $INSTDIR
     File .\installer-build/QGIS-OSGeo4W-${VERSION_NUMBER}.msi
@@ -76,7 +76,7 @@ Section "3Di Modeller Interface" SecQGIS
 
 	# Copy some resources for uninstaller
 	SetOutPath $INSTDIR\icons
-	File ./resources/3Di.ico
+	File ./resources/rana.ico
 
 	# Copy global settings file, these settings replace the original inline default ones, but the user profiles’ settings will be set on top of those.
 	SetOutPath $INSTDIR\apps\qgis-ltr\resources
@@ -87,7 +87,7 @@ Section "3Di Modeller Interface" SecQGIS
 	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${QGIS_BASE}" "DisplayName" "${DISPLAYED_NAME}"
 	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${QGIS_BASE}" "DisplayVersion" "${VERSION_NUMBER}"
 	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${QGIS_BASE}" "UninstallString" "$INSTDIR\uninstall.exe"
-	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${QGIS_BASE}" "DisplayIcon" "$INSTDIR\icons\3Di.ico"
+	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${QGIS_BASE}" "DisplayIcon" "$INSTDIR\icons\rana.ico"
 	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${QGIS_BASE}" "HelpLink" "${WIKI_PAGE}"
 	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${QGIS_BASE}" "URLInfoAbout" "${WEB_SITE}"
 	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${QGIS_BASE}" "Publisher" "${PUBLISHER}"
@@ -100,28 +100,28 @@ Section "3Di Modeller Interface" SecQGIS
 	${GetParent} $PROFILE $UserFolder # Typically C:\Users
 	# This is QGIS profile folder using Windows' %username% variable
 	Var /GLOBAL GenericProfileFolder
-	StrCpy $GenericProfileFolder "$UserFolder\%username%\AppData\Roaming\3Di\QGIS3"
+	StrCpy $GenericProfileFolder "$UserFolder\%username%\AppData\Roaming\Rana\QGIS3"
 
 	# C:\Users\Public\Desktop
 	CreateDirectory "$DESKTOP\${QGIS_BASE}"
-	CreateShortCut "$DESKTOP\${QGIS_BASE}\${QGIS_SHORTCUT_NAME}.lnk" "$INSTDIR\bin\qgis-ltr.bat" '--globalsettingsfile "$INSTDIR\apps\qgis-ltr\resources\qgis_global_settings.ini" --profiles-path "$GenericProfileFolder"' "$INSTDIR\icons\3Di.ico"
+	CreateShortCut "$DESKTOP\${QGIS_BASE}\${QGIS_SHORTCUT_NAME}.lnk" "$INSTDIR\bin\qgis-ltr.bat" '--globalsettingsfile "$INSTDIR\apps\qgis-ltr\resources\qgis_global_settings.ini" --profiles-path "$GenericProfileFolder"' "$INSTDIR\icons\rana.ico"
 	CreateShortCut "$DESKTOP\${QGIS_BASE}\OSGeo4W Shell.lnk" "$INSTDIR\OSGeo4W.bat" "" "$INSTDIR\OSGeo4W.ico"
 	
 	# C:\ProgramData\Microsoft\Windows\Start Menu\Programs
 	CreateDirectory "$SMPROGRAMS\${QGIS_BASE}"
-	CreateShortCut "$SMPROGRAMS\${QGIS_BASE}\${QGIS_SHORTCUT_NAME}.lnk" "$INSTDIR\bin\qgis-ltr.bat" '--globalsettingsfile "$INSTDIR\apps\qgis-ltr\resources\qgis_global_settings.ini" --profiles-path "$GenericProfileFolder"' "$INSTDIR\icons\3Di.ico"
+	CreateShortCut "$SMPROGRAMS\${QGIS_BASE}\${QGIS_SHORTCUT_NAME}.lnk" "$INSTDIR\bin\qgis-ltr.bat" '--globalsettingsfile "$INSTDIR\apps\qgis-ltr\resources\qgis_global_settings.ini" --profiles-path "$GenericProfileFolder"' "$INSTDIR\icons\rana.ico"
 	CreateShortCut "$SMPROGRAMS\${QGIS_BASE}\OSGeo4W Shell.lnk" "$INSTDIR\OSGeo4W.bat" "" "$INSTDIR\OSGeo4W.ico"
 
     WriteUninstaller $INSTDIR\uninstall.exe
 SectionEnd
 
-Section "3Di User Profile" SecProfile
+Section "Rana User Profile" SecProfile
 
 	SetOverwrite try
 
     SetShellVarContext current
     Var /GLOBAL INSTDIR_PROFILE_DATA
-    StrCpy $INSTDIR_PROFILE_DATA "$APPDATA\3Di\QGIS3\profiles\"
+    StrCpy $INSTDIR_PROFILE_DATA "$APPDATA\Rana\QGIS3\profiles\"
     CreateDirectory "$INSTDIR_PROFILE_DATA"
     
 	; Add Profile files
@@ -138,7 +138,7 @@ Section "Uninstall"
 		${EndIf}
 	${EndIf}
     # Use the original msi to deinstall qgis
-    ExecWait '"msiexec" /x "$INSTDIR\QGIS-OSGeo4W-${VERSION_NUMBER}.msi" INSTALLDIR="$INSTDIR" /quiet /L*V "$APPDATA\3Di\QGIS3\uninstall.log"'
+    ExecWait '"msiexec" /x "$INSTDIR\QGIS-OSGeo4W-${VERSION_NUMBER}.msi" INSTALLDIR="$INSTDIR" /quiet /L*V "$APPDATA\Rana\QGIS3\uninstall.log"'
 
 	# Remove the program from the Add/Remove Programs section in the Control Pannel
 	DeleteRegKey HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${QGIS_BASE}"
@@ -179,12 +179,12 @@ Function .onInit
 	user_is_user:
 		!insertmacro UnselectSection  ${SecQGIS}
 		!insertmacro SetSectionFlag ${SecQGIS} ${SF_RO}
-		MessageBox MB_OK 'You do not have administrator privileges. You can use this installer to install a 3Di User Profile, but cannot use it for installing the 3Di Modeller Interface application.'
+		MessageBox MB_OK 'You do not have administrator privileges. You cannot use it for installing the Rana Desktop Client application.'
 	user_is_admin:
 		DetailPrint "Checking existing profile"
 
 	# Uncheck profile install when default profile is present
-	IfFileExists "$APPDATA\3Di\QGIS3\profiles\default\*.*" present missing
+	IfFileExists "$APPDATA\Rana\QGIS3\profiles\default\*.*" present missing
 	present:
 		!insertmacro UnselectSection  ${SecProfile}
 	missing:
