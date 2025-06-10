@@ -7,7 +7,7 @@ INSTALLER_BUILDDIR = installer-build
 QGIS_INSTALLER_NAME = QGIS-OSGeo4W
 
 QGIS_VERSION = $(QGIS_VERSION_MAJOR).$(QGIS_VERSION_MINOR).$(QGIS_VERSION_PATCH)-$(QGIS_VERSION_BINARY)
-QGIS_URL = https://download.qgis.org/downloads/
+QGIS_URL = https://www.norbit.de/~jef/
 PACKAGE_NAME = RanaDesktopClient
 SHORTCUT_NAME = Rana Desktop Client
 # Rana ModellerInterface version (note that this is additional internal postfix that
