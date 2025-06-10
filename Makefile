@@ -17,13 +17,14 @@ PACKAGE_BINARY = 2
 # Our plugins (note trailing slash)
 NENS_PLUGIN_URL = https://plugins.lizard.net/
 
-DEPLOADER_FILENAME = nens_dependency_loader.1.0.10
-RANA_PLUGIN_FILENAME = rana_qgis_plugin.1.1.6
+RANA_PLUGIN_FILENAME = rana_qgis_plugin.1.1.7
 RANA_CUSTOMIZATIONS_FILENAME = rana_qgis_customisations.0.1.0
-TOOLBOX_FILENAME = threedi_results_analysis.3.17
-MODELSIM_FILENAME = threedi_models_and_simulations.3.18
-SCHEMATISATION_FILENAME = threedi_schematisation_editor.2.2.0
-LIZARD_PLUGIN_FILENAME = lizard_qgis_plugin.0.4.2
+DEPLOADER_FILENAME = nens_dependency_loader.1.1
+TOOLBOX_FILENAME = threedi_results_analysis.3.19
+MODELSIM_FILENAME = threedi_models_and_simulations.3.20
+CUSTOMIZATION_FILENAME = ThreeDiCustomizations.1.2.6
+SCHEMATISATION_FILENAME = threedi_schematisation_editor.2.3
+LIZARD_PLUGIN_FILENAME = lizard_qgis_plugin.0.4.4
 
 # External plugins we want to add to the installer 
 QGIS_PLUGIN_URL = https://plugins.qgis.org/plugins/
