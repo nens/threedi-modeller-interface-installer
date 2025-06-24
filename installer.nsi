@@ -9,7 +9,8 @@ RequestExecutionLevel highest
 !include "MUI.nsh"
 !include "LogicLib.nsh"
 !include "FileFunc.nsh"
-
+!include "StrFunc.nsh"
+${StrRep} # Required by StrFunc
 !define PUBLISHER "Nelen en Schuurmans"
 !define WEB_SITE "https://nelen-schuurmans.nl/"
 !define WIKI_PAGE "https://www.ranawaterintelligence.com/"
@@ -112,6 +113,14 @@ Section "Rana Desktop Client" SecQGIS
 	CreateShortCut "$SMPROGRAMS\${QGIS_BASE}\${QGIS_SHORTCUT_NAME}.lnk" "$INSTDIR\bin\qgis-ltr.bat" '--globalsettingsfile "$INSTDIR\apps\qgis-ltr\resources\qgis_global_settings.ini" --profiles-path "$GenericProfileFolder"' "$INSTDIR\icons\rana.ico"
 	CreateShortCut "$SMPROGRAMS\${QGIS_BASE}\OSGeo4W Shell.lnk" "$INSTDIR\OSGeo4W.bat" "" "$INSTDIR\OSGeo4W.ico"
 
+	# Write some registry to set up Protocol Handler
+	${StrRep} $0 $GenericProfileFolder "%" "%%"
+	WriteRegStr HKCR "rana" "" "URL:rana Protocol"
+    WriteRegStr HKCR "rana" "URL Protocol" ""
+	WriteRegStr HKCR "rana\shell" "" ""
+	WriteRegStr HKCR "rana\shell\open" "" ""
+	WriteRegStr HKCR "rana\shell\open\command" "" '"$INSTDIR\bin\qgis-ltr.bat" --globalsettingsfile "$INSTDIR\apps\qgis-ltr\resources\qgis_global_settings.ini" --profiles-path "$0" -F "%1"' 
+	
     WriteUninstaller $INSTDIR\uninstall.exe
 SectionEnd
 
