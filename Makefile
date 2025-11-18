@@ -12,7 +12,7 @@ PACKAGE_NAME = 3DiModellerInterface
 SHORTCUT_NAME = 3Di Modeller Interface
 # 3Di ModellerInterface version (note that this is additional internal postfix that
 # can be used when plugins are updated etc)
-PACKAGE_BINARY = 5
+PACKAGE_BINARY = 6
 
 # Our plugins (note trailing slash)
 NENS_PLUGIN_URL = https://plugins.3di.live/
