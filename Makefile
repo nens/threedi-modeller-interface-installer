@@ -1,6 +1,6 @@
 QGIS_VERSION_MAJOR = 3
 QGIS_VERSION_MINOR = 40
-QGIS_VERSION_PATCH = 6
+QGIS_VERSION_PATCH = 7
 QGIS_VERSION_BINARY = 1
 
 INSTALLER_BUILDDIR = installer-build
@@ -8,15 +8,17 @@ QGIS_INSTALLER_NAME = QGIS-OSGeo4W
 
 QGIS_VERSION = $(QGIS_VERSION_MAJOR).$(QGIS_VERSION_MINOR).$(QGIS_VERSION_PATCH)-$(QGIS_VERSION_BINARY)
 QGIS_URL = https://www.norbit.de/~jef/
-PACKAGE_NAME = 3DiModellerInterface
-SHORTCUT_NAME = 3Di Modeller Interface
-# 3Di ModellerInterface version (note that this is additional internal postfix that
+PACKAGE_NAME = RanaDesktopClient
+SHORTCUT_NAME = Rana Desktop Client
+# Rana ModellerInterface version (note that this is additional internal postfix that
 # can be used when plugins are updated etc)
-PACKAGE_BINARY = 6
+PACKAGE_BINARY = 4
 
 # Our plugins (note trailing slash)
-NENS_PLUGIN_URL = https://plugins.3di.live/
+NENS_PLUGIN_URL = https://plugins.lizard.net/
 
+RANA_PLUGIN_FILENAME = rana_qgis_plugin.1.1.20
+RANA_CUSTOMIZATIONS_FILENAME = rana_qgis_customisations.0.1.1
 DEPLOADER_FILENAME = nens_dependency_loader.1.2.6
 TOOLBOX_FILENAME = threedi_results_analysis.3.26.2
 MODELSIM_FILENAME = threedi_models_and_simulations.3.27.4
@@ -72,16 +74,19 @@ installer: clean
 	unzip -o ./$(INSTALLER_BUILDDIR)/$(DEPLOADER_FILENAME).zip -d ./$(PLUGIN_DIR) 
 
 	wget -N -P ./$(INSTALLER_BUILDDIR) $(NENS_PLUGIN_URL)$(TOOLBOX_FILENAME).zip
-	unzip -o ./$(INSTALLER_BUILDDIR)/$(TOOLBOX_FILENAME).zip -d ./$(PLUGIN_DIR) 
+	unzip -o ./$(INSTALLER_BUILDDIR)/$(TOOLBOX_FILENAME).zip -d ./$(PLUGIN_DIR)
+
+	wget -N -P ./$(INSTALLER_BUILDDIR) $(NENS_PLUGIN_URL)$(RANA_PLUGIN_FILENAME).zip
+	unzip -o ./$(INSTALLER_BUILDDIR)/$(RANA_PLUGIN_FILENAME).zip -d ./$(PLUGIN_DIR)
+
+	wget -N -P ./$(INSTALLER_BUILDDIR) $(NENS_PLUGIN_URL)$(RANA_CUSTOMIZATIONS_FILENAME).zip
+	unzip -o ./$(INSTALLER_BUILDDIR)/$(RANA_CUSTOMIZATIONS_FILENAME).zip -d ./$(PLUGIN_DIR)
 
 	wget -N -P ./$(INSTALLER_BUILDDIR) $(NENS_PLUGIN_URL)$(SCHEMATISATION_FILENAME).zip
 	unzip -o ./$(INSTALLER_BUILDDIR)/$(SCHEMATISATION_FILENAME).zip -d ./$(PLUGIN_DIR)
 
 	wget -N -P ./$(INSTALLER_BUILDDIR) $(NENS_PLUGIN_URL)$(LIZARD_PLUGIN_FILENAME).zip
 	unzip -o ./$(INSTALLER_BUILDDIR)/$(LIZARD_PLUGIN_FILENAME).zip -d ./$(PLUGIN_DIR) 
-
-	wget -N -P ./$(INSTALLER_BUILDDIR) $(NENS_PLUGIN_URL)$(CUSTOMIZATION_FILENAME).zip
-	unzip -o ./$(INSTALLER_BUILDDIR)/$(CUSTOMIZATION_FILENAME).zip -d ./$(PLUGIN_DIR) 
 
 	wget -N -P ./$(INSTALLER_BUILDDIR) $(NENS_PLUGIN_URL)$(MODELSIM_FILENAME).zip
 	unzip -o ./$(INSTALLER_BUILDDIR)/$(MODELSIM_FILENAME).zip -d ./$(PLUGIN_DIR) 
@@ -112,4 +117,4 @@ installer: clean
 				./installer.nsi
 
 upload:
-	./upload-modeller-interface.sh $(PACKAGE_NAME)-OSGeo4W-$(QGIS_VERSION)-$(PACKAGE_BINARY)-Setup-x86_64.exe
+	./upload-rana-desktop-client.sh $(PACKAGE_NAME)-OSGeo4W-$(QGIS_VERSION)-$(PACKAGE_BINARY)-Setup-x86_64.exe
