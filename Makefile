@@ -12,19 +12,16 @@ PACKAGE_NAME = RanaDesktopClient
 SHORTCUT_NAME = Rana Desktop Client
 # Rana ModellerInterface version (note that this is additional internal postfix that
 # can be used when plugins are updated etc)
-PACKAGE_BINARY = 4
+PACKAGE_BINARY = 5
 
 # Our plugins (note trailing slash)
 NENS_PLUGIN_URL = https://plugins.lizard.net/
 
 RANA_PLUGIN_FILENAME = rana_qgis_plugin.1.1.20
 RANA_CUSTOMIZATIONS_FILENAME = rana_qgis_customisations.0.1.1
-DEPLOADER_FILENAME = nens_dependency_loader.1.2.6
-TOOLBOX_FILENAME = threedi_results_analysis.3.26.2
-MODELSIM_FILENAME = threedi_models_and_simulations.3.27.4
-CUSTOMIZATION_FILENAME = ThreeDiCustomizations.1.2.7
-SCHEMATISATION_FILENAME = threedi_schematisation_editor.2.4.2
-LIZARD_PLUGIN_FILENAME = lizard_qgis_plugin.0.4.11
+DEPLOADER_FILENAME = nens_dependency_loader.1.2.10
+TOOLBOX_FILENAME = threedi_results_analysis.3.26.4
+SCHEMATISATION_FILENAME = threedi_schematisation_editor.2.4.4
 
 # External plugins we want to add to the installer 
 QGIS_PLUGIN_URL = https://plugins.qgis.org/plugins/
@@ -84,12 +81,6 @@ installer: clean
 
 	wget -N -P ./$(INSTALLER_BUILDDIR) $(NENS_PLUGIN_URL)$(SCHEMATISATION_FILENAME).zip
 	unzip -o ./$(INSTALLER_BUILDDIR)/$(SCHEMATISATION_FILENAME).zip -d ./$(PLUGIN_DIR)
-
-	wget -N -P ./$(INSTALLER_BUILDDIR) $(NENS_PLUGIN_URL)$(LIZARD_PLUGIN_FILENAME).zip
-	unzip -o ./$(INSTALLER_BUILDDIR)/$(LIZARD_PLUGIN_FILENAME).zip -d ./$(PLUGIN_DIR) 
-
-	wget -N -P ./$(INSTALLER_BUILDDIR) $(NENS_PLUGIN_URL)$(MODELSIM_FILENAME).zip
-	unzip -o ./$(INSTALLER_BUILDDIR)/$(MODELSIM_FILENAME).zip -d ./$(PLUGIN_DIR) 
 
 	curl $(QGIS_PLUGIN_URL)$(CRAYFISH_NAME)/version/$(CRAYFISH_VERSION)/download/ --output ./$(INSTALLER_BUILDDIR)/$(CRAYFISH_NAME).zip
 	unzip -o ./$(INSTALLER_BUILDDIR)/$(CRAYFISH_NAME).zip -d ./$(PLUGIN_DIR)
