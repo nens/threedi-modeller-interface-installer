@@ -11,6 +11,10 @@ RequestExecutionLevel highest
 !include "FileFunc.nsh"
 !include "StrFunc.nsh"
 ${StrRep} # Required by StrFunc
+!include "TextFunc.nsh"
+${StrTrimNewLines} ; <-- REQUIRED to register the macro
+!include "StrFunc.nsh"
+${StrTok}
 !define PUBLISHER "Nelen en Schuurmans"
 !define WEB_SITE "https://nelen-schuurmans.nl/"
 !define WIKI_PAGE "https://www.ranawaterintelligence.com/"
@@ -50,6 +54,49 @@ ShowUnInstDetails hide
 !insertmacro MUI_UNPAGE_INSTFILES
 !insertmacro MUI_UNPAGE_FINISH
 !insertmacro MUI_LANGUAGE "English"
+
+Var RealUserProfile
+Var CurrentUser
+Var IsAdmin
+Var PSReturn
+Var ConsoleUser
+
+Function GetRealUserProfile
+
+    UserInfo::GetAccountType
+    Pop $IsAdmin
+
+    ${If} $IsAdmin == "Admin"
+
+        ; Get interactive console user (DOMAIN\User)
+        nsExec::ExecToStack 'powershell -NoProfile -Command "(Get-CimInstance Win32_ComputerSystem).UserName"'
+        Pop $PSReturn
+        Pop $ConsoleUser
+        ${StrTrimNewLines} $ConsoleUser $ConsoleUser
+
+        ; If no user detected, fallback to current account
+        ${If} $ConsoleUser == ""
+			MessageBox MB_OK 'Unable to retrieve the retrieve the console user, falling back to current user profile. This might cause the profile to be installed in the wrong user folder. In that case, please run the installer again without elevation and only install the profile component.'
+            UserInfo::GetName
+            Pop $0
+            StrCpy $RealUserProfile $0
+        ${Else}
+			; Extract username only (remove DOMAIN\)
+			${StrTok} $CurrentUser $ConsoleUser "\\" "2" ""
+			${If} $CurrentUser == ""
+				${StrTok} $CurrentUser $ConsoleUser "\\" "1" ""
+			${EndIf}
+			StrCpy $RealUserProfile $CurrentUser
+        ${EndIf}
+
+    ${Else}
+        ; Not elevated → current user
+        UserInfo::GetName
+        Pop $0
+        StrCpy $RealUserProfile $0
+    ${EndIf}
+
+FunctionEnd
 
 Function dir_pre_callback
 	# Don't show install directory page when account type is user
@@ -128,9 +175,15 @@ Section "Rana User Profile" SecProfile
 
 	SetOverwrite try
 
-    SetShellVarContext current
-    Var /GLOBAL INSTDIR_PROFILE_DATA
-    StrCpy $INSTDIR_PROFILE_DATA "$APPDATA\Rana\QGIS3\profiles\"
+	SetShellVarContext current
+	Var /GLOBAL INSTDIR_PROFILE_DATA
+
+	# Store the real user profile name in a global variable, this is needed to
+	# correctly set the profile path when the installer is run with elevated privileges.
+	Call GetRealUserProfile
+	Var /GLOBAL UsersFolder
+	${GetParent} $PROFILE $UsersFolder # Typically C:\Users
+	StrCpy $INSTDIR_PROFILE_DATA "$UsersFolder\$RealUserProfile\AppData\Roaming\Rana\QGIS3\profiles"
     CreateDirectory "$INSTDIR_PROFILE_DATA"
     
 	; Add Profile files
@@ -166,6 +219,7 @@ SectionEnd
 
 # .onInit Function (called when the installer is nearly finished initializing)
 Function .onInit
+	SetShellVarContext current
 	${If} ${ARCH} == "x86_64"
 		${If} ${RunningX64}
 			DetailPrint "Installer running on 64-bit host"
@@ -193,7 +247,12 @@ Function .onInit
 		DetailPrint "Checking existing profile"
 
 	# Uncheck profile install when default profile is present
-	IfFileExists "$APPDATA\Rana\QGIS3\profiles\default\*.*" present missing
+	Var /GLOBAL INSTDIR_PROFILE_FOLDER
+	Call GetRealUserProfile
+	Var /GLOBAL CUsers
+	${GetParent} $PROFILE $CUsers # Typically C:\Users
+	StrCpy $INSTDIR_PROFILE_FOLDER "$CUsers\$RealUserProfile\AppData\Roaming\Rana\QGIS3\profiles"
+	IfFileExists "$INSTDIR_PROFILE_FOLDER\default\*.*" present missing
 	present:
 		!insertmacro UnselectSection  ${SecProfile}
 	missing:
