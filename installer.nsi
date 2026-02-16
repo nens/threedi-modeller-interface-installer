@@ -67,12 +67,25 @@ Function GetRealUserProfile
     Pop $IsAdmin
 
     ${If} $IsAdmin == "Admin"
+        ; Get interactive console user (DOMAIN\User). This is tricky, as the installer is running with elevated privileges, so the current user can be the administrator,
+		; but we want to get the real user that is logged in to the console, which also works in remote-desktop sessions.
 
-        ; Get interactive console user (DOMAIN\User)
-        nsExec::ExecToStack 'powershell -NoProfile -Command "(Get-CimInstance Win32_ComputerSystem).UserName"'
+		; Not available when "Run as administrator"
+		; ReadRegStr $ConsoleUser HKCU "Volatile Environment" "USERNAME"
+
+		; Not available when "Run as administrator"
+		; ReadEnvStr $ConsoleUser USERNAME
+
+		; Not available when "Run as administrator"
+		; System::Call "advapi32::GetUserName(t .r0, *i ${NSIS_MAX_STRLEN} r1) i.r2"
+
+		; Not available when run in remote desktop (returns empty list)
+		; nsExec::ExecToStack 'powershell -NoProfile -Command "(Get-CimInstance Win32_ComputerSystem).UserName"'
+
+		nsExec::ExecToStack 'powershell -NoProfile -Command "(Get-Process -Name explorer -IncludeUserName | Select-Object -First 1).UserName"'
         Pop $PSReturn
         Pop $ConsoleUser
-        ${StrTrimNewLines} $ConsoleUser $ConsoleUser
+		${StrTrimNewLines} $ConsoleUser $ConsoleUser
 
         ; If no user detected, fallback to current account
         ${If} $ConsoleUser == ""
@@ -179,7 +192,7 @@ Section "Rana User Profile" SecProfile
 	Var /GLOBAL INSTDIR_PROFILE_DATA
 
 	# Store the real user profile name in a global variable, this is needed to
-	# correctly set the profile path when the installer is run with elevated privileges.
+	# correctly set the profile path when the installer is run as administrator ("Run as administrator").
 	Call GetRealUserProfile
 	Var /GLOBAL UsersFolder
 	${GetParent} $PROFILE $UsersFolder # Typically C:\Users
