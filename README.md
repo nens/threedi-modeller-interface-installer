@@ -35,5 +35,5 @@ The executable will be in the root folder.
 Deploy
 ------
 
-The installer is uploaded to https://artifacts.lizard.net/ through Github Actions on release. See docs/release_instructions.txt for instructions.
+The installer is uploaded to https://artifacts.lizard.net/ through Github Actions on release. See `docs/release_instructions.txt` for instructions.
 
