@@ -1,0 +1,149 @@
+Releasing the Rana Desktop Client consists of several steps
+1. Release Python dependencies to PyPI.
+2. Update the version of the Python dependencies in the nens-dependency-loader QGIS plugin and release it.
+3. Update the version of the nens-dependency-loader plugin in all our other QGIS plugins and release them.
+4. Update the version of all our plugins in the Rana Desktop Client and release it.
+
+To release the Python dependencies, you must install zest.releaser:
+$ pip install zest.releaser
+
+To release the QGIS plugins, you must also install qgispluginreleaser:
+$ pip install zest.releaser qgispluginreleaser.
+
+These take care of updating the version and changelog of the package/plugin about to be released.
+
+
+
+Step 1: PyPI dependencies
+
+
+threedi-schema
+Uses zest.releaser.
+$ git checkout master
+$ git pull
+$ fullrelease
+
+
+threedi-modelchecker
+Uses zest.releaser.
+depends on threedi-schema, but with a *, so that should not need bumping. Do release threedi-schema first so the modelchecker tests run on the new schema.
+$ git checkout master
+$ git pull
+$ fullrelease
+Note that this will open a PR in nens/rana-docs and assign it to you, which you should ignore.
+
+
+threedigrid
+Should not need releasing. Do not release except with approval of calccore team. Uses zest.releaser.
+
+
+threedidepth
+Very little development, should not need releasing. Uses zest.releaser.
+
+
+threedi-mi-utils
+Uses zest.releaser
+$ git checkout main
+$ git pull
+$ fullrelease
+
+
+threedi-api-client
+Frequent updates but should not need releasing; this is handled by the backend team. Uses zest.releaser.
+
+
+
+Step 2: nens-dependency-loader QGIS plugin
+
+
+nens-dependency-loader
+Uses zest.releaser and qgispluginreleaser
+Bump the following plugins in dependencies.py to the latest version:
+- threedigrid
+- threedi-schema
+- threedi-modelchecker
+- threedi-depth
+- threedigrid-builder
+- threedi-mi-utils
+- threedi-api-client
+
+update the threedigrid-builder wheels if necessary in external-dependencies/populate.sh, both for Windows and for Linux
+
+then commit, open PR, merge to main when the tests pass.
+Finally release:
+$ git checkout main
+$ git pull
+$ fullrelease
+
+
+
+Step 3. Other QGIS plugins
+
+
+rana-qgis-plugin
+Uses zest.releaser and qgispluginreleaser
+First bump the nens-dependency-loader version by editing the line in rana_qgis_plugin/metadata.txt:
+plugin_dependencies=Nelen and Schuurmans Dependency Loader==<insert new nens-dependency-loader version>
+Then release:
+$ git checkout main
+$ git pull
+$ fullrelease
+
+
+rana-qgis-customisations
+Barely changes so should not need releasing.
+Uses zest.releaser and qgispluginreleaser, but does not automatically upload, so you will need to set ARTIFACTS_KEY, which you can obtain from Reinout, if it needs releasing.
+$ git checkout main
+$ git pull
+$ fullrelease
+$ python3 zip_plugin.py
+$ ARTIFACTS_KEY=insert_key_here ./upload-artifact.sh
+
+
+threedi-results-analysis
+Uses zest.releaser and qgispluginreleaser
+First bump the nens-dependency-loader version by editing the line in metadata.txt:
+plugin_dependencies=Nelen and Schuurmans Dependency Loader==<insert new nens-dependency-loader version>
+Then release:
+$ git checkout master
+$ git pull
+$ fullrelease
+
+
+threedi_schematisation_editor
+Uses zest.releaser and qgispluginreleaser
+First bump the nens-dependency-loader version by editing the line in threedi_schematisation_editor/metadata.txt:
+plugin_dependencies=Nelen and Schuurmans Dependency Loader==<insert new nens-dependency-loader version>
+Then release:
+$ git checkout master
+$ git pull
+$ fullrelease
+
+
+
+Step 4: desktop client
+
+
+threedi-modeller-interface-installer
+In Makefile, bump the following plugins to the new versions you have just released:
+
+RANA_PLUGIN_FILENAME = rana_qgis_plugin.<insert new version>
+RANA_CUSTOMIZATIONS_FILENAME = rana_qgis_customisations.<insert new version>
+DEPLOADER_FILENAME = nens_dependency_loader.<insert new version>
+TOOLBOX_FILENAME = threedi_results_analysis.<insert new version>
+SCHEMATISATION_FILENAME = threedi_schematisation_editor.<insert new version>
+
+Also increment PACKAGE_BINARY by 1.
+
+Commit and merge to master.
+
+The new release tag should have the format rana-<QGIS_VERSION_MAJOR>.<QGIS_VERSION_MINOR>.<QGIS_VERSION_PATCH>-<QGIS_VERSION_BINARY>-<PACKAGE_BINARY>
+These values can all be found in the Makefile. Example tag: rana-3.40.7-1-5
+
+Release with the new tag:
+$ git checkout master
+$ git pull
+$ git tag <insert new tag>
+$ git push --tags
+
+The new desktop client will now be built and uploaded in github actions.
