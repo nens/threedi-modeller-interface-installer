@@ -8,8 +8,149 @@ on:
   workflow_dispatch:
 
 jobs:
-    build-and-upload:
+    check_versions:
+        name: Check plugins' pinned dependency loader versions match desktop client Makefile
         runs-on: ubuntu-24.04
+        steps:
+            # Checkout the code
+            - uses: actions/checkout@v4
+
+            - name: Get specified versions from Makefile
+              id: get_specified_versions
+              shell: python
+              run: |
+                import os
+                with open("Makefile", "r") as f:
+                    contents = f.readlines()
+                for line in contents:
+                    stripped_line = (line.strip("\n").strip("\t")).strip('"')
+                    if stripped_line.startswith("DEPLOADER_FILENAME"):
+                        dependency_loader_version = stripped_line.split(".", 1)[1]
+                    if stripped_line.startswith("RANA_PLUGIN_FILENAME"):
+                        rana_plugin_version = stripped_line.split(".", 1)[1]
+                    if stripped_line.startswith("TOOLBOX_FILENAME"):
+                        toolbox_version = stripped_line.split(".", 1)[1]
+                    if stripped_line.startswith("SCHEMATISATION_FILENAME"):
+                        schematisation_editor_version = stripped_line.split(".", 1)[1]
+                with open(os.environ['GITHUB_OUTPUT'], 'a') as step_output_environment:
+                    step_output_environment.write(f'dependency_loader_version={dependency_loader_version}\n')
+                    step_output_environment.write(f'rana_plugin_version={rana_plugin_version}\n')
+                    step_output_environment.write(f'toolbox_version={toolbox_version}\n')
+                    step_output_environment.write(f'schematisation_editor_version={schematisation_editor_version}\n')
+
+            - name: Check rana_qgis_plugin dependency loader matches version specified
+              shell: python
+              run: |
+                import os
+                import shutil
+                import zipfile
+                import urllib.request
+                from urllib.error import HTTPError
+                dependency_loader_version = os.environ["dependency_loader_version"]
+                rana_plugin_version = os.environ["rana_plugin_version"]
+                rana_qgis_plugin_url = f"https://plugins.lizard.net/rana_qgis_plugin.{rana_plugin_version}.zip"
+                try:
+                  with open("rana_qgis_plugin.zip", 'wb') as out:
+                      with urllib.request.urlopen(rana_qgis_plugin_url) as f:
+                          shutil.copyfileobj(f, out)
+                except HTTPError as e:
+                    raise ValueError(f"Could not download rana-qgis-plugin {rana_plugin_version} specified in Makefile. Did you set the wrong dependency version?") from e
+                zip_object = zipfile.ZipFile("rana_qgis_plugin.zip")
+                zip_object.extractall("rana-qgis-plugin")
+                with open("rana-qgis-plugin/rana_qgis_plugin/metadata.txt", "r") as f:
+                    contents = f.readlines()
+                    for line in contents:
+                        if line.startswith("plugin_dependencies"):
+                            plugin_dependencies = line.strip("\n").lstrip("plugin_dependencies=").split(",")
+                            plugin_dependencies = [i.strip() for i in plugin_dependencies]
+                            break
+                for dependency in plugin_dependencies:
+                    if dependency.startswith("Nelen and Schuurmans Dependency Loader"):
+                        assert "==" in dependency, "Nelen and Schuurmans Dependency Loader must be hard pinned to a version in rana-qgis-plugin"
+                        plugin_dependency_loader_version = dependency.split("==")[1]
+                assert plugin_dependency_loader_version == dependency_loader_version, \
+                    f"Version conflict: Makefile specifies dependency loader version {dependency_loader_version} but" + \
+                    f" rana-qgis-plugin is pinned to dependency loader {plugin_dependency_loader_version} in its metadata.txt"
+              env:
+                dependency_loader_version: ${{ steps.get_specified_versions.outputs.dependency_loader_version }}
+                rana_plugin_version: ${{ steps.get_specified_versions.outputs.rana_plugin_version }}
+
+            - name: Check threedi_results_analysis dependency loader matches version specified
+              shell: python
+              run: |
+                import os
+                import shutil
+                import zipfile
+                import urllib.request
+                dependency_loader_version = os.environ["dependency_loader_version"]
+                toolbox_version = os.environ["toolbox_version"]
+                toolbox_url = f"https://plugins.lizard.net/threedi_results_analysis.{toolbox_version}.zip"
+                try:
+                    with open("threedi_results_analysis.zip", 'wb') as out:
+                        with urllib.request.urlopen(toolbox_url) as f:
+                            shutil.copyfileobj(f, out)
+                except HTTPError as e:
+                    raise ValueError(f"Could not download rana-qgis-plugin {rana_plugin_version} specified in Makefile. Did you set the wrong dependency version?") from e
+                zip_object = zipfile.ZipFile("threedi_results_analysis.zip")
+                zip_object.extractall("threedi-results-analysis")
+                with open("threedi-results-analysis/threedi_results_analysis/metadata.txt", "r") as f:
+                    contents = f.readlines()
+                    for line in contents:
+                        if line.startswith("plugin_dependencies"):
+                            plugin_dependencies = line.strip("\n").lstrip("plugin_dependencies=").split(",")
+                            plugin_dependencies = [i.strip() for i in plugin_dependencies]
+                            break
+                for dependency in plugin_dependencies:
+                    if dependency.startswith("Nelen and Schuurmans Dependency Loader"):
+                        assert "==" in dependency, "Nelen and Schuurmans Dependency Loader must be hard pinned to a version in threedi-results-analysis"
+                        plugin_dependency_loader_version = dependency.split("==")[1]
+                assert plugin_dependency_loader_version == dependency_loader_version, \
+                    f"Version conflict: Makefile specifies dependency loader version {dependency_loader_version} but" + \
+                    f" threedi-results-analysis is pinned to dependency loader {plugin_dependency_loader_version} in its metadata.txt"
+              env:
+                dependency_loader_version: ${{ steps.get_specified_versions.outputs.dependency_loader_version }}
+                toolbox_version: ${{ steps.get_specified_versions.outputs.toolbox_version }}
+
+            - name: Check schematisation_editor_version dependency loader matches version specified
+              shell: python
+              run: |
+                import os
+                import shutil
+                import zipfile
+                import urllib.request
+                dependency_loader_version = os.environ["dependency_loader_version"]
+                schematisation_editor_version = os.environ["schematisation_editor_version"]
+                schematisation_editor_url = f"https://plugins.lizard.net/threedi_schematisation_editor.{schematisation_editor_version}.zip"
+                try:
+                    with open("threedi_schematisation_editor.zip", 'wb') as out:
+                        with urllib.request.urlopen(schematisation_editor_url) as f:
+                            shutil.copyfileobj(f, out)
+                except HTTPError as e:
+                    raise ValueError(f"Could not download rana-qgis-plugin {rana_plugin_version} specified in Makefile. Did you set the wrong dependency version?") from e
+                zip_object = zipfile.ZipFile("threedi_schematisation_editor.zip")
+                zip_object.extractall("threedi-schematisation-editor")
+                with open("threedi-schematisation-editor/threedi_schematisation_editor/metadata.txt", "r") as f:
+                    contents = f.readlines()
+                    for line in contents:
+                        if line.startswith("plugin_dependencies"):
+                            plugin_dependencies = line.strip("\n").lstrip("plugin_dependencies=").split(",")
+                            plugin_dependencies = [i.strip() for i in plugin_dependencies]
+                            break
+                for dependency in plugin_dependencies:
+                    if dependency.startswith("Nelen and Schuurmans Dependency Loader"):
+                        assert "==" in dependency, "Nelen and Schuurmans Dependency Loader must be hard pinned to a version in threedi_schematisation_editor"
+                        plugin_dependency_loader_version = dependency.split("==")[1]
+                assert plugin_dependency_loader_version == dependency_loader_version, \
+                    f"Version conflict: Makefile specifies dependency loader version {dependency_loader_version} but" + \
+                    f" threedi-schematisation-editor is pinned to dependency loader {plugin_dependency_loader_version} in its metadata.txt"
+              env:
+                dependency_loader_version: ${{ steps.get_specified_versions.outputs.dependency_loader_version }}
+                schematisation_editor_version: ${{ steps.get_specified_versions.outputs.schematisation_editor_version }}
+
+    build-and-upload:
+        name: Build and upload
+        runs-on: ubuntu-24.04
+        needs: [check_versions]
         steps:
             # Checkout the code
             - uses: actions/checkout@v4
