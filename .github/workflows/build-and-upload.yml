@@ -38,7 +38,7 @@ jobs:
                     step_output_environment.write(f'toolbox_version={toolbox_version}\n')
                     step_output_environment.write(f'schematisation_editor_version={schematisation_editor_version}\n')
 
-            - name: Check rana_qgis_plugin dependency loader matches version specified
+            - name: Check rana-qgis-plugin's pinned dependency loader matches version specified
               shell: python
               run: |
                 import os
@@ -75,7 +75,7 @@ jobs:
                 dependency_loader_version: ${{ steps.get_specified_versions.outputs.dependency_loader_version }}
                 rana_plugin_version: ${{ steps.get_specified_versions.outputs.rana_plugin_version }}
 
-            - name: Check threedi_results_analysis dependency loader matches version specified
+            - name: Check threedi-results-analysis's pinned dependency loader matches version specified
               shell: python
               run: |
                 import os
@@ -111,7 +111,7 @@ jobs:
                 dependency_loader_version: ${{ steps.get_specified_versions.outputs.dependency_loader_version }}
                 toolbox_version: ${{ steps.get_specified_versions.outputs.toolbox_version }}
 
-            - name: Check schematisation_editor_version dependency loader matches version specified
+            - name: Check threedi-schematisation-editor's pinned dependency loader matches version specified
               shell: python
               run: |
                 import os
