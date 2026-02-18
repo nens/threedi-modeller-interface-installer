@@ -92,12 +92,10 @@ $ fullrelease
 
 rana-qgis-customisations
 Barely changes so should not need releasing.
-Uses zest.releaser and qgispluginreleaser, but does not automatically upload, so you will need to set ARTIFACTS_KEY, which you can obtain from Reinout, if it needs releasing.
+Uses zest.releaser and qgispluginreleaser. Does not depend on nens-dependency-loader.
 $ git checkout main
 $ git pull
 $ fullrelease
-$ python3 zip_plugin.py
-$ ARTIFACTS_KEY=insert_key_here ./upload-artifact.sh
 
 
 threedi-results-analysis
