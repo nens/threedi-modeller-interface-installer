@@ -73,7 +73,6 @@ Function GetRealUserProfileImagePath
 
 		; Use the SID to get the ProfileImagePath from the registry
 		ReadRegStr $0 HKLM "SOFTWARE\Microsoft\Windows NT\CurrentVersion\ProfileList\$sid" "ProfileImagePath"
-		MessageBox MB_OK $0
 
         ; If no user detected, fallback to current account
         ${If} $0 == ""
