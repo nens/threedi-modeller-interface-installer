@@ -13,8 +13,6 @@ RequestExecutionLevel highest
 ${StrRep} # Required by StrFunc
 !include "TextFunc.nsh"
 ${StrTrimNewLines} ; <-- REQUIRED to register the macro
-!include "StrFunc.nsh"
-${StrTok}
 !define PUBLISHER "Nelen en Schuurmans"
 !define WEB_SITE "https://nelen-schuurmans.nl/"
 !define WIKI_PAGE "https://www.ranawaterintelligence.com/"
@@ -55,58 +53,40 @@ ShowUnInstDetails hide
 !insertmacro MUI_UNPAGE_FINISH
 !insertmacro MUI_LANGUAGE "English"
 
-Var RealUserProfile
-Var CurrentUser
-Var IsAdmin
-Var PSReturn
-Var ConsoleUser
+Function GetRealUserProfileImagePath
 
-Function GetRealUserProfile
+	; Only global variables are supported in NSIS
+	Var /GLOBAL RealUserProfilePath
+	Var /GLOBAL IsAdmin
+	Var /GLOBAL PSReturn
+	Var /GLOBAL sid
 
     UserInfo::GetAccountType
     Pop $IsAdmin
 
     ${If} $IsAdmin == "Admin"
-        ; Get interactive console user (DOMAIN\User). This is tricky, as the installer is running with elevated privileges, so the current user can be the administrator,
-		; but we want to get the real user that is logged in to the console, which also works in remote-desktop sessions.
+	    ; Get the SID of the user running explorer in the current powershell session
+		nsExec::ExecToStack 'powershell -NoProfile -Command "$$proc = Get-Process explorer | Where-Object SessionId -eq (Get-Process -Id $$PID).SessionId | Select-Object -First 1; $$owner = (Get-WmiObject Win32_Process -Filter $\"ProcessId=$$($$proc.Id)$\").GetOwner();$$ntAccount = New-Object System.Security.Principal.NTAccount($$owner.Domain, $$owner.User);$$sid = $$ntAccount.Translate([System.Security.Principal.SecurityIdentifier]).Value; Write-Output $$sid"'
+		Pop $PSReturn
+		Pop $sid
+		${StrTrimNewLines} $sid $sid
 
-		; Not available when "Run as administrator"
-		; ReadRegStr $ConsoleUser HKCU "Volatile Environment" "USERNAME"
-
-		; Not available when "Run as administrator"
-		; ReadEnvStr $ConsoleUser USERNAME
-
-		; Not available when "Run as administrator"
-		; System::Call "advapi32::GetUserName(t .r0, *i ${NSIS_MAX_STRLEN} r1) i.r2"
-
-		; Not available when run in remote desktop (returns empty list)
-		; nsExec::ExecToStack 'powershell -NoProfile -Command "(Get-CimInstance Win32_ComputerSystem).UserName"'
-
-		nsExec::ExecToStack 'powershell -NoProfile -Command "(Get-Process -Name explorer -IncludeUserName | Select-Object -First 1).UserName"'
-        Pop $PSReturn
-        Pop $ConsoleUser
-		${StrTrimNewLines} $ConsoleUser $ConsoleUser
+		; Use the SID to get the ProfileImagePath from the registry
+		ReadRegStr $0 HKLM "SOFTWARE\Microsoft\Windows NT\CurrentVersion\ProfileList\$sid" "ProfileImagePath"
+		MessageBox MB_OK $0
 
         ; If no user detected, fallback to current account
-        ${If} $ConsoleUser == ""
+        ${If} $0 == ""
 			MessageBox MB_OK 'Unable to retrieve the retrieve the console user, falling back to current user profile. This might cause the profile to be installed in the wrong user folder. In that case, please run the installer again without elevation and only install the profile component.'
-            UserInfo::GetName
-            Pop $0
-            StrCpy $RealUserProfile $0
+            # $PROFILE is typically c:\Users\username
+			StrCpy $RealUserProfilePath $PROFILE
         ${Else}
-			; Extract username only (remove DOMAIN\)
-			${StrTok} $CurrentUser $ConsoleUser "\\" "2" ""
-			${If} $CurrentUser == ""
-				${StrTok} $CurrentUser $ConsoleUser "\\" "1" ""
-			${EndIf}
-			StrCpy $RealUserProfile $CurrentUser
+			StrCpy $RealUserProfilePath $0
         ${EndIf}
 
     ${Else}
-        ; Not elevated → current user
-        UserInfo::GetName
-        Pop $0
-        StrCpy $RealUserProfile $0
+        ; Not elevated, we can just retrieve current user profile path
+		StrCpy $RealUserProfilePath $PROFILE
     ${EndIf}
 
 FunctionEnd
@@ -156,7 +136,6 @@ Section "Rana Desktop Client" SecQGIS
 	# Start and Desktop links (also pass the profile folder and global (default) setting file) for ALL users
 	SetShellVarContext all
 
-	# Only global vars are currently supported
 	Var /GLOBAL UserFolder
 	${GetParent} $PROFILE $UserFolder # Typically C:\Users
 	# This is QGIS profile folder using Windows' %username% variable
@@ -193,10 +172,8 @@ Section "Rana User Profile" SecProfile
 
 	# Store the real user profile name in a global variable, this is needed to
 	# correctly set the profile path when the installer is run as administrator ("Run as administrator").
-	Call GetRealUserProfile
-	Var /GLOBAL UsersFolder
-	${GetParent} $PROFILE $UsersFolder # Typically C:\Users
-	StrCpy $INSTDIR_PROFILE_DATA "$UsersFolder\$RealUserProfile\AppData\Roaming\Rana\QGIS3\profiles"
+	Call GetRealUserProfileImagePath
+	StrCpy $INSTDIR_PROFILE_DATA "$RealUserProfilePath\AppData\Roaming\Rana\QGIS3\profiles"
     CreateDirectory "$INSTDIR_PROFILE_DATA"
     
 	; Add Profile files
@@ -261,10 +238,8 @@ Function .onInit
 
 	# Uncheck profile install when default profile is present
 	Var /GLOBAL INSTDIR_PROFILE_FOLDER
-	Call GetRealUserProfile
-	Var /GLOBAL CUsers
-	${GetParent} $PROFILE $CUsers # Typically C:\Users
-	StrCpy $INSTDIR_PROFILE_FOLDER "$CUsers\$RealUserProfile\AppData\Roaming\Rana\QGIS3\profiles"
+	Call GetRealUserProfileImagePath
+	StrCpy $INSTDIR_PROFILE_FOLDER "$RealUserProfilePath\AppData\Roaming\Rana\QGIS3\profiles"
 	IfFileExists "$INSTDIR_PROFILE_FOLDER\default\*.*" present missing
 	present:
 		!insertmacro UnselectSection  ${SecProfile}

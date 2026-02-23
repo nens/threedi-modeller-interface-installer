@@ -51,51 +51,51 @@ clean:
 	rm -fr ./$(PLUGIN_DIR)
 	rm -f *.exe
 
-installer: clean
+installer: 
 	@echo
 	@echo "---------------------------"
 	@echo "Creating Windows Installer."
 	@echo "---------------------------"
 	
-	@echo "Creating installation folder"
-	mkdir -p ./$(INSTALLER_BUILDDIR)
+# 	@echo "Creating installation folder"
+# 	mkdir -p ./$(INSTALLER_BUILDDIR)
 
-	@echo "Creating plugin folder"
-	mkdir -p ./$(PLUGIN_DIR)
+# 	@echo "Creating plugin folder"
+# 	mkdir -p ./$(PLUGIN_DIR)
 	
-	@echo "Downloading QGIS"
-	wget -N -P ./$(INSTALLER_BUILDDIR) $(QGIS_URL)$(QGIS_INSTALLER_NAME)-$(QGIS_VERSION).msi
+# 	@echo "Downloading QGIS"
+# 	wget -N -P ./$(INSTALLER_BUILDDIR) $(QGIS_URL)$(QGIS_INSTALLER_NAME)-$(QGIS_VERSION).msi
 
-	@echo "Downloading and extracting plugins"
-	wget -N -P ./$(INSTALLER_BUILDDIR) $(NENS_PLUGIN_URL)$(DEPLOADER_FILENAME).zip
-	unzip -o ./$(INSTALLER_BUILDDIR)/$(DEPLOADER_FILENAME).zip -d ./$(PLUGIN_DIR) 
+# 	@echo "Downloading and extracting plugins"
+# 	wget -N -P ./$(INSTALLER_BUILDDIR) $(NENS_PLUGIN_URL)$(DEPLOADER_FILENAME).zip
+# 	unzip -o ./$(INSTALLER_BUILDDIR)/$(DEPLOADER_FILENAME).zip -d ./$(PLUGIN_DIR) 
 
-	wget -N -P ./$(INSTALLER_BUILDDIR) $(NENS_PLUGIN_URL)$(TOOLBOX_FILENAME).zip
-	unzip -o ./$(INSTALLER_BUILDDIR)/$(TOOLBOX_FILENAME).zip -d ./$(PLUGIN_DIR)
+# 	wget -N -P ./$(INSTALLER_BUILDDIR) $(NENS_PLUGIN_URL)$(TOOLBOX_FILENAME).zip
+# 	unzip -o ./$(INSTALLER_BUILDDIR)/$(TOOLBOX_FILENAME).zip -d ./$(PLUGIN_DIR)
 
-	wget -N -P ./$(INSTALLER_BUILDDIR) $(NENS_PLUGIN_URL)$(RANA_PLUGIN_FILENAME).zip
-	unzip -o ./$(INSTALLER_BUILDDIR)/$(RANA_PLUGIN_FILENAME).zip -d ./$(PLUGIN_DIR)
+# 	wget -N -P ./$(INSTALLER_BUILDDIR) $(NENS_PLUGIN_URL)$(RANA_PLUGIN_FILENAME).zip
+# 	unzip -o ./$(INSTALLER_BUILDDIR)/$(RANA_PLUGIN_FILENAME).zip -d ./$(PLUGIN_DIR)
 
-	wget -N -P ./$(INSTALLER_BUILDDIR) $(NENS_PLUGIN_URL)$(RANA_CUSTOMIZATIONS_FILENAME).zip
-	unzip -o ./$(INSTALLER_BUILDDIR)/$(RANA_CUSTOMIZATIONS_FILENAME).zip -d ./$(PLUGIN_DIR)
+# 	wget -N -P ./$(INSTALLER_BUILDDIR) $(NENS_PLUGIN_URL)$(RANA_CUSTOMIZATIONS_FILENAME).zip
+# 	unzip -o ./$(INSTALLER_BUILDDIR)/$(RANA_CUSTOMIZATIONS_FILENAME).zip -d ./$(PLUGIN_DIR)
 
-	wget -N -P ./$(INSTALLER_BUILDDIR) $(NENS_PLUGIN_URL)$(SCHEMATISATION_FILENAME).zip
-	unzip -o ./$(INSTALLER_BUILDDIR)/$(SCHEMATISATION_FILENAME).zip -d ./$(PLUGIN_DIR)
+# 	wget -N -P ./$(INSTALLER_BUILDDIR) $(NENS_PLUGIN_URL)$(SCHEMATISATION_FILENAME).zip
+# 	unzip -o ./$(INSTALLER_BUILDDIR)/$(SCHEMATISATION_FILENAME).zip -d ./$(PLUGIN_DIR)
 
-	curl $(QGIS_PLUGIN_URL)$(CRAYFISH_NAME)/version/$(CRAYFISH_VERSION)/download/ --output ./$(INSTALLER_BUILDDIR)/$(CRAYFISH_NAME).zip
-	unzip -o ./$(INSTALLER_BUILDDIR)/$(CRAYFISH_NAME).zip -d ./$(PLUGIN_DIR)
+# 	curl $(QGIS_PLUGIN_URL)$(CRAYFISH_NAME)/version/$(CRAYFISH_VERSION)/download/ --output ./$(INSTALLER_BUILDDIR)/$(CRAYFISH_NAME).zip
+# 	unzip -o ./$(INSTALLER_BUILDDIR)/$(CRAYFISH_NAME).zip -d ./$(PLUGIN_DIR)
 
-	curl $(QGIS_PLUGIN_URL)$(PROFILE_TOOL_NAME)/version/$(PROFILE_TOOL_VERSION)/download/ --output ./$(INSTALLER_BUILDDIR)/$(PROFILE_TOOL_NAME).zip
-	unzip -o ./$(INSTALLER_BUILDDIR)/$(PROFILE_TOOL_NAME).zip -d ./$(PLUGIN_DIR)
+# 	curl $(QGIS_PLUGIN_URL)$(PROFILE_TOOL_NAME)/version/$(PROFILE_TOOL_VERSION)/download/ --output ./$(INSTALLER_BUILDDIR)/$(PROFILE_TOOL_NAME).zip
+# 	unzip -o ./$(INSTALLER_BUILDDIR)/$(PROFILE_TOOL_NAME).zip -d ./$(PLUGIN_DIR)
 
-	curl $(QGIS_PLUGIN_URL)$(QMS_NAME)/version/$(QMS_VERSION)/download/ --output ./$(INSTALLER_BUILDDIR)/$(QMS_NAME).zip
-	unzip -o ./$(INSTALLER_BUILDDIR)/$(QMS_NAME).zip -d ./$(PLUGIN_DIR)
+# 	curl $(QGIS_PLUGIN_URL)$(QMS_NAME)/version/$(QMS_VERSION)/download/ --output ./$(INSTALLER_BUILDDIR)/$(QMS_NAME).zip
+# 	unzip -o ./$(INSTALLER_BUILDDIR)/$(QMS_NAME).zip -d ./$(PLUGIN_DIR)
 
-	curl $(QGIS_PLUGIN_URL)$(VALUE_TOOL_NAME)/version/$(VALUE_TOOL_VERSION)/download/ --output ./$(INSTALLER_BUILDDIR)/$(VALUE_TOOL_NAME).zip
-	unzip -o ./$(INSTALLER_BUILDDIR)/$(VALUE_TOOL_NAME).zip -d ./$(PLUGIN_DIR)
+# 	curl $(QGIS_PLUGIN_URL)$(VALUE_TOOL_NAME)/version/$(VALUE_TOOL_VERSION)/download/ --output ./$(INSTALLER_BUILDDIR)/$(VALUE_TOOL_NAME).zip
+# 	unzip -o ./$(INSTALLER_BUILDDIR)/$(VALUE_TOOL_NAME).zip -d ./$(PLUGIN_DIR)
 
-	curl $(QGIS_PLUGIN_URL)$(SERVAL_NAME)/version/$(SERVAL_VERSION)/download/ --output ./$(INSTALLER_BUILDDIR)/$(SERVAL_NAME).zip
-	unzip -o ./$(INSTALLER_BUILDDIR)/$(SERVAL_NAME).zip -d ./$(PLUGIN_DIR)
+# 	curl $(QGIS_PLUGIN_URL)$(SERVAL_NAME)/version/$(SERVAL_VERSION)/download/ --output ./$(INSTALLER_BUILDDIR)/$(SERVAL_NAME).zip
+# 	unzip -o ./$(INSTALLER_BUILDDIR)/$(SERVAL_NAME).zip -d ./$(PLUGIN_DIR)
 
 	makensis 	-DINSTALLER_NAME='$(PACKAGE_NAME)-OSGeo4W-$(QGIS_VERSION)-$(PACKAGE_BINARY)-Setup-x86_64.exe' \
 	 			-DDISPLAYED_NAME='$(PACKAGE_NAME) $(QGIS_VERSION)' \
