@@ -37,3 +37,7 @@ Deploy
 
 The installer is uploaded to https://artifacts.lizard.net/ through Github Actions on release. See `docs/release_instructions.txt` for instructions.
 
+This can also be done manually, the Makefile contains a build recipe for this that
+uses ``upload-rana-desktop-client.sh``. You'll need to set the ``$RANA_ARTIFACTS_KEY`` environment variable
+
+    $ make upload
