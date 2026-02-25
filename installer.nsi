@@ -11,6 +11,8 @@ RequestExecutionLevel highest
 !include "FileFunc.nsh"
 !include "StrFunc.nsh"
 ${StrRep} # Required by StrFunc
+!include "TextFunc.nsh"
+${StrTrimNewLines} ; <-- REQUIRED to register the macro
 !define PUBLISHER "Nelen en Schuurmans"
 !define WEB_SITE "https://nelen-schuurmans.nl/"
 !define WIKI_PAGE "https://www.ranawaterintelligence.com/"
@@ -50,6 +52,43 @@ ShowUnInstDetails hide
 !insertmacro MUI_UNPAGE_INSTFILES
 !insertmacro MUI_UNPAGE_FINISH
 !insertmacro MUI_LANGUAGE "English"
+
+Function GetRealUserProfileImagePath
+
+	; Only global variables are supported in NSIS
+	Var /GLOBAL RealUserProfilePath
+	Var /GLOBAL IsAdmin
+	Var /GLOBAL PSReturn
+	Var /GLOBAL sid
+
+    UserInfo::GetAccountType
+    Pop $IsAdmin
+
+    ${If} $IsAdmin == "Admin"
+	    ; Get the SID of the user running explorer in the current powershell session
+		nsExec::ExecToStack 'powershell -NoProfile -Command "$$proc = Get-Process explorer | Where-Object SessionId -eq (Get-Process -Id $$PID).SessionId | Select-Object -First 1; $$owner = (Get-WmiObject Win32_Process -Filter $\"ProcessId=$$($$proc.Id)$\").GetOwner();$$ntAccount = New-Object System.Security.Principal.NTAccount($$owner.Domain, $$owner.User);$$sid = $$ntAccount.Translate([System.Security.Principal.SecurityIdentifier]).Value; Write-Output $$sid"'
+		Pop $PSReturn
+		Pop $sid
+		${StrTrimNewLines} $sid $sid
+
+		; Use the SID to get the ProfileImagePath from the registry
+		ReadRegStr $0 HKLM "SOFTWARE\Microsoft\Windows NT\CurrentVersion\ProfileList\$sid" "ProfileImagePath"
+
+        ; If no user detected, fallback to current account
+        ${If} $0 == ""
+			MessageBox MB_OK 'Unable to retrieve the retrieve the console user, falling back to current user profile. This might cause the profile to be installed in the wrong user folder. In that case, please run the installer again without elevation and only install the profile component.'
+            # $PROFILE is typically c:\Users\username
+			StrCpy $RealUserProfilePath $PROFILE
+        ${Else}
+			StrCpy $RealUserProfilePath $0
+        ${EndIf}
+
+    ${Else}
+        ; Not elevated, we can just retrieve current user profile path
+		StrCpy $RealUserProfilePath $PROFILE
+    ${EndIf}
+
+FunctionEnd
 
 Function dir_pre_callback
 	# Don't show install directory page when account type is user
@@ -96,7 +135,6 @@ Section "Rana Desktop Client" SecQGIS
 	# Start and Desktop links (also pass the profile folder and global (default) setting file) for ALL users
 	SetShellVarContext all
 
-	# Only global vars are currently supported
 	Var /GLOBAL UserFolder
 	${GetParent} $PROFILE $UserFolder # Typically C:\Users
 	# This is QGIS profile folder using Windows' %username% variable
@@ -128,9 +166,13 @@ Section "Rana User Profile" SecProfile
 
 	SetOverwrite try
 
-    SetShellVarContext current
-    Var /GLOBAL INSTDIR_PROFILE_DATA
-    StrCpy $INSTDIR_PROFILE_DATA "$APPDATA\Rana\QGIS3\profiles\"
+	SetShellVarContext current
+	Var /GLOBAL INSTDIR_PROFILE_DATA
+
+	# Store the real user profile name in a global variable, this is needed to
+	# correctly set the profile path when the installer is run as administrator ("Run as administrator").
+	Call GetRealUserProfileImagePath
+	StrCpy $INSTDIR_PROFILE_DATA "$RealUserProfilePath\AppData\Roaming\Rana\QGIS3\profiles"
     CreateDirectory "$INSTDIR_PROFILE_DATA"
     
 	; Add Profile files
@@ -166,6 +208,7 @@ SectionEnd
 
 # .onInit Function (called when the installer is nearly finished initializing)
 Function .onInit
+	SetShellVarContext current
 	${If} ${ARCH} == "x86_64"
 		${If} ${RunningX64}
 			DetailPrint "Installer running on 64-bit host"
@@ -193,7 +236,10 @@ Function .onInit
 		DetailPrint "Checking existing profile"
 
 	# Uncheck profile install when default profile is present
-	IfFileExists "$APPDATA\Rana\QGIS3\profiles\default\*.*" present missing
+	Var /GLOBAL INSTDIR_PROFILE_FOLDER
+	Call GetRealUserProfileImagePath
+	StrCpy $INSTDIR_PROFILE_FOLDER "$RealUserProfilePath\AppData\Roaming\Rana\QGIS3\profiles"
+	IfFileExists "$INSTDIR_PROFILE_FOLDER\default\*.*" present missing
 	present:
 		!insertmacro UnselectSection  ${SecProfile}
 	missing:
