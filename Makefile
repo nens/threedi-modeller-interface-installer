@@ -12,7 +12,7 @@ PACKAGE_NAME = RanaDesktopClient
 SHORTCUT_NAME = Rana Desktop Client
 # Rana ModellerInterface version (note that this is additional internal postfix that
 # can be used when plugins are updated etc)
-PACKAGE_BINARY = 6
+PACKAGE_BINARY = 7
 
 # Our plugins (note trailing slash)
 NENS_PLUGIN_URL = https://plugins.lizard.net/
@@ -20,7 +20,7 @@ NENS_PLUGIN_URL = https://plugins.lizard.net/
 RANA_PLUGIN_FILENAME = rana_qgis_plugin.1.2.5
 RANA_CUSTOMIZATIONS_FILENAME = rana_qgis_customisations.0.1.3
 DEPLOADER_FILENAME = nens_dependency_loader.1.2.12
-TOOLBOX_FILENAME = threedi_results_analysis.3.26.9
+TOOLBOX_FILENAME = threedi_results_analysis.3.26.10
 SCHEMATISATION_FILENAME = threedi_schematisation_editor.2.4.8
 
 # External plugins we want to add to the installer 
