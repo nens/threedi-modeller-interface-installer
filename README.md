@@ -32,6 +32,34 @@ Check out the repo in a clean folder::
 
 The executable will be in the root folder.
 
+Signing
+-------
+
+Explanation regarding setting up the USB dongle can be found at https://support.globalsign.com/code-signing.
+
+The certificate will be installed via the browser (https://support.globalsign.com/digital-certificates/manage-digital-certificates/ie-compatability-microsoft-edge). Note that, in order to download the certificate to the dongle, Edge needs to run in IE compatibility mode and https://system.globalsign.com/ needs to be added to the Trusted Website in the Internet Options for ActiveX to work.
+
+In case the user is not allowed to add it to the Thrusted Sites via the Internet Options, use the following:
+
+In powershell, type:
+
+    $ gpedit.msc
+
+Go to:
+
+Computer Configuration
+ └ Administrative Templates
+    └ Windows Components
+       └ Internet Explorer
+          └ Internet Control Panel
+             └ Security Page
+
+And add the following pair entry to "Site to Zone Assignment List" 
+https://system.globalsign.com/ 2
+
+Information regarding the actual signing can be found here: https://support.globalsign.com/code-signing/code-signing/code-signing-windows-7-8-and-10
+
+
 Deploy
 ------
 
