@@ -46,16 +46,10 @@ In case the user is not allowed to add it to the Thrusted Sites via the Internet
 In powershell, type:
 
     $ gpedit.msc
-Ik zie alleen kermis
-Daar is z
+
 Go to:
 
-Computer Configuration
- └ Administrative Templates
-    └ Windows Components
-       └ Internet Explorer
-          └ Internet Control Panel
-             └ Security Page
+Computer Configuration -> Administrative Templates -> Windows Components -> Internet Explorer -> Internet Control Panel -> Security Page
 
 And add the following pair entry to "Site to Zone Assignment List" 
 https://system.globalsign.com/ 2
