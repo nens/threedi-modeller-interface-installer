@@ -35,6 +35,8 @@ The executable will be in the root folder.
 Signing
 -------
 
+In case the installer needs to be signed, the next step needs to happen manually.
+
 Explanation regarding setting up the USB dongle can be found at https://support.globalsign.com/code-signing.
 
 The certificate will be installed via the browser (https://support.globalsign.com/digital-certificates/manage-digital-certificates/ie-compatability-microsoft-edge). Note that, in order to download the certificate to the dongle, Edge needs to run in IE compatibility mode and https://system.globalsign.com/ needs to be added to the Trusted Website in the Internet Options for ActiveX to work.
@@ -44,7 +46,8 @@ In case the user is not allowed to add it to the Thrusted Sites via the Internet
 In powershell, type:
 
     $ gpedit.msc
-
+Ik zie alleen kermis
+Daar is z
 Go to:
 
 Computer Configuration
