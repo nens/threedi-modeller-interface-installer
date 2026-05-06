@@ -107,12 +107,7 @@ Section "Rana Desktop Client" SecQGIS
 
     # Run the original QGIS installer
 	ClearErrors
-	# It is possible to set certain properties in the underlying Wix MSI
-    ExecWait '"msiexec" /i "$INSTDIR\QGIS-OSGeo4W-${VERSION_NUMBER}.msi" INSTALLDIR="$INSTDIR" INSTALLDESKTOPSHORTCUTS="0" INSTALLMENUSHORTCUTS="0" /passive /L*V "$INSTDIR\install.log"' $0
-	${IfNot} $0 == "0"
-		MessageBox MB_ICONSTOP "Installer failed, please check install.log in installation folder"
-		Abort # Install stops. Only button enabled is Cancel.
-	${EndIf}
+
 
 	# Copy some resources for uninstaller
 	SetOutPath $INSTDIR\icons
@@ -159,7 +154,6 @@ Section "Rana Desktop Client" SecQGIS
 	WriteRegStr HKCR "rana\shell\open" "" ""
 	WriteRegStr HKCR "rana\shell\open\command" "" '"$INSTDIR\bin\qgis-ltr.bat" --globalsettingsfile "$INSTDIR\apps\qgis-ltr\resources\qgis_global_settings.ini" --profiles-path "$0" -F "%1"' 
 	
-    WriteUninstaller $INSTDIR\uninstall.exe
 SectionEnd
 
 Section "Rana User Profile" SecProfile
@@ -181,30 +175,6 @@ Section "Rana User Profile" SecProfile
 
 SectionEnd
 
-Section "Uninstall"
- 	${If} ${ARCH} == "x86_64"
-		${If} ${RunningX64}
-			DetailPrint "Installer running on 64-bit host"
-			SetRegView 64
-		${EndIf}
-	${EndIf}
-    # Use the original msi to deinstall qgis
-    ExecWait '"msiexec" /x "$INSTDIR\QGIS-OSGeo4W-${VERSION_NUMBER}.msi" INSTALLDIR="$INSTDIR" /quiet /L*V "$APPDATA\Rana\QGIS3\uninstall.log"'
-
-	# Remove the program from the Add/Remove Programs section in the Control Pannel
-	DeleteRegKey HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${QGIS_BASE}"
- 
-	SetShellVarContext all
-	
-	# Remove start and desktop links
-	RMDir /r "$DESKTOP\${QGIS_BASE}"
-	RMDir /r "$SMPROGRAMS\${QGIS_BASE}"
-	
-	Delete $INSTDIR\uninstall.exe
-    RMDir /r $INSTDIR
-
-    # No need to remove profile data
-SectionEnd
 
 # .onInit Function (called when the installer is nearly finished initializing)
 Function .onInit
