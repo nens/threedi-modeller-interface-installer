@@ -40,6 +40,9 @@ VALUE_TOOL_VERSION = 3.0.19
 SERVAL_NAME = Serval
 SERVAL_VERSION = 3.32.0
 
+BGT_NAME = bgtinlooptool
+BGT_VERSION = 2.0.8
+
 PLUGIN_DIR = profiles/default/python/plugins/
 
 clean:
@@ -96,6 +99,9 @@ installer: clean
 
 	curl $(QGIS_PLUGIN_URL)$(SERVAL_NAME)/version/$(SERVAL_VERSION)/download/ --output ./$(INSTALLER_BUILDDIR)/$(SERVAL_NAME).zip
 	unzip -o ./$(INSTALLER_BUILDDIR)/$(SERVAL_NAME).zip -d ./$(PLUGIN_DIR)
+
+	curl $(QGIS_PLUGIN_URL)$(BGT_NAME)/version/$(BGT_VERSION)/download/ --output ./$(INSTALLER_BUILDDIR)/$(BGT_NAME).zip
+	unzip -o ./$(INSTALLER_BUILDDIR)/$(BGT_NAME).zip -d ./$(PLUGIN_DIR)
 
 	makensis 	-DINSTALLER_NAME='$(PACKAGE_NAME)-OSGeo4W-$(QGIS_VERSION)-$(PACKAGE_BINARY)-Setup-x86_64.exe' \
 	 			-DDISPLAYED_NAME='$(PACKAGE_NAME) $(QGIS_VERSION)' \
