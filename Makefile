@@ -103,6 +103,9 @@ installer: clean
 	curl $(QGIS_PLUGIN_URL)$(BGT_NAME)/version/$(BGT_VERSION)/download/ --output ./$(INSTALLER_BUILDDIR)/$(BGT_NAME).zip
 	unzip -o ./$(INSTALLER_BUILDDIR)/$(BGT_NAME).zip -d ./$(PLUGIN_DIR)
 
+	# Remove all the linux wheels
+	rm -f ./$(PLUGIN_DIR)nens_dependency_loader/external-dependencies/*manylinux*.whl
+
 	makensis 	-DINSTALLER_NAME='$(PACKAGE_NAME)-OSGeo4W-$(QGIS_VERSION)-$(PACKAGE_BINARY)-Setup-x86_64.exe' \
 	 			-DDISPLAYED_NAME='$(PACKAGE_NAME) $(QGIS_VERSION)' \
 				-DARCH='x86_64' \
