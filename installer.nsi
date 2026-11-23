@@ -90,6 +90,26 @@ Function GetRealUserProfileImagePath
 
 FunctionEnd
 
+Function RetrieveRootCertificates
+	# Windows only installs root certificates on demand (Automatic Root Certificates Update),
+	# triggered when a Windows TLS client (Schannel) first encounters them. QGIS (Qt/OpenSSL)
+	# only reads the roots already present in the store and never triggers this download,
+	# resulting in "Unable to get local issuer certificate" errors on fresh machines.
+	# Contacting the hosts with the built-in curl.exe (Schannel) makes Windows fetch any
+	# missing roots. Best effort: failures (offline, no curl.exe) are ignored.
+	DetailPrint "Retrieving root certificates"
+	nsExec::Exec 'curl.exe --silent --head --output NUL --connect-timeout 5 --max-time 15 \
+		https://plugins.qgis.org/plugins/plugins.xml \
+		https://feed.qgis.org/ \
+		https://github.com/ \
+		https://raw.githubusercontent.com/ \
+		https://plugins.ranawaterintelligence.com/plugins.xml \
+		https://plugins.lizard.net/ \
+		https://www.ranawaterintelligence.com/ \
+		https://auth.lizard.net/'
+	Pop $0
+FunctionEnd
+
 Function dir_pre_callback
 	# Don't show install directory page when account type is user
 	UserInfo::GetAccountType
@@ -157,8 +177,10 @@ Section "Rana Desktop Client" SecQGIS
     WriteRegStr HKCR "rana" "URL Protocol" ""
 	WriteRegStr HKCR "rana\shell" "" ""
 	WriteRegStr HKCR "rana\shell\open" "" ""
-	WriteRegStr HKCR "rana\shell\open\command" "" '"$INSTDIR\bin\qgis-ltr.bat" --globalsettingsfile "$INSTDIR\apps\qgis-ltr\resources\qgis_global_settings.ini" --profiles-path "$0" -F "%1"' 
-	
+	WriteRegStr HKCR "rana\shell\open\command" "" '"$INSTDIR\bin\qgis-ltr.bat" --globalsettingsfile "$INSTDIR\apps\qgis-ltr\resources\qgis_global_settings.ini" --profiles-path "$0" -F "%1"'
+
+	Call RetrieveRootCertificates
+
     WriteUninstaller $INSTDIR\uninstall.exe
 SectionEnd
 
